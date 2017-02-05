@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: b6f5933675bc06046ac87a8229e00135
+timeCreated: 1451364906
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TempPlayerWalk_0
+    21300002: TempPlayerWalk_1
+    21300004: TempPlayerWalk_2
+    21300006: TempPlayerWalk_3
+    21300008: TempPlayerWalk_4
+    21300010: TempPlayerWalk_5
+    21300012: TempPlayerWalk_6
+    21300014: TempPlayerWalk_7
+    21300016: TempPlayerWalk_8
+    21300018: TempPlayerWalk_9
+    21300020: TempPlayerWalk_10
+    21300022: TempPlayerWalk_11
+    21300024: TempPlayerWalk_12
+    21300026: TempPlayerWalk_13
+    21300028: TempPlayerWalk_14
+    21300030: TempPlayerWalk_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: TempPlayerWalk_0
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_1
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_2
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_3
+      rect:
+        serializedVersion: 2
+        x: 3236
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_4
+      rect:
+        serializedVersion: 2
+        x: 4196
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_5
+      rect:
+        serializedVersion: 2
+        x: 5156
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_6
+      rect:
+        serializedVersion: 2
+        x: 6116
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_7
+      rect:
+        serializedVersion: 2
+        x: 7076
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_8
+      rect:
+        serializedVersion: 2
+        x: 8036
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_9
+      rect:
+        serializedVersion: 2
+        x: 8996
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_10
+      rect:
+        serializedVersion: 2
+        x: 9956
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_11
+      rect:
+        serializedVersion: 2
+        x: 10916
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_12
+      rect:
+        serializedVersion: 2
+        x: 11876
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_13
+      rect:
+        serializedVersion: 2
+        x: 12836
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_14
+      rect:
+        serializedVersion: 2
+        x: 13796
+        y: 356
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerWalk_15
+      rect:
+        serializedVersion: 2
+        x: 14756
+        y: 356
+        width: 248
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

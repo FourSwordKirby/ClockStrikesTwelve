@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 23d78f6ac2820d847be6b0a13e951d45
+timeCreated: 1486250506
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: This Is Ridiculous
+  fontNames:
+  - This Is Ridiculous
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

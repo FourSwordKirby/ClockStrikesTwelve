@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 62752e0fdee214c499aec1fd661cce9c
+timeCreated: 1452102515
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TempPlayerRoll_0
+    21300002: TempPlayerRoll_1
+    21300004: TempPlayerRoll_2
+    21300006: TempPlayerRoll_3
+    21300008: TempPlayerRoll_4
+    21300010: TempPlayerRoll_5
+    21300012: TempPlayerRoll_6
+    21300014: TempPlayerRoll_7
+    21300016: TempPlayerRoll_8
+    21300018: TempPlayerRoll_9
+    21300020: TempPlayerRoll_10
+    21300022: TempPlayerRoll_11
+    21300024: TempPlayerRoll_12
+    21300026: TempPlayerRoll_13
+    21300028: TempPlayerRoll_14
+    21300030: TempPlayerRoll_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: TempPlayerRoll_0
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 334
+        width: 248
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_1
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 300
+        width: 248
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_2
+      rect:
+        serializedVersion: 2
+        x: 2261
+        y: 341
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_3
+      rect:
+        serializedVersion: 2
+        x: 3199
+        y: 319
+        width: 322
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_4
+      rect:
+        serializedVersion: 2
+        x: 4181
+        y: 341
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_5
+      rect:
+        serializedVersion: 2
+        x: 5119
+        y: 319
+        width: 322
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_6
+      rect:
+        serializedVersion: 2
+        x: 6094
+        y: 356
+        width: 292
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_7
+      rect:
+        serializedVersion: 2
+        x: 7020
+        y: 356
+        width: 360
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_8
+      rect:
+        serializedVersion: 2
+        x: 8014
+        y: 356
+        width: 292
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_9
+      rect:
+        serializedVersion: 2
+        x: 8940
+        y: 356
+        width: 360
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_10
+      rect:
+        serializedVersion: 2
+        x: 9956
+        y: 334
+        width: 248
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_11
+      rect:
+        serializedVersion: 2
+        x: 10916
+        y: 300
+        width: 248
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_12
+      rect:
+        serializedVersion: 2
+        x: 11861
+        y: 341
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_13
+      rect:
+        serializedVersion: 2
+        x: 12799
+        y: 319
+        width: 322
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_14
+      rect:
+        serializedVersion: 2
+        x: 13781
+        y: 341
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TempPlayerRoll_15
+      rect:
+        serializedVersion: 2
+        x: 14719
+        y: 319
+        width: 322
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
