@@ -25,7 +25,6 @@ public class DialogUI : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        print(dialogField);
         dialogField.text = "";
         speaker.text = "";
         dialogCompleted = true;

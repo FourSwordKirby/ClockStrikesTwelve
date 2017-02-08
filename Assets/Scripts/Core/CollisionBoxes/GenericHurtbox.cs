@@ -12,15 +12,10 @@ public class GenericHurtbox : Hurtbox {
 
     override public void TakeHit(float hitlag, float hitstun, Vector2 knockback, bool knockdown)
     {
-        if (knockdown)
-            GameManager.instance.playSound("ComboEnder");
-        else
-            GameManager.instance.playSound("PunchHit");
     }
 
     override public void BlockHit(float hitlag, float hitstun, Vector2 knockback, bool knockdown)
     {
-        GameManager.instance.playSound("Block");
     }
 
     void OnTriggerEnter2D(Collider2D col)

@@ -25,16 +25,20 @@ public class ChoiceUI : MonoBehaviour {
             currentChoice--;
             if (currentChoice < 0)
                 currentChoice = choices.Count - 1;
+            GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
+
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             currentChoice++;
             if (currentChoice > choices.Count - 1)
                 currentChoice = 0;
+            GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             choiceMade = true;
+            GameManager.instance.playSound(SoundType.Menu, "MenuSelect");
         }
     }
 

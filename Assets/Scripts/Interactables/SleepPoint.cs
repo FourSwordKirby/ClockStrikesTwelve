@@ -24,7 +24,7 @@ public class SleepPoint : Interactable {
     IEnumerator SleepTime()
     {
         GameManager.instance.paused = true;
-        GameManager.instance.player.enabled = false;
+        Player.instance.enabled = false;
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
@@ -64,7 +64,7 @@ public class SleepPoint : Interactable {
         {
             UIController.instance.dialog.closeDialog();
             GameManager.instance.paused = false;
-            GameManager.instance.player.enabled = true;
+            Player.instance.enabled = true;
         }
 
         yield return null;

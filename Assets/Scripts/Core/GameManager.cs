@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Player player;
+    public BGMController bgm;
 
     public bool paused;
     public float startingTime;
@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour
     public bool charmTriggered;
 
 
+    public List<AudioClip> menuSfx;
+    public List<AudioClip> environmentSfx;
+    public List<AudioClip> itemSfx;
 
-    public List<AudioClip> sfx;
 
     public static GameManager instance;
     void Awake()
@@ -47,18 +49,22 @@ public class GameManager : MonoBehaviour
     {
         if(!paused)
             currentTime += Time.deltaTime;
+        if (currentTime > timeLimit)
+            StartCoroutine(ResetDay());
     }
 
     public void TogglePause()
     {
         if(!paused)
         {
-            player.enabled = false;
+            GameManager.instance.playSound(SoundType.Menu, "MenuOpen");
+            Player.instance.enabled = false;
             UIController.instance.pauseScreen.gameObject.SetActive(true);
         }
         else
         {
-            player.enabled = true;
+            GameManager.instance.playSound(SoundType.Menu, "MenuOpen");
+            Player.instance.enabled = true;
             UIController.instance.pauseScreen.gameObject.SetActive(false);
         }
         paused = !paused;
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
     //Returns the closest targetable object within the player's targeting range
     public GameObject getTarget()
     {
-        Vector2 startingPosition = player.transform.position;
+        Vector2 startingPosition = Player.instance.transform.position;
         //Mobile[] potentialTargets = Object.FindObjectsOfType<Mobile>();
 
         //Mobile closestTarget = null;
@@ -92,6 +98,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator ResetDay()
     {
+        //Setting the flags for the things in the chest
+        if (GameManager.instance.chestStoredItems.Find(x => x.designation == ItemDesignation.WeatherCharm) != null)
+            GameManager.instance.charmTriggered = true;
+
         introCompleted = false;
         chestStoredItems = new List<InventoryItem>();
         //Do a bunch of other state resets
@@ -101,17 +111,35 @@ public class GameManager : MonoBehaviour
 
 
         StartCoroutine(UIController.instance.screenfader.FadeOut());
-
+        StartCoroutine(bgm.FadeTowards(0.0f));
         while(UIController.instance.screenfader.fading)
         {
             yield return new WaitForSeconds(0.1f);
         }
+
+        playSound(SoundType.Environment, "Clock");
+        yield return new WaitForSeconds(2.0f);
+        StartCoroutine(bgm.FadeTowards(1.0f));
         SceneManager.LoadScene(0);
         Debug.Log("Please actually reset the day");
         yield return null;
     }
 
-    public void playSound(string soundName, bool startingSound = false)
+    public void playSound(SoundType soundType, string soundName, bool startingSound = false)
     {
+        Vector3 position;
+        AudioClip sound = null;
+        if (!startingSound)
+            position = CameraControls.instance.transform.position;
+        else
+            position = Vector3.back * 10.0f;
+        if (soundType == SoundType.Menu)
+            sound = menuSfx.Find(x => x.name == soundName);
+        else if (soundType == SoundType.Environment)
+            sound = environmentSfx.Find(x => x.name == soundName);
+        else if (soundType == SoundType.Item)
+            sound = itemSfx.Find(x => x.name == soundName);
+
+        AudioSource.PlayClipAtPoint(sound, position);
     }
 }

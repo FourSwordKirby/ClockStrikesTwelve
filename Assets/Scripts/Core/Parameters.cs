@@ -12,6 +12,13 @@ public enum ItemDesignation
     WeatherCharm
 }
 
+public enum SoundType
+{
+    Menu,
+    Environment,
+    Item
+}
+
 public class Parameters : MonoBehaviour {
 
     public enum Directions

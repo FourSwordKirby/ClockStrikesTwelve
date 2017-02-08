@@ -13,7 +13,7 @@ public class OutsideSceneSetup : MonoBehaviour {
         if(UIController.instance.screenfader.fadeActive)
             StartCoroutine(UIController.instance.screenfader.FadeIn());
 
-        if (!GameManager.instance.charmTriggered)
+        if (GameManager.instance.charmTriggered)
         {
             SnowParticles.SetActive(false);
             SnowBackground.SetActive(false);

@@ -23,7 +23,7 @@ public class TransferPoint : Interactable {
     IEnumerator Storage()
     {
         GameManager.instance.paused = true;
-        GameManager.instance.player.enabled = false;
+        Player.instance.enabled = false;
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
@@ -57,7 +57,7 @@ public class TransferPoint : Interactable {
         UIController.instance.transferScreen.CloseTransfer();
         UIController.instance.dialog.closeDialog();
         GameManager.instance.paused = false;
-        GameManager.instance.player.enabled = true;
+        Player.instance.enabled = true;
 
         yield return null;
     }

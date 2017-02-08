@@ -14,6 +14,7 @@ public class SceneChangeTrigger : MonoBehaviour {
 
     public IEnumerator transitionRooms()
     {
+        GameManager.instance.playSound(SoundType.Environment, "RoomExit");
         StartCoroutine(UIController.instance.screenfader.FadeOut());
         while (UIController.instance.screenfader.fading)
         {

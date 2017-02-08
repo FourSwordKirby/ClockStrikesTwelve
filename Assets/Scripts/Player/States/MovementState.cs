@@ -17,8 +17,20 @@ public class MovementState : State<Player> {
         return;
     }
 
+
+    float sfxTimer;
     override public void Execute()
     {
+        if(sfxTimer < 1)
+        {
+            sfxTimer += Time.deltaTime;
+            if(sfxTimer >= 1)
+            {
+                GameManager.instance.playSound(SoundType.Environment, "Walk");
+                sfxTimer = 0;
+            }
+        }
+
         Parameters.Directions potential_direction = Controls.getDirection();
         if (Parameters.isOppositeDirection(potential_direction, player.direction) || potential_direction == Parameters.Directions.Stop)
             player.ActionFsm.ChangeState(new IdleState(player, player.ActionFsm));
@@ -27,7 +39,6 @@ public class MovementState : State<Player> {
 
         if (Controls.lockonInputDown())
             player.toggleLockOn();
-
         player.anim.SetFloat("DirX", Mathf.Ceil(Parameters.getVector(player.direction).x));
         player.anim.SetFloat("DirY", Mathf.Ceil(Parameters.getVector(player.direction).y));
     }

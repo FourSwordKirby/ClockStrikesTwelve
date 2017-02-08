@@ -10,12 +10,11 @@ public class InventoryUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
         for(int i = 0; i < InventorySlots.Count; i++)
         {
-            if(i < GameManager.instance.player.items.Count)
+            if(i < Player.instance.items.Count)
             {
-                InventorySlots[i].sprite = GameManager.instance.player.items[i].itemSprite;
+                InventorySlots[i].sprite = Player.instance.items[i].itemSprite;
                 InventorySlots[i].color = Color.white;
             }
             else

@@ -68,12 +68,14 @@ public class TransferUI : MonoBehaviour {
             currentChoice--;
             if (currentChoice < 0)
                 currentChoice = playerItems.Count + storageItems.Count-1;
+            GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             currentChoice++;
             if (currentChoice > playerItems.Count + storageItems.Count - 1)
                 currentChoice = 0;
+            GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -91,16 +93,19 @@ public class TransferUI : MonoBehaviour {
                 playerItems.Add(storageItems[i]);
                 storageItems.RemoveAt(i);
             }
+            GameManager.instance.playSound(SoundType.Menu, "MenuSelect");
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
             CloseTransfer();
+        }
     }
 
     public void OpenTransfer()
     {
         transferComplete = false;
         this.gameObject.SetActive(true);
-        playerItems = GameManager.instance.player.items;
+        playerItems = Player.instance.items;
         storageItems = GameManager.instance.chestStoredItems;
     }
 
@@ -108,7 +113,7 @@ public class TransferUI : MonoBehaviour {
     {
         transferComplete = true;
         this.gameObject.SetActive(false);
-        GameManager.instance.player.items = playerItems;
+        Player.instance.items = playerItems;
         GameManager.instance.chestStoredItems = storageItems;
     }
 }

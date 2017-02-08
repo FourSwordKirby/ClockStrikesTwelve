@@ -29,7 +29,7 @@ public class DemoEvent : MonoBehaviour {
         UIController.instance.dialog.dialogBox.enabled = false;
         UIController.instance.dialog.speakerBox.enabled = false;
         GameManager.instance.paused = true;
-        GameManager.instance.player.enabled = false;
+        Player.instance.enabled = false;
 
         for (int i = 0; i < dialogComponents.Count; i++)
         {
@@ -63,7 +63,7 @@ public class DemoEvent : MonoBehaviour {
 
         StartCoroutine(UIController.instance.screenfader.FadeIn(2.0f));
         GameManager.instance.paused = false;
-        GameManager.instance.player.enabled = true;
+        Player.instance.enabled = true;
         yield return null;
     }
 }

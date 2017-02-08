@@ -25,7 +25,7 @@ public class WeatherCharm : Interactable
     IEnumerator CharmGet()
     {
         GameManager.instance.paused = true;
-        GameManager.instance.player.enabled = false;
+        Player.instance.enabled = false;
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
@@ -51,12 +51,15 @@ public class WeatherCharm : Interactable
         }
         UIController.instance.dialog.closeDialog();
         GameManager.instance.paused = false;
-        GameManager.instance.player.enabled = true;
+        Player.instance.enabled = true;
 
+        //We picked up the object, do stuff to it
         Destroy(this.gameObject);
-        GameManager.instance.player.items.Add(inventoryItem);
-        GameManager.instance.player.currentInteractable = null;
-        StartCoroutine(GameManager.instance.player.HideSymbol());
+        GameManager.instance.playSound(SoundType.Item, "ItemGet");
+
+        Player.instance.items.Add(inventoryItem);
+        Player.instance.currentInteractable = null;
+        StartCoroutine(Player.instance.HideSymbol());
         yield return null;
     }
 }

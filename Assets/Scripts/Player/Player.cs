@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private bool canInteract;
     public Interactable currentInteractable;
 
-    private static Player instance;
+    public static Player instance;
     //Used for the initialization of internal, non-object variables
     void Awake()
     {

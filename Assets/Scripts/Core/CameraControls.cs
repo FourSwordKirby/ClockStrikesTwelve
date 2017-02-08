@@ -68,7 +68,7 @@ public class CameraControls : MonoBehaviour {
     void Start () {
         cameraComponent = GetComponent<Camera>();
 
-        target = GameManager.instance.player.gameObject;
+        target = Player.instance.gameObject;
         visibleTargets = new List<GameObject>();
         original_camera_size = cameraComponent.orthographicSize;
         min_camera_size = 0.75f * original_camera_size;
@@ -145,7 +145,7 @@ public class CameraControls : MonoBehaviour {
         //If no targets are in range, go back to the original player
         if (visibleTargets.Count == 1)
         {
-            Target(GameManager.instance.player.gameObject);
+            Target(Player.instance.gameObject);
         }
 
         //external gradual resizing
