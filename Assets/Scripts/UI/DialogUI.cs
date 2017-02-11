@@ -87,18 +87,7 @@ public class DialogUI : MonoBehaviour
         this.dialogField.text = taggedText;
 
 
-        if (displaySpeed == DisplaySpeed.immediate)
-        {
-            this.dialogField.text = dialog;
-        }
-        else if (displaySpeed == DisplaySpeed.fast)
-        {
-            textDisplaySpeed = FAST_DISPLAY_SPEED;
-        }
-        else if (displaySpeed == DisplaySpeed.slow)
-        {
-            textDisplaySpeed = SLOW_DISPLAY_SPEED;
-        }
+        setSpeed (displaySpeed);
     }
 
     public void closeDialog()
@@ -111,6 +100,21 @@ public class DialogUI : MonoBehaviour
     public void resolveDialog()
     {
         this.dialogField.text = dialog;
+    }
+
+    public void setSpeed(DisplaySpeed displaySpeed) {
+        if (displaySpeed == DisplaySpeed.immediate)
+        {
+            this.dialogField.text = dialog;
+        }
+        else if (displaySpeed == DisplaySpeed.fast)
+        {
+            textDisplaySpeed = FAST_DISPLAY_SPEED;
+        }
+        else if (displaySpeed == DisplaySpeed.slow)
+        {
+            textDisplaySpeed = SLOW_DISPLAY_SPEED;
+        }
     }
 }
 

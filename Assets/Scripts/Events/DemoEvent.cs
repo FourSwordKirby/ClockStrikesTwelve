@@ -30,7 +30,6 @@ public class DemoEvent : MonoBehaviour {
         UIController.instance.dialog.speakerBox.enabled = false;
         GameManager.instance.paused = true;
         Player.instance.enabled = false;
-
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
@@ -43,14 +42,24 @@ public class DemoEvent : MonoBehaviour {
             }
             else
                 dialog = dialogPieces[0];
+            
             UIController.instance.dialog.displayDialog(dialog, speaker);
+            bool wasClicked = Input.GetKey (KeyCode.Mouse0);
+            bool isClicked = Input.GetKey (KeyCode.Mouse0);
             while (!UIController.instance.dialog.dialogCompleted)
             {
+                if (isClicked && !wasClicked) {
+                    UIController.instance.dialog.setSpeed (DisplaySpeed.immediate);
+                }
+                wasClicked = isClicked;
+                isClicked = Input.GetKey (KeyCode.Mouse0);
                 yield return new WaitForSeconds(0.1f);
             }
             //Replace this with things in the control set
-            while(!Input.GetKey(KeyCode.Mouse0))
+            while(!(isClicked && !wasClicked))
             {
+                wasClicked = isClicked;
+                isClicked = Input.GetKey (KeyCode.Mouse0);
                 yield return new WaitForSeconds(0.1f);
             }
         }
