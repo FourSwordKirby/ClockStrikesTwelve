@@ -31,21 +31,19 @@ public class MovementState : State<Player> {
             }
         }
 
-        Parameters.Directions potential_direction = Controls.getDirection();
-        if (Parameters.isOppositeDirection(potential_direction, player.direction) || potential_direction == Parameters.Directions.Stop)
-            player.ActionFsm.ChangeState(new IdleState(player, player.ActionFsm));
-        else
-            player.direction = potential_direction;
+        Vector2 movementVector = Controls.getDirection();
+        player.direction = Parameters.vectorToDirection(movementVector);
 
-        if (Controls.lockonInputDown())
+        if (Controls.cancelInputDown())
             player.toggleLockOn();
-        player.anim.SetFloat("DirX", Mathf.Ceil(Parameters.getVector(player.direction).x));
-        player.anim.SetFloat("DirY", Mathf.Ceil(Parameters.getVector(player.direction).y));
+        player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
+        player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
     }
 
     override public void FixedExecute()
     {
-        player.selfBody.velocity = Parameters.getVector(Controls.getDirection()) * player.movementSpeed;
+        Vector2 movementVector = Controls.getDirection();
+        player.selfBody.velocity = movementVector * player.movementSpeed;
     }
 
     override public void Exit()

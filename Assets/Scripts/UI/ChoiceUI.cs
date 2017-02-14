@@ -20,22 +20,21 @@ public class ChoiceUI : MonoBehaviour {
                 choices[i].color = Color.white;
         }
         //Change this
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Controls.DirectionDown(Parameters.InputDirection.W))
         {
             currentChoice--;
             if (currentChoice < 0)
                 currentChoice = choices.Count - 1;
             GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
-
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Controls.DirectionDown(Parameters.InputDirection.E))
         {
             currentChoice++;
             if (currentChoice > choices.Count - 1)
                 currentChoice = 0;
             GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Controls.confirmInputDown())
         {
             choiceMade = true;
             GameManager.instance.playSound(SoundType.Menu, "MenuSelect");

@@ -9,7 +9,7 @@ public class PauseUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Alter this later
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Controls.pauseInputDown())
         {
             GameManager.instance.TogglePause();
         }

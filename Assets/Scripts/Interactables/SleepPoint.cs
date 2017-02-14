@@ -43,7 +43,7 @@ public class SleepPoint : Interactable {
                 yield return new WaitForSeconds(0.1f);
             }
             //Replace this with things in the control set
-            while (!Input.GetKey(KeyCode.Mouse0))
+            while (!Controls.confirmInputHeld())
             {
                 yield return new WaitForSeconds(0.1f);
             }

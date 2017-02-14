@@ -9,15 +9,12 @@ public class Player : MonoBehaviour
 
     public int health { get; private set; }
     public float movementSpeed { get; private set; }
-    public Parameters.Directions direction { get; set; }
+    public Parameters.InputDirection direction { get; set; }
 
     public float targetingRange { get; private set; } //Determines the max range that the player can target an object
     public GameObject target;
 
     public List<InventoryItem> items;
-
-    //Tells us the status of the player (things that affect the hitbox)
-    public Parameters.PlayerStatus status {get; set; }
 
     public const int DEFAULT_MAX_HEALTH = 12;
     public const float DEFAULT_SPEED = 1.0f;
@@ -85,13 +82,13 @@ public class Player : MonoBehaviour
 
         if(this.currentInteractable != null)
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
+            if(Controls.confirmInputDown())
             {
                 currentInteractable.Interact();
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Controls.pauseInputDown())
         {
             GameManager.instance.TogglePause();
         }

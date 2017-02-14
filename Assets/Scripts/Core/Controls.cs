@@ -3,72 +3,67 @@ using System.Collections;
 
 public class Controls {
 
-    public static Parameters.Directions getDirection()
+    public static Vector2 getDirection()
     {
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        float xAxis = 0;
+        float yAxis = 0;
+
+        if (Mathf.Abs(Input.GetAxis("P1 Horizontal")) > Mathf.Abs(Input.GetAxis("P1 Keyboard Horizontal")))
+            xAxis = Input.GetAxis("P1 Horizontal");
+        else
+            xAxis = Input.GetAxis("P1 Keyboard Horizontal");
+        if (Mathf.Abs(Input.GetAxis("P1 Vertical")) > Mathf.Abs(Input.GetAxis("P1 Keyboard Vertical")))
+            yAxis = Input.GetAxis("P1 Vertical");
+        else
+            yAxis = Input.GetAxis("P1 Keyboard Vertical");
+
+        return new Vector2(xAxis, yAxis);
+    }
+
+    public static Parameters.InputDirection getInputDirection()
+    {
+        return Parameters.vectorToDirection(getDirection());
+    }
+
+    static float cooldown = 0.1f;
+    public static bool DirectionDown(Parameters.InputDirection dir)
+    {
+        //Hacky, probably should fix to be correct later
+        if (cooldown < 0)
         {
-            return Parameters.Directions.NorthWest;
-        }
-        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W))
-        {
-            return Parameters.Directions.SouthWest;
-        }
-        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A))
-        {
-            return Parameters.Directions.SouthEast;
-        }
-        else if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S))
-        {
-            return Parameters.Directions.NorthEast;
-        }
-        else if (Input.GetKey(KeyCode.W)  && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
-        {
-            return Parameters.Directions.North;
-        }
-        else if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W))
-        {
-            return Parameters.Directions.West;
-        }
-        else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A))
-        {
-            return Parameters.Directions.South;
-        }
-        else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S))
-        {
-            return Parameters.Directions.East;
+            cooldown = 0.2f;
+            Parameters.InputDirection currentInput = getInputDirection();
+            return currentInput == dir;
         }
         else
-            return Parameters.Directions.Stop;
+        {
+            cooldown -= Time.deltaTime;
+            return false;
+        }
     }
 
-    public static bool actionInputDown()
+    public static bool confirmInputDown()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.Z);
     }
 
-    public static bool lockonInputDown()
+    public static bool cancelInputDown()
     {
-        return Input.GetKeyDown(KeyCode.LeftShift);
+        return Input.GetKeyDown(KeyCode.X);
     }
 
-    public static bool attackInputDown()
+    public static bool confirmInputHeld()
     {
-        return Input.GetMouseButtonDown(1);
+        return Input.GetKey(KeyCode.Z);
     }
 
-
-    public static bool actionInputHeld()
+    public static bool cancelInputHeld()
     {
-        return Input.GetKey(KeyCode.Space);
+        return Input.GetKey(KeyCode.X);
     }
 
-    public static bool lockonInputHeld()
+    public static bool pauseInputDown()
     {
-        return Input.GetKey(KeyCode.LeftShift);
-    }
-
-    public static bool attackInputHeld()
-    {
-        return Input.GetMouseButton(1);
+        return Input.GetKeyDown(KeyCode.P);
     }
 }

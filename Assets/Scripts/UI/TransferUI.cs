@@ -63,21 +63,21 @@ public class TransferUI : MonoBehaviour {
         }
 
         //Inputs Change this
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Controls.DirectionDown(Parameters.InputDirection.W))
         {
             currentChoice--;
             if (currentChoice < 0)
                 currentChoice = playerItems.Count + storageItems.Count-1;
             GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Controls.DirectionDown(Parameters.InputDirection.E))
         {
             currentChoice++;
             if (currentChoice > playerItems.Count + storageItems.Count - 1)
                 currentChoice = 0;
             GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Controls.confirmInputDown())
         {
             if (myItems.Count + storageItems.Count == 0)
                 return;
@@ -95,7 +95,7 @@ public class TransferUI : MonoBehaviour {
             }
             GameManager.instance.playSound(SoundType.Menu, "MenuSelect");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Controls.cancelInputDown())
         {
             CloseTransfer();
         }

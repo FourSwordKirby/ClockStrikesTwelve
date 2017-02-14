@@ -36,7 +36,7 @@ public class AttackState : State<Player>
 
     override public void FixedExecute()
     {
-        player.selfBody.velocity = Parameters.getVector(player.direction) * attackVelocity;
+       //#not relevant
     }
 
     override public void Exit()

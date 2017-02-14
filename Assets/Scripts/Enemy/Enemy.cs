@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour{
     public int health { get; private set; }
     public float movementSpeed { get; private set; }
     public float rollSpeed { get; private set; }
-    public Parameters.Directions direction { get; private set; }
+    public Parameters.InputDirection direction { get; private set; }
     public float knockdownThreshold { get; private set; }
 
     public const int DEFAULT_MAX_HEALTH = 12;
