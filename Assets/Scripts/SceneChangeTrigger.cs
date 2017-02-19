@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneChangeTrigger : MonoBehaviour {
 
     public string sceneName;
+    private bool activated = false;
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        GameManager.instance.StartSceneTransition (sceneName);
+        if (!activated)
+        {
+            GameManager.instance.StartSceneTransition (sceneName);
+            activated = true;
+        }
     }
 }

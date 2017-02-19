@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
+
         SceneManager.LoadScene(sceneName);
 
         yield return null;
