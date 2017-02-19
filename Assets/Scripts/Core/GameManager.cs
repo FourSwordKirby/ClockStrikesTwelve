@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        Player.instance.enabled = false;
         SceneManager.LoadScene(sceneName);
-
         yield return null;
         //try to move to the position of the door to this room
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
@@ -166,5 +166,6 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+        Player.instance.enabled = true;
     }
 }
