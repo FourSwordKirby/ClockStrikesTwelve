@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public float currentTime;
     public float timeLimit;
 
+    private bool loadingScene = false;
+
     //It is important to keep track of what items are stored where. 
     //For now we're hacking and keeping tack of the set of stored items in the gameManager
     public List<InventoryItem> chestStoredItems;
@@ -153,7 +155,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        Player.instance.enabled = false;
+        loadingScene = true;
         SceneManager.LoadScene(sceneName);
         yield return null;
         //try to move to the position of the door to this room
@@ -166,6 +168,10 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        Player.instance.enabled = true;
+        loadingScene = false;
+    }
+    
+    public bool canSwitchRooms() {
+        return !loadingScene;
     }
 }
