@@ -37,6 +37,8 @@ public class SleepPoint : Interactable {
             else
                 dialog = dialogPieces[0];
             UIController.instance.dialog.displayDialog(dialog, speaker);
+
+            yield return new WaitForSeconds(0.1f);
             while (!UIController.instance.dialog.dialogCompleted)
             {
                 yield return new WaitForSeconds(0.1f);

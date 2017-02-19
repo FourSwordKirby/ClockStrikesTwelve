@@ -11,6 +11,9 @@ public class UIController : MonoBehaviour {
     public TransferUI transferScreen;
     public ChoiceUI choiceScreen;
 
+    public NotepadUI notepadPrompt;
+    public PasswordUI passwordPrompt;
+
     public static UIController instance;
     void Awake()
     {

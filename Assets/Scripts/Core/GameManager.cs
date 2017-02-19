@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     //For now we're hacking and keeping tack of the set of stored items in the gameManager
     public List<InventoryItem> chestStoredItems;
 
+    //Notepad that people write on between days
+    public string notepadText;
+
     //These are all of the various flags that can be toggled between loops
     public bool introCompleted;
     public bool charmTriggered;
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         paused = true;
         Player.instance.enabled = false;
+        Player.instance.selfBody.velocity = Vector2.zero;
         //add other stuff as needed.
         //Probably need a player function to initialize it or something
     }
