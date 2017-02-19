@@ -20,8 +20,9 @@ public class SceneChangeTrigger : MonoBehaviour {
         {
             yield return new WaitForSeconds(0.1f);
         }
+        print ("starting load");
         SceneManager.LoadScene(sceneName);
-
+        print ("loaded 1");
         yield return null;
         //try to move to the position of the door to this room
         print("all loaded");
