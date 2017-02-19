@@ -53,7 +53,27 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ResetDay());
     }
 
-    public void TogglePause()
+    /// <summary>
+    /// Used when you're in a cutscene or dialog is happening, basically, stop the player + time and the movements
+    /// </summary>
+    public void SuspendGame()
+    {
+        paused = true;
+        Player.instance.enabled = false;
+        //add other stuff as needed.
+        //Probably need a player function to initialize it or something
+    }
+
+    /// <summary>
+    /// Used to restore normal player controls/the flow of time etc.
+    /// </summary>
+    public void UnsuspendGame()
+    {
+        paused = false;
+        Player.instance.enabled = true;
+    }
+
+    public void TogglePauseMenu()
     {
         if(!paused)
         {
@@ -68,32 +88,6 @@ public class GameManager : MonoBehaviour
             UIController.instance.pauseScreen.gameObject.SetActive(false);
         }
         paused = !paused;
-    }
-
-    public void PlayerDeath()
-    {
-        CameraControls.instance.Shake();
-    }
-
-    //Returns the closest targetable object within the player's targeting range
-    public GameObject getTarget()
-    {
-        Vector2 startingPosition = Player.instance.transform.position;
-        //Mobile[] potentialTargets = Object.FindObjectsOfType<Mobile>();
-
-        //Mobile closestTarget = null;
-        //foreach (Mobile target in potentialTargets)
-        //{
-        //    if(target != Player)
-        //    {
-        //        float distance = Vector2.Distance(Player.transform.position, target.transform.position);
-        //        if (distance < Player.targetingRange)
-        //            closestTarget = target;
-        //    }
-        //}
-
-        throw new UnityException("Method not implemented");
-        return null;
     }
 
     public IEnumerator ResetDay()

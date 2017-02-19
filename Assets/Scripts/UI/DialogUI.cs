@@ -13,6 +13,8 @@ public class DialogUI : MonoBehaviour
 
     public bool dialogCompleted;
 
+    public AudioClip defaultTextSfx;
+
     public string dialog = "";
     private int dialogTracker = 0;
 
@@ -21,6 +23,8 @@ public class DialogUI : MonoBehaviour
 
     private const float FAST_DISPLAY_SPEED = 0.0f;
     private const float SLOW_DISPLAY_SPEED = 0.03f;
+
+    private AudioClip textSfx;
 
     // Use this for initialization
     void Awake()
@@ -48,6 +52,9 @@ public class DialogUI : MonoBehaviour
             this.dialogField.text = new string(dialogCharArray);
             dialogTracker++;
 
+            //This can be pretty jank, probably need to make an audio source onthe camera or something e-e
+            AudioSource.PlayClipAtPoint(textSfx, CameraControls.instance.transform.position);
+
             textDisplayTimer = textDisplaySpeed;
             dialogCompleted = false;
         }
@@ -55,8 +62,10 @@ public class DialogUI : MonoBehaviour
             dialogCompleted = true;
     }
 
-    public void displayDialog(string dialog, string speaker = "", DisplaySpeed displaySpeed = DisplaySpeed.fast)
+    public void displayDialog(string dialog, string speaker = "", AudioClip sfx = null, DisplaySpeed displaySpeed = DisplaySpeed.fast)
     {
+        SetDialogSound(sfx);
+
         dialogCompleted = false;
 
         this.gameObject.SetActive(true);
@@ -88,6 +97,19 @@ public class DialogUI : MonoBehaviour
 
 
         setSpeed (displaySpeed);
+    }
+
+    /// <summary>
+    /// use this to set custom sfx for what audio plays when the text shows up
+    /// should be set before every displayDialog call
+    /// </summary>
+    /// <param name="sfx"></param>
+    private void SetDialogSound(AudioClip sfx)
+    {
+        if (sfx == null)
+            textSfx = defaultTextSfx;
+        else
+            textSfx = sfx;
     }
 
     public void closeDialog()

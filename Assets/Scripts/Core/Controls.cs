@@ -8,14 +8,14 @@ public class Controls {
         float xAxis = 0;
         float yAxis = 0;
 
-        if (Mathf.Abs(Input.GetAxis("P1 Horizontal")) > Mathf.Abs(Input.GetAxis("P1 Keyboard Horizontal")))
-            xAxis = Input.GetAxis("P1 Horizontal");
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Abs(Input.GetAxis("Keyboard Horizontal")))
+            xAxis = Input.GetAxis("Horizontal");
         else
-            xAxis = Input.GetAxis("P1 Keyboard Horizontal");
-        if (Mathf.Abs(Input.GetAxis("P1 Vertical")) > Mathf.Abs(Input.GetAxis("P1 Keyboard Vertical")))
-            yAxis = Input.GetAxis("P1 Vertical");
+            xAxis = Input.GetAxis("Keyboard Horizontal");
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs(Input.GetAxis("Keyboard Vertical")))
+            yAxis = Input.GetAxis("Vertical");
         else
-            yAxis = Input.GetAxis("P1 Keyboard Vertical");
+            yAxis = Input.GetAxis("Keyboard Vertical");
 
         return new Vector2(xAxis, yAxis);
     }
@@ -44,26 +44,26 @@ public class Controls {
 
     public static bool confirmInputDown()
     {
-        return Input.GetKeyDown(KeyCode.Z);
+        return Input.GetButtonDown("Confirm");
     }
 
     public static bool cancelInputDown()
     {
-        return Input.GetKeyDown(KeyCode.X);
+        return Input.GetButtonDown("Cancel");
     }
 
     public static bool confirmInputHeld()
     {
-        return Input.GetKey(KeyCode.Z);
+        return Input.GetButton("Confirm");
     }
 
     public static bool cancelInputHeld()
     {
-        return Input.GetKey(KeyCode.X);
+        return Input.GetButton("Cancel");
     }
 
     public static bool pauseInputDown()
     {
-        return Input.GetKeyDown(KeyCode.P);
+        return Input.GetButton("Pause");
     }
 }

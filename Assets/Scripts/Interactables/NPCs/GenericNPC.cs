@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using System.Linq;
 
-public class TransferPoint : Interactable {
-
+//This is a generic NPC who can only say 1 line of dialog
+public class GenericNPC: Interactable
+{
+    public InventoryItem inventoryItem;
     public TextAsset Instructions;
     private List<string> dialogComponents;
 
@@ -17,10 +19,11 @@ public class TransferPoint : Interactable {
 
     public override void Interact()
     {
-        StartCoroutine(Storage());
+        StartCoroutine(DisplayDialog());
     }
 
-    IEnumerator Storage()
+    //Probably should MVC this before everything dies. Also playing sounds ;___;
+    IEnumerator DisplayDialog()
     {
         GameManager.instance.SuspendGame();
         for (int i = 0; i < dialogComponents.Count; i++)
@@ -46,17 +49,12 @@ public class TransferPoint : Interactable {
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
-        UIController.instance.transferScreen.OpenTransfer();
-        while (!UIController.instance.transferScreen.transferComplete)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
-        UIController.instance.transferScreen.CloseTransfer();
         UIController.instance.dialog.closeDialog();
         GameManager.instance.UnsuspendGame();
 
+        Player.instance.items.Add(inventoryItem);
+        Player.instance.currentInteractable = null;
+        StartCoroutine(Player.instance.HideSymbol());
         yield return null;
     }
 }

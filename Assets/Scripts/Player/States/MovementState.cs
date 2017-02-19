@@ -34,8 +34,6 @@ public class MovementState : State<Player> {
         Vector2 movementVector = Controls.getDirection();
         player.direction = Parameters.vectorToDirection(movementVector);
 
-        if (Controls.cancelInputDown())
-            player.toggleLockOn();
         player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
         player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
     }

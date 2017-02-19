@@ -11,7 +11,7 @@ public class PauseUI : MonoBehaviour {
         //Alter this later
         if(Controls.pauseInputDown())
         {
-            GameManager.instance.TogglePause();
+            GameManager.instance.TogglePauseMenu();
         }
 	}
 }

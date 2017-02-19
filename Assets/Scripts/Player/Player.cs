@@ -90,31 +90,13 @@ public class Player : MonoBehaviour
 
         if(Controls.pauseInputDown())
         {
-            GameManager.instance.TogglePause();
+            GameManager.instance.TogglePauseMenu();
         }
 	}
 
     void FixedUpdate()
     {
         this.ActionFsm.FixedExecute();
-    }
-
-    public void toggleLockOn()
-    {
-        if (target == null)
-        {
-            anim.SetBool("LockedOn", true);
-        
-            target = GameManager.instance.getTarget();
-            CameraControls.instance.Target(this.gameObject, target.gameObject);
-        }
-        else
-        {
-            anim.SetBool("LockedOn", false);
-       
-            target = null;
-            CameraControls.instance.Target(this.gameObject);
-        }
     }
 
     public IEnumerator ShowSymbol(Symbol interested)
