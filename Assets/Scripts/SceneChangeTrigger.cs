@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeTrigger : MonoBehaviour {
 
-    public int sceneNumber;
+    public string sceneName;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,7 +20,10 @@ public class SceneChangeTrigger : MonoBehaviour {
         {
             yield return new WaitForSeconds(0.1f);
         }
-        SceneManager.LoadScene(sceneNumber);
+        SceneManager.LoadScene(sceneName);
+
         yield return null;
+        //try to move to the position of the door to this room
+        print("all loaded");
     }
 }
