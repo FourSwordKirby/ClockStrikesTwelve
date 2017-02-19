@@ -10,7 +10,7 @@ public class SceneChangeTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!activated)
+        if (!activated && GameManager.instance.canSwitchRooms())
         {
             GameManager.instance.StartSceneTransition (sceneName);
             activated = true;
