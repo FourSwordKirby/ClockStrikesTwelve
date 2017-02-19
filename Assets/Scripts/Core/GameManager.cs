@@ -136,4 +136,34 @@ public class GameManager : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(sound, position);
     }
+    
+    public void StartSceneTransition(string sceneName)
+    {
+        StartCoroutine(transitionRooms(sceneName));
+    }
+
+    public IEnumerator transitionRooms(string sceneName)
+    {
+        Scene oldScene = SceneManager.GetActiveScene();
+        string oldSceneName = oldScene.name;
+        GameManager.instance.playSound(SoundType.Environment, "RoomExit");
+        StartCoroutine(UIController.instance.screenfader.FadeOut());
+        while (UIController.instance.screenfader.fading)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        SceneManager.LoadScene(sceneName);
+
+        yield return null;
+        //try to move to the position of the door to this room
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        foreach (GameObject spawnPoint in spawnPoints)
+        {
+            if (spawnPoint.GetComponent<SpawnPoint> ().scene == oldSceneName)
+            {
+                Player.instance.transform.position = spawnPoint.transform.position;
+                break;
+            }
+        }
+    }
 }
