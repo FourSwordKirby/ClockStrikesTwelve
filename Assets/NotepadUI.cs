@@ -9,12 +9,12 @@ public class NotepadUI : MonoBehaviour {
     public void openNotepad()
     {
         this.gameObject.SetActive(true);
-        notepadText.text = GameManager.instance.notepadText;
+        notepadText.text = QuestManager.instance.notepadText;
     }
 
     public void closeNotepad()
     {
         this.gameObject.SetActive(false);
-        GameManager.instance.notepadText = notepadText.text;
+        QuestManager.instance.notepadText = notepadText.text;
     }
 }

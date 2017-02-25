@@ -16,15 +16,9 @@ public class GameManager : MonoBehaviour
 
     private bool loadingScene = false;
 
-    //It is important to keep track of what items are stored where. 
+    //Not being used
     //For now we're hacking and keeping tack of the set of stored items in the gameManager
     public List<InventoryItem> chestStoredItems;
-
-    //Notepad that people write on between days
-    public string notepadText;
-
-    //These are all of the various flags that can be toggled between loops
-    public bool introCompleted;
     public bool charmTriggered;
 
 
@@ -102,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance.chestStoredItems.Find(x => x.designation == ItemDesignation.WeatherCharm) != null)
             GameManager.instance.charmTriggered = true;
 
-        introCompleted = false;
+        QuestManager.instance.reinitializeQuests();
         chestStoredItems = new List<InventoryItem>();
         //Do a bunch of other state resets
 
@@ -120,7 +114,7 @@ public class GameManager : MonoBehaviour
         playSound(SoundType.Environment, "Clock");
         yield return new WaitForSeconds(2.0f);
         StartCoroutine(bgm.FadeTowards(1.0f));
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("YourRoom");
         Debug.Log("Please actually reset the day");
         yield return null;
     }

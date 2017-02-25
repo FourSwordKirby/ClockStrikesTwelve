@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DemoEvent : MonoBehaviour {
+public class DayStartEvent : MonoBehaviour {
 
+    public GameObject normalSceneSetup;
     public TextAsset dialogFile;
     private List<string> dialogComponents;
 
@@ -17,8 +18,9 @@ public class DemoEvent : MonoBehaviour {
 
     void Start()
     {
-        if(!GameManager.instance.introCompleted)
+        if(!QuestManager.instance.introCompleted)
         {
+            normalSceneSetup.SetActive(false);
             UIController.instance.screenfader.CutToColor(Color.white);
             StartCoroutine(IntroSequence());
         }
@@ -67,7 +69,7 @@ public class DemoEvent : MonoBehaviour {
         UIController.instance.dialog.dialogBox.enabled = true;
         UIController.instance.dialog.speakerBox.enabled = true;
         UIController.instance.dialog.closeDialog();
-        GameManager.instance.introCompleted = true;
+        QuestManager.instance.introCompleted = true;
 
         StartCoroutine(UIController.instance.screenfader.FadeIn(2.0f));
         GameManager.instance.UnsuspendGame();
