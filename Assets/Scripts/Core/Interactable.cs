@@ -10,12 +10,15 @@ public abstract class Interactable : MonoBehaviour {
         {
             if(player.direction == Parameters.vectorToDirection(this.transform.position - player.transform.position))
             {
-                player.currentInteractable = this;
-                StartCoroutine(player.ShowSymbol(Symbol.Interested));
+                if (player.currentInteractable != this)
+                {
+                    player.currentInteractable = this;
+                    StartCoroutine(player.ShowSymbol(Symbol.Interested));
+                }
             }
             else
             {
-                if (player.currentInteractable = this)
+                if (player.currentInteractable == this)
                 {
                     player.currentInteractable = null;
                     StartCoroutine(player.HideSymbol());
