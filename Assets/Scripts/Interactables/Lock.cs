@@ -73,8 +73,10 @@ public class Lock : Interactable {
         {
             if (Controls.cancelInputHeld() || Controls.confirmInputHeld())
             {
-                if(UIController.instance.passwordPrompt.getAnswer().Length > 0);
+                if (UIController.instance.passwordPrompt.getAnswer().Length > 0)
+                {
                     break;
+                }
             }
             yield return new WaitForSeconds(0.1f);
         }

@@ -34,6 +34,8 @@ public class Player : MonoBehaviour
     // Interact Button related
     private bool canInteract;
     public Interactable currentInteractable;
+    
+    private bool pauseWasPressed;
 
     public static Player instance;
     //Used for the initialization of internal, non-object variables
@@ -88,15 +90,23 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Controls.pauseInputDown())
+        bool pauseNowPressed = Controls.pauseInputDown();
+        if (pauseNowPressed && !pauseWasPressed)
         {
             GameManager.instance.TogglePauseMenu();
         }
-	}
+        pauseWasPressed = pauseNowPressed;
+    }
 
     void FixedUpdate()
     {
         this.ActionFsm.FixedExecute();
+    }
+
+    public void FreezePlayer()
+    {
+        instance.enabled = false;
+        instance.selfBody.velocity = Vector2.zero;
     }
 
     public IEnumerator ShowSymbol(Symbol interested)

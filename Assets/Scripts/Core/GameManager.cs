@@ -58,8 +58,7 @@ public class GameManager : MonoBehaviour
     public void SuspendGame()
     {
         paused = true;
-        Player.instance.enabled = false;
-        Player.instance.selfBody.velocity = Vector2.zero;
+        Player.instance.FreezePlayer();
         //add other stuff as needed.
         //Probably need a player function to initialize it or something
     }
