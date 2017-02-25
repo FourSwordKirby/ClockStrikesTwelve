@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class HallwaySceneSetup : MonoBehaviour {
 
-    public bool toiletPuzzleComplete;
     public GameObject doorLock;
 
 	void Start ()
@@ -15,7 +14,7 @@ public class HallwaySceneSetup : MonoBehaviour {
             StartCoroutine(UIController.instance.screenfader.FadeIn());
         }
 
-        if (toiletPuzzleComplete)
+        if (GameObject.Find("QuestManager").GetComponent<QuestManager>().maintencenceRequestCalled)
         {
             doorLock.SetActive(false);
         }
