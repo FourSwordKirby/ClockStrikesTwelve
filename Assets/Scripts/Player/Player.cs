@@ -103,6 +103,12 @@ public class Player : MonoBehaviour
         this.ActionFsm.FixedExecute();
     }
 
+    public void FreezePlayer()
+    {
+        instance.enabled = false;
+        instance.selfBody.velocity = Vector2.zero;
+    }
+
     public IEnumerator ShowSymbol(Symbol interested)
     {
         //Make an animated motion tween or something

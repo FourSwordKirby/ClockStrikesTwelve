@@ -6,6 +6,7 @@ using System.Linq;
 public class DayStartEvent : MonoBehaviour {
 
     public GameObject normalSceneSetup;
+    public Vector2 startPosition;
     public TextAsset dialogFile;
     private List<string> dialogComponents;
 
@@ -71,6 +72,7 @@ public class DayStartEvent : MonoBehaviour {
         UIController.instance.dialog.closeDialog();
         QuestManager.instance.introCompleted = true;
 
+        GameObject.FindObjectOfType<Player>().transform.position = startPosition;
         StartCoroutine(UIController.instance.screenfader.FadeIn(2.0f));
         GameManager.instance.UnsuspendGame();
         yield return null;
