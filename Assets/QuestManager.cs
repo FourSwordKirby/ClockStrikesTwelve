@@ -12,8 +12,11 @@ public class QuestManager : MonoBehaviour {
     public bool introCompleted;
 
     //Used for the shower guy's quest
-    public int toiletsFlushed;
+    public int toiletsFlushed { get { return toiletRoomsFlushed.Count; } }
+    public List<string> toiletRoomsFlushed = new List<string>();
     public bool maintencenceRequestCalled;
+    public bool maintencenceCompleted;
+    public bool maintencencePosted;
 
     //Used for the mother child quest
     public int changeInMachine;
@@ -38,7 +41,10 @@ public class QuestManager : MonoBehaviour {
     public void reinitializeQuests()
     {
         introCompleted = false;
-        toiletsFlushed = 0;
+        toiletRoomsFlushed = new List<string>();
         changeInMachine = 0;
-    }
+        maintencenceRequestCalled = false;
+        maintencenceCompleted = false;
+        maintencencePosted = false;
+}
 }

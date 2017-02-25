@@ -135,7 +135,12 @@ public class GameManager : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(sound, position);
     }
-    
+
+    public string GetSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void StartSceneTransition(string sceneName)
     {
         StartCoroutine(transitionRooms(sceneName));
@@ -143,8 +148,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator transitionRooms(string sceneName)
     {
-        Scene oldScene = SceneManager.GetActiveScene();
-        string oldSceneName = oldScene.name;
+        string oldSceneName = GetSceneName();
         GameManager.instance.playSound(SoundType.Environment, "RoomExit");
         StartCoroutine(UIController.instance.screenfader.FadeOut());
         while (UIController.instance.screenfader.fading)

@@ -14,7 +14,7 @@ public class HallwaySceneSetup : MonoBehaviour {
             StartCoroutine(UIController.instance.screenfader.FadeIn());
         }
 
-        if (GameObject.Find("QuestManager").GetComponent<QuestManager>().maintencenceRequestCalled)
+        if (QuestManager.instance.maintencenceRequestCalled)
         {
             doorLock.SetActive(false);
         }
