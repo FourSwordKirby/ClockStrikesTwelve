@@ -46,24 +46,6 @@ public class DayStartEvent : MonoBehaviour {
                 dialog = dialogPieces[0];
             
             UIController.instance.dialog.displayDialog(dialog, speaker);
-            bool wasClicked = Controls.confirmInputHeld();
-            bool isClicked = Controls.confirmInputHeld();
-            while (!UIController.instance.dialog.dialogCompleted)
-            {
-                if (isClicked && !wasClicked) {
-                    UIController.instance.dialog.setSpeed (DisplaySpeed.immediate);
-                }
-                wasClicked = isClicked;
-                isClicked = Controls.confirmInputHeld();
-                yield return new WaitForSeconds(0.1f);
-            }
-            //Replace this with things in the control set
-            while(!(isClicked && !wasClicked))
-            {
-                wasClicked = isClicked;
-                isClicked = Controls.confirmInputHeld();
-                yield return new WaitForSeconds(0.1f);
-            }
         }
         yield return new WaitForSeconds(0.5f);
 
