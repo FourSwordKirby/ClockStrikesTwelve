@@ -53,7 +53,10 @@ public class DialogUI : MonoBehaviour
             dialogTracker++;
 
             //This can be pretty jank, probably need to make an audio source onthe camera or something e-e
-            AudioSource.PlayClipAtPoint(textSfx, CameraControls.instance.transform.position);
+            //AudioSource.PlayClipAtPoint(textSfx, CameraControls.instance.transform.position);
+
+            // Change the clip number based on who's speaking, end of sentence, etc.
+            Voices.PlayClip(0);
 
             textDisplayTimer = textDisplaySpeed;
             dialogCompleted = false;

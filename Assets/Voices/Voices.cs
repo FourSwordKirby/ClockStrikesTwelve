@@ -10,23 +10,28 @@ public class Voices : MonoBehaviour
 
     private AudioSource audioSource;
     private Coroutine stopAudioRoutine;
-
-    // Use this for initialization
-    void Start()
+    
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        PlayClip(1);
-
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            PlayClip(Random.Range(0, 32));
+        }
     }
 
     private IEnumerator StopAudioSource(float delay)
@@ -41,6 +46,7 @@ public class Voices : MonoBehaviour
         {
             StopCoroutine(stopAudioRoutine);
         }
+
         audioSource.time = 0.5f * clipId;
         audioSource.Play();
         stopAudioRoutine = StartCoroutine(StopAudioSource(0.45f));
@@ -61,6 +67,10 @@ public class Voices : MonoBehaviour
         if (instance != null)
         {
             instance.playClip(clipId);
+        }
+        else
+        {
+            Debug.LogError("There is no Voices prefab in the scene!");
         }
     }
 }
