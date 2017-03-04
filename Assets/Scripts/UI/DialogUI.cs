@@ -37,6 +37,13 @@ public class DialogUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Skip dialog if confirm button is pressed again
+        if (Controls.confirmInputDown())
+        {
+            setSpeed(DisplaySpeed.immediate);
+        }
+
+
         //Do something where text appears according to the textDisplaySpeed
         if (textDisplayTimer > 0)
         {
@@ -56,7 +63,7 @@ public class DialogUI : MonoBehaviour
             //AudioSource.PlayClipAtPoint(textSfx, CameraControls.instance.transform.position);
 
             // Change the clip number based on who's speaking, end of sentence, etc.
-            Voices.PlayClip(0);
+            Voices.PlayClip(Random.Range(0,2));
 
             textDisplayTimer = textDisplaySpeed;
             dialogCompleted = false;
