@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
     }
 
     // Use this for initialization of variables that rely on other objects
-	void Start () {
+    void Start () {
         
 	}
 	
@@ -107,6 +107,11 @@ public class Player : MonoBehaviour
     {
         instance.enabled = false;
         instance.selfBody.velocity = Vector2.zero;
+    }
+
+    public void UnfreezePlayer()
+    {
+        instance.enabled = true;
     }
 
     public IEnumerator ShowSymbol(Symbol interested)

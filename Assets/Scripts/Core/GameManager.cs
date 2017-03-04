@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     public void UnsuspendGame()
     {
         paused = false;
-        Player.instance.enabled = true;
+        Player.instance.UnfreezePlayer();
     }
 
     public void TogglePauseMenu()
@@ -148,6 +148,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator transitionRooms(string sceneName)
     {
+        //Pretransition things
+        Player.instance.FreezePlayer();
+
         string oldSceneName = GetSceneName();
         GameManager.instance.playSound(SoundType.Environment, "RoomExit");
         StartCoroutine(UIController.instance.screenfader.FadeOut());
@@ -170,6 +173,9 @@ public class GameManager : MonoBehaviour
             }
         }
         loadingScene = false;
+
+        //Posttransition things
+        Player.instance.UnfreezePlayer();
     }
     
     public bool canSwitchRooms() {
