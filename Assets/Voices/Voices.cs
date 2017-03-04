@@ -10,6 +10,7 @@ public class Voices : MonoBehaviour
 
     private AudioSource audioSource;
     private Coroutine stopAudioRoutine;
+    private Coroutine voiceRoutine;
     
     void Awake()
     {
@@ -30,7 +31,11 @@ public class Voices : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            PlayClip(Random.Range(0, 32));
+            StartVoice(0, "");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StopVoice();
         }
     }
 
@@ -67,6 +72,76 @@ public class Voices : MonoBehaviour
         if (instance != null)
         {
             instance.playClip(clipId);
+        }
+        else
+        {
+            Debug.LogError("There is no Voices prefab in the scene!");
+        }
+    }
+
+    private IEnumerator VoiceRoutine(int speaker, string s)
+    {
+        Random.InitState(s.GetHashCode()); // Same strings should produce same sounding dialogue
+
+        if (speaker == 0)
+        {
+            while (true)
+            {
+                int clip = Random.Range(0, 8);
+                PlayClip(clip);
+                yield return new WaitForSeconds(clip < 3 ? 0.26f : 0.135f);
+            }
+        }
+        else if (speaker == 1)
+        {
+            while (true)
+            {
+                int clip = Random.Range(8, 16);
+                PlayClip(clip);
+                yield return new WaitForSeconds(clip < 11 ? 0.26f : 0.135f);
+            }
+        }
+        else if (speaker == 2)
+        {
+            while (true)
+            {
+                int clip = Random.Range(16, 32);
+                PlayClip(clip);
+                yield return new WaitForSeconds(clip < 20 ? 0.26f : 0.135f);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Starts the speaking sound.
+    /// </summary>
+    /// <param name="speaker">0 - low<para/>1 - medium<para/>2 - high;</param>
+    /// <param name="s">The dialogue that is being spoken</param>
+    public static void StartVoice(int speaker, string s)
+    {
+        StopVoice();
+
+        if (instance != null)
+        {
+            instance.voiceRoutine = instance.StartCoroutine(instance.VoiceRoutine(speaker, s));
+        }
+        else
+        {
+            Debug.LogError("There is no Voices prefab in the scene!");
+        }
+    }
+
+    /// <summary>
+    /// Stops the speaking sound.
+    /// </summary>
+    public static void StopVoice()
+    {
+        if (instance != null)
+        {
+            if (instance.voiceRoutine != null)
+            {
+                instance.StopCoroutine(instance.voiceRoutine);
+            }
         }
         else
         {
