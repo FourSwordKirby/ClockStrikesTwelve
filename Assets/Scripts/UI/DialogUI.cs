@@ -62,19 +62,22 @@ public class DialogUI : MonoBehaviour
             //This can be pretty jank, probably need to make an audio source onthe camera or something e-e
             //AudioSource.PlayClipAtPoint(textSfx, CameraControls.instance.transform.position);
 
-            // Change the clip number based on who's speaking, end of sentence, etc.
-            Voices.PlayClip(Random.Range(0,2));
-
             textDisplayTimer = textDisplaySpeed;
             dialogCompleted = false;
         }
         else
+        {
             dialogCompleted = true;
+            Voices.StopVoice();
+        }
     }
 
     public void displayDialog(string dialog, string speaker = "", AudioClip sfx = null, DisplaySpeed displaySpeed = DisplaySpeed.fast)
     {
-        SetDialogSound(sfx);
+        //SetDialogSound(sfx);
+
+        Voices.StartVoice(0, dialog);
+
 
         dialogCompleted = false;
 
