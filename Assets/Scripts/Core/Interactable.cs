@@ -8,13 +8,10 @@ public abstract class Interactable : MonoBehaviour {
         Player player = col.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            if(player.direction == Parameters.vectorToDirection(this.transform.position - player.transform.position))
+            if (player.currentInteractable != this)
             {
-                if (player.currentInteractable != this)
-                {
-                    player.currentInteractable = this;
-                    StartCoroutine(player.ShowSymbol(Symbol.Interested));
-                }
+                player.currentInteractable = this;
+                StartCoroutine(player.ShowSymbol(Symbol.Interested));
             }
             else
             {

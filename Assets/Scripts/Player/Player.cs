@@ -6,24 +6,18 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public int maxHealth;
-
     public int health { get; private set; }
     public float movementSpeed { get; private set; }
     public Parameters.InputDirection direction { get; set; }
-
-    public float targetingRange { get; private set; } //Determines the max range that the player can target an object
-    public GameObject target;
 
     public List<InventoryItem> items;
 
     public const int DEFAULT_MAX_HEALTH = 12;
     public const float DEFAULT_SPEED = 1.0f;
-    public const float DEFAULT_TARGETING_RANGE = 10.0f;
 
     public StateMachine<Player> ActionFsm { get; private set; }
 
     //self references to various components
-    //private Collider selfCollider;
     public Animator anim { get; private set; }
     public Rigidbody2D selfBody { get; private set; }
     public CollisionboxManager hitboxManager { get; private set; }
@@ -38,6 +32,7 @@ public class Player : MonoBehaviour
     private bool pauseWasPressed;
 
     public static Player instance;
+
     //Used for the initialization of internal, non-object variables
     void Awake()
     {
@@ -60,9 +55,6 @@ public class Player : MonoBehaviour
 
         this.movementSpeed = DEFAULT_SPEED;
 
-        this.target = null;
-        this.targetingRange = DEFAULT_TARGETING_RANGE;
-
         //Initializing components
         anim = this.GetComponent<Animator>();
         selfBody = this.GetComponent<Rigidbody2D>();
@@ -72,11 +64,6 @@ public class Player : MonoBehaviour
         State<Player> startState = new IdleState(this, this.ActionFsm);
         ActionFsm.InitialState(startState);
     }
-
-    // Use this for initialization of variables that rely on other objects
-    void Start () {
-        
-	}
 	
 	// Update is called once per frame
 	void Update () {
