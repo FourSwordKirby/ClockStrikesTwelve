@@ -64,6 +64,11 @@ public class Controls {
 
     public static bool pauseInputDown()
     {
+        return Input.GetButtonDown("Pause");
+    }
+
+    public static bool pauseInputHeld()
+    {
         return Input.GetButton("Pause");
     }
 }

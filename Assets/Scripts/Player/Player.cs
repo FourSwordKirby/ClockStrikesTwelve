@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     // Interact Button related
     private bool canInteract;
     public Interactable currentInteractable;
-    
-    private bool pauseWasPressed;
 
     public static Player instance;
 
@@ -76,13 +74,11 @@ public class Player : MonoBehaviour
                 currentInteractable.Interact();
             }
         }
-
-        bool pauseNowPressed = Controls.pauseInputDown();
-        if (pauseNowPressed && !pauseWasPressed)
+        
+        if (Controls.pauseInputDown())
         {
             GameManager.instance.TogglePauseMenu();
         }
-        pauseWasPressed = pauseNowPressed;
     }
 
     void FixedUpdate()
