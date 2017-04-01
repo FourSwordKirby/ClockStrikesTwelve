@@ -13,8 +13,6 @@ public class DialogUI : MonoBehaviour
 
     public bool dialogCompleted;
 
-    public AudioClip defaultTextSfx;
-
     public string dialog = "";
     private int dialogTracker = 0;
 
@@ -110,19 +108,6 @@ public class DialogUI : MonoBehaviour
 
 
         setSpeed (displaySpeed);
-    }
-
-    /// <summary>
-    /// use this to set custom sfx for what audio plays when the text shows up
-    /// should be set before every displayDialog call
-    /// </summary>
-    /// <param name="sfx"></param>
-    private void SetDialogSound(AudioClip sfx)
-    {
-        if (sfx == null)
-            textSfx = defaultTextSfx;
-        else
-            textSfx = sfx;
     }
 
     public void closeDialog()

@@ -6,28 +6,33 @@ using UnityEngine;
 
 public class Toilet : Interactable
 {
-    public TextAsset ShowerResponse1;
-    public TextAsset ShowerResponse2;
-    public TextAsset ShowerResponse3;
-    public TextAsset ShowerResponse4;
-    public TextAsset ShowerResponse5;
+    public TextAsset ToiletFlushResponse1;
+    public TextAsset ToiletFlushResponse2;
+    public TextAsset ToiletFlushResponse3;
+    public TextAsset ToiletFlushResponse4;
+    public TextAsset ToiletFlushResponse5;
     public TextAsset GenericResponse;
 
     private List<string> dialogComponents;
     private List<string> genericComponents;
 
+    public Sprite unflushedSprite;
+    public Sprite flushedSprite;
+
+    public bool flushed;
+
     void Start()
     {
         if (QuestManager.instance.toiletsFlushed == 0)
-            dialogComponents = new List<string>(ShowerResponse1.text.Split('\n'));
+            dialogComponents = new List<string>(ToiletFlushResponse1.text.Split('\n'));
         else if (QuestManager.instance.toiletsFlushed == 1)
-            dialogComponents = new List<string>(ShowerResponse2.text.Split('\n'));
+            dialogComponents = new List<string>(ToiletFlushResponse2.text.Split('\n'));
         else if (QuestManager.instance.toiletsFlushed == 2)
-            dialogComponents = new List<string>(ShowerResponse3.text.Split('\n'));
+            dialogComponents = new List<string>(ToiletFlushResponse3.text.Split('\n'));
         else if (QuestManager.instance.toiletsFlushed == 3)
-            dialogComponents = new List<string>(ShowerResponse4.text.Split('\n'));
+            dialogComponents = new List<string>(ToiletFlushResponse4.text.Split('\n'));
         else if (QuestManager.instance.toiletsFlushed == 4)
-            dialogComponents = new List<string>(ShowerResponse5.text.Split('\n'));
+            dialogComponents = new List<string>(ToiletFlushResponse5.text.Split('\n'));
 
         dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
@@ -38,21 +43,33 @@ public class Toilet : Interactable
         genericComponents = genericComponents.Where(x => x != "").ToList();
     }
 
+    public void Update()
+    {
+        if (!flushed)
+            GetComponent<SpriteRenderer>().sprite = unflushedSprite;
+        else
+            GetComponent<SpriteRenderer>().sprite = flushedSprite;
+    }
+
     public override void Interact()
     {
-        bool flushSuccessful = MarkRoomFlushed();
-        if (flushSuccessful)
+        MarkRoomFlushed();
+        if (QuestManager.instance.toiletsFlushed == 4)
+        {
+            QuestManager.instance.maintenanceRequestCalled = true;
+        }
+
+        if (!flushed)
             StartCoroutine(FlushCutscene());
         else
             StartCoroutine(GenericCutscene());
     }
 
-    private bool MarkRoomFlushed()
+    private void MarkRoomFlushed()
     {
         int flushCount = QuestManager.instance.toiletsFlushed;
         string currentRoom = GameManager.instance.GetSceneName();
         QuestManager.instance.FlushToilet(currentRoom);
-        return (flushCount != QuestManager.instance.toiletsFlushed);
     }
 
     IEnumerator FlushCutscene()
@@ -77,17 +94,16 @@ public class Toilet : Interactable
             {
                 yield return new WaitForSeconds(0.1f);
             }
+
             while (!Controls.confirmInputHeld())
             {
                 yield return new WaitForSeconds(0.1f);
             }
         }
+        UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
 
-        if (QuestManager.instance.toiletsFlushed == 5)
-        {
-            QuestManager.instance.maintenanceRequestCalled = true;
-        }
-
+        flushed = true;
         yield return null;
     }
 
@@ -118,11 +134,8 @@ public class Toilet : Interactable
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
-        if (QuestManager.instance.toiletsFlushed == 5)
-        {
-            QuestManager.instance.maintenanceRequestCalled = true;
-        }
+        UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
 
         yield return null;
     }
