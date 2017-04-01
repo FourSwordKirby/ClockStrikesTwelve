@@ -176,6 +176,7 @@ public class GameManager : MonoBehaviour
 
         //Posttransition things
         Player.instance.UnfreezePlayer();
+        print("hi");
     }
     
     public bool canSwitchRooms() {
