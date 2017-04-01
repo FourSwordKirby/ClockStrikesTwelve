@@ -68,15 +68,15 @@ public class DialogUI : MonoBehaviour
         else
         {
             dialogCompleted = true;
-            Voices.StopVoice();
+            //Voices.StopVoice();
         }
     }
 
     public void displayDialog(string dialog, string speaker = "", AudioClip sfx = null, DisplaySpeed displaySpeed = DisplaySpeed.fast)
     {
         //SetDialogSound(sfx);
-
-        Voices.StartVoice(0, dialog);
+        //Fix this up later bc it's causing errors atm
+        //Voices.StartVoice(0, dialog);
 
 
         dialogCompleted = false;
