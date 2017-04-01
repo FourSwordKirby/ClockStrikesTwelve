@@ -16,8 +16,13 @@ public class QuestManager : MonoBehaviour {
     public List<string> toiletRoomsFlushed = new List<string>();
     public bool maintenanceRequestCalled;
     public bool maintenancePosted;
-    public bool maintenanceCompleted;
+    public bool maintenanceCompleted; //Once this is true, the shower guy's room is permanently open
 
+    //Used for the writer's quest
+    public bool drinkTaken;
+    public bool tvOff;
+    public int ideaCount{ get { return ideas.Count; } }
+    public List<string> ideas;
 
     //Used for the mother child quest
     public int changeInMachine;
@@ -43,9 +48,12 @@ public class QuestManager : MonoBehaviour {
     {
         introCompleted = false;
         toiletRoomsFlushed = new List<string>();
-        changeInMachine = 0;
         maintenanceRequestCalled = false;
         maintenancePosted = false;
+
+        drinkTaken = true;
+
+        changeInMachine = 5;
     }
 
     public void FlushToilet(string roomName)
