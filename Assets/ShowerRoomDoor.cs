@@ -5,31 +5,23 @@ using System.Linq;
 
 public class ShowerRoomDoor : Interactable
 {
-    public TextAsset ShowerDoorResponse1;
-    public TextAsset ShowerDoorResponse2;
-    public TextAsset ShowerDoorResponse3;
-    public TextAsset ShowerDoorResponse4;
-    public TextAsset ShowerDoorResponse5;
-    public TextAsset RequestMaintenence;
+    public TextAsset InitialReponse;
+    public TextAsset FlushedReponse;
+    public TextAsset RequestMaintenance;
+    public TextAsset PostMaintenance;
 
     private List<string> dialogComponents;
 
     void Start()
     {
         if(QuestManager.instance.toiletsFlushed == 0)
-            dialogComponents = new List<string>(ShowerDoorResponse1.text.Split('\n'));
-        else if (QuestManager.instance.toiletsFlushed == 1)
-            dialogComponents = new List<string>(ShowerDoorResponse2.text.Split('\n'));
-        else if (QuestManager.instance.toiletsFlushed == 2)
-            dialogComponents = new List<string>(ShowerDoorResponse3.text.Split('\n'));
-        else if (QuestManager.instance.toiletsFlushed == 3)
-            dialogComponents = new List<string>(ShowerDoorResponse4.text.Split('\n'));
+            dialogComponents = new List<string>(InitialReponse.text.Split('\n'));
         else if (QuestManager.instance.toiletsFlushed == 4)
-            dialogComponents = new List<string>(ShowerDoorResponse5.text.Split('\n'));
-        else if (QuestManager.instance.toiletsFlushed == 5)
         {
-            dialogComponents = new List<string>(RequestMaintenence.text.Split('\n'));
+            dialogComponents = new List<string>(RequestMaintenance.text.Split('\n'));
         }
+        else
+            dialogComponents = new List<string>(FlushedReponse.text.Split('\n'));
 
         dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
@@ -70,7 +62,7 @@ public class ShowerRoomDoor : Interactable
 
         if (QuestManager.instance.toiletsFlushed == 5)
         {
-            QuestManager.instance.maintencenceRequestCalled = true;
+            QuestManager.instance.maintenanceRequestCalled = true;
         }
 
         yield return null;

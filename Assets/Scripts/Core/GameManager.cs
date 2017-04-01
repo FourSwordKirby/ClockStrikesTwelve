@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance.chestStoredItems.Find(x => x.designation == ItemDesignation.WeatherCharm) != null)
             GameManager.instance.charmTriggered = true;
 
-        QuestManager.instance.reinitializeQuests();
+        QuestManager.instance.RestartQuests();
         chestStoredItems = new List<InventoryItem>();
         //Do a bunch of other state resets
 
