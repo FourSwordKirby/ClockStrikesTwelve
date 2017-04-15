@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public List<InventoryItem> items;
 
     public const int DEFAULT_MAX_HEALTH = 12;
-    public const float DEFAULT_SPEED = 1.0f;
+    public const float DEFAULT_SPEED = 3.0f;
 
     public StateMachine<Player> ActionFsm { get; private set; }
 
