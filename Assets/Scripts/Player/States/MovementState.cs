@@ -14,6 +14,7 @@ public class MovementState : State<Player> {
     override public void Enter()
     {
         player.anim.SetBool("Walking", true);
+        GameManager.instance.startLoop("Walk");
         return;
     }
 
@@ -21,21 +22,17 @@ public class MovementState : State<Player> {
     float sfxTimer;
     override public void Execute()
     {
-        if(sfxTimer < 1)
-        {
-            sfxTimer += Time.deltaTime;
-            if(sfxTimer >= 1)
-            {
-                GameManager.instance.playSound(SoundType.Environment, "Walk");
-                sfxTimer = 0;
-            }
-        }
-
         Vector2 movementVector = Controls.getDirection();
         player.direction = Parameters.vectorToDirection(movementVector);
 
         player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
         player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
+
+        Parameters.InputDirection input_direction = Controls.getInputDirection();
+        if (input_direction == Parameters.InputDirection.None)
+        {
+            player.ActionFsm.ChangeState(new IdleState(player, player.ActionFsm));
+        }
     }
 
     override public void FixedExecute()
@@ -47,6 +44,7 @@ public class MovementState : State<Player> {
     override public void Exit()
     {
         player.anim.SetBool("Walking", false);
+        GameManager.instance.stopLoop("Walk");
         return;
     }
 }

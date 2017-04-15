@@ -136,6 +136,16 @@ public class GameManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(sound, position);
     }
 
+    public void startLoop(string soundName)
+    {
+        transform.Find("LoopingSounds").Find(soundName).gameObject.SetActive(true);
+    }
+
+    public void stopLoop(string soundName)
+    {
+        transform.Find("LoopingSounds").Find(soundName).gameObject.SetActive(false);
+    }
+
     public string GetSceneName()
     {
         return SceneManager.GetActiveScene().name;
