@@ -1,9 +1,41 @@
 fileFormatVersion: 2
 guid: 05a25a463bfacc747a8506c1661e8d7f
-timeCreated: 1492186689
+timeCreated: 1492291179
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: character sprites 2.0_0
+    21300002: character sprites 2.0_1
+    21300004: character sprites 2.0_2
+    21300006: character sprites 2.0_3
+    21300008: character sprites 2.0_4
+    21300010: character sprites 2.0_5
+    21300012: character sprites 2.0_6
+    21300014: character sprites 2.0_7
+    21300016: character sprites 2.0_8
+    21300018: character sprites 2.0_9
+    21300020: character sprites 2.0_10
+    21300022: character sprites 2.0_11
+    21300024: character sprites 2.0_12
+    21300026: character sprites 2.0_13
+    21300028: character sprites 2.0_14
+    21300030: character sprites 2.0_15
+    21300032: character sprites 2.0_16
+    21300034: character sprites 2.0_17
+    21300036: character sprites 2.0_18
+    21300038: character sprites 2.0_19
+    21300040: character sprites 2.0_20
+    21300042: character sprites 2.0_21
+    21300044: character sprites 2.0_22
+    21300046: character sprites 2.0_23
+    21300048: character sprites 2.0_24
+    21300050: character sprites 2.0_25
+    21300052: character sprites 2.0_26
+    21300054: character sprites 2.0_27
+    21300056: character sprites 2.0_28
+    21300058: character sprites 2.0_29
+    21300060: character sprites 2.0_30
+    21300062: character sprites 2.0_31
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +66,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +90,277 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: character sprites 2.0_0
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1003
+        width: 192
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_1
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1008
+        width: 202
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_2
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 1005
+        width: 192
+        height: 340
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_3
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 994
+        width: 178
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_4
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 993
+        width: 182
+        height: 349
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_5
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 1005
+        width: 80
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_6
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 1006
+        width: 87
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_7
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 989
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_8
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 639
+        width: 88
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_9
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 638
+        width: 85
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_10
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 628
+        width: 174
+        height: 254
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_11
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 629
+        width: 169
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_12
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 636
+        width: 120
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_13
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 638
+        width: 121
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_14
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 672
+        width: 202
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_16
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 329
+        width: 175
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_18
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 315
+        width: 160
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_19
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 353
+        width: 189
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_20
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 349
+        width: 180
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: character sprites 2.0_21
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 345
+        width: 167
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
