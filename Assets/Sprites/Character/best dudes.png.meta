@@ -1,9 +1,36 @@
 fileFormatVersion: 2
 guid: 50b87d91d8aba7a438dce270c86c92f7
-timeCreated: 1492187147
+timeCreated: 1492290002
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: best dudes_0
+    21300002: best dudes_1
+    21300004: best dudes_3
+    21300006: best dudes_4
+    21300008: best dudes_5
+    21300010: best dudes_6
+    21300012: best dudes_8
+    21300014: best dudes_9
+    21300016: best dudes_10
+    21300018: best dudes_11
+    21300020: best dudes_12
+    21300022: best dudes_13
+    21300024: best dudes_14
+    21300026: best dudes_15
+    21300028: best dudes_16
+    21300030: best dudes_17
+    21300032: best dudes_18
+    21300034: best dudes_19
+    21300036: best dudes_20
+    21300038: best dudes_21
+    21300040: best dudes_22
+    21300042: best dudes_23
+    21300044: best dudes_24
+    21300046: best dudes_25
+    21300048: best dudes_26
+    21300050: best dudes_27
+    21300052: best dudes_28
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +85,384 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: best dudes_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 1523
+        width: 185
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_1
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1542
+        width: 183
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_3
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 1538
+        width: 191
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_4
+      rect:
+        serializedVersion: 2
+        x: 1252
+        y: 1818
+        width: 28
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_5
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 1538
+        width: 195
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_6
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 1788
+        width: 4
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_8
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1753
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_9
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 1767
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_10
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1723
+        width: 5
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_11
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1706
+        width: 4
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_12
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1683
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_13
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1677
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_14
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 1644
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_15
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1537
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_16
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1537
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_17
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1539
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_18
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 1540
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_19
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1530
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_20
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1532
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_21
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 1532
+        width: 30
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1520
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_23
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1008
+        width: 237
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_24
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 1020
+        width: 245
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_25
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 1024
+        width: 243
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_26
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 1015
+        width: 241
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_27
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 512
+        width: 326
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: best dudes_28
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 520
+        width: 371
+        height: 454
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
