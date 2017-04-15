@@ -29,7 +29,7 @@ public class DialogUI : MonoBehaviour
     {
         dialogField.text = "";
         speaker.text = "";
-        dialogCompleted = true;
+        dialogCompleted = false;
     }
 
     // Update is called once per frame
@@ -76,6 +76,7 @@ public class DialogUI : MonoBehaviour
         //Fix this up later bc it's causing errors atm
         Voices.StartVoice(0, dialog);
 
+        print("Dialog to display: " + dialog);
 
         dialogCompleted = false;
 
