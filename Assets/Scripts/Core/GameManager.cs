@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(UIController.instance.screenfader.FadeOut());
         StartCoroutine(bgm.FadeTowards(0.0f));
-        while(UIController.instance.screenfader.fading)
+        while (UIController.instance.screenfader.fading)
         {
             yield return new WaitForSeconds(0.1f);
         }
@@ -114,6 +114,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         StartCoroutine(bgm.FadeTowards(1.0f));
         SceneManager.LoadScene("YourRoom");
+        while (UIController.instance.screenfader.fading)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         Debug.Log("Please actually reset the day");
         yield return null;
     }
@@ -185,6 +189,10 @@ public class GameManager : MonoBehaviour
         loadingScene = false;
 
         //Posttransition things
+        while (UIController.instance.screenfader.fading)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         Player.instance.UnfreezePlayer();
         print("hi");
     }
