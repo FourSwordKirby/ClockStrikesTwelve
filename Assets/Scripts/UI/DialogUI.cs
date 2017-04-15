@@ -66,7 +66,7 @@ public class DialogUI : MonoBehaviour
         else
         {
             dialogCompleted = true;
-            //Voices.StopVoice();
+            Voices.StopVoice();
         }
     }
 
