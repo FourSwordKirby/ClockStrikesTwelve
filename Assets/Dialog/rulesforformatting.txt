@@ -1,0 +1,1 @@
+Rules for Format Naming: nameofroom_objectinroom_currentstate (if the object description doesn't change no matter that the state islike this, call state 0)_timesinteractedwithobject(starting at 0)
