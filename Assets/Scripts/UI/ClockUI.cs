@@ -3,44 +3,112 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClockUI : MonoBehaviour {
+public class ClockUI : MonoBehaviour
+{
 
-    public GameObject Hand;
+    public GameObject HourHand;
+    public GameObject MinuteHand;
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         float timeElapsedRatio = GameManager.instance.currentTime / GameManager.instance.timeLimit;
-        if (timeElapsedRatio < 0.125f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+
+        int currentMinute = (int) (timeElapsedRatio * 1440); //24 hours a day, 60 minutes an hour
+
+        float currentHourAngle = ((timeElapsedRatio * 2) % 1);
+        float currentMinuteAngle = ((currentMinute % 60) / 60.0f);
+        HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * (currentHourAngle * (-360) + 90)),
+                                                                Quaternion.Euler(Vector3.forward * ((float) (currentHourAngle * (-360) - 0.25))),
+                                                                0.01f);
+        MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * (currentMinuteAngle * (-360) + 90)),
+                                                                Quaternion.Euler(Vector3.forward * ((float)(currentMinuteAngle * (-360) - 0.25))),
+                                                                0.01f);
+
+        /*
+        HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
                                                                 Quaternion.Euler(Vector3.forward * -90),
-                                                                timeElapsedRatio/0.125f);
+                                                                timeElapsedRatio / 0.125f);
+
+        HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+                                                    Quaternion.Euler(Vector3.forward * -360),
+                                                    timeElapsedRatio);*/
+        //MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+        //                                                Quaternion.Euler(Vector3.forward * -90),
+        //                                                timeElapsedRatio * 60 / 0.125f);
+        /*
+        if (timeElapsedRatio < 0.125f)
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+                                                                Quaternion.Euler(Vector3.forward * -90),
+                                                                timeElapsedRatio / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+                                                            Quaternion.Euler(Vector3.forward * -90),
+                                                            timeElapsedRatio * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.25f)
-                Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
-                                                                    Quaternion.Euler(Vector3.forward * -180), 
-                                                                    (timeElapsedRatio- 0.125f) / 0.125f);
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
+                                                                    Quaternion.Euler(Vector3.forward * -180),
+                                                                    (timeElapsedRatio - 0.125f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
+                                                                    Quaternion.Euler(Vector3.forward * -180),
+                                                                    (timeElapsedRatio - 0.125f) * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.375f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
                                                                 Quaternion.Euler(Vector3.forward * -270),
                                                                 (timeElapsedRatio - 0.25f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
+                                                                Quaternion.Euler(Vector3.forward * -270),
+                                                                (timeElapsedRatio - 0.25f) * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.5f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
                                                                 Quaternion.Euler(Vector3.forward * 0),
                                                                 (timeElapsedRatio - 0.375f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
+                                                                Quaternion.Euler(Vector3.forward * 0),
+                                                                (timeElapsedRatio - 0.375f) * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.625f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
                                                                 Quaternion.Euler(Vector3.forward * -90),
                                                                 (timeElapsedRatio - 0.5f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
+                                                                Quaternion.Euler(Vector3.forward * -90),
+                                                                (timeElapsedRatio - 0.5f) * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.75f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
                                                                 Quaternion.Euler(Vector3.forward * -180),
                                                                 (timeElapsedRatio - 0.625f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -90),
+                                                                Quaternion.Euler(Vector3.forward * -180),
+                                                                (timeElapsedRatio - 0.625f) * 60 / 0.125f);
+        }
         else if (timeElapsedRatio < 0.875f)
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
                                                                 Quaternion.Euler(Vector3.forward * -270),
                                                                 (timeElapsedRatio - 0.75f) / 0.125f);
+            MinuteHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -180),
+                                                                Quaternion.Euler(Vector3.forward * -270),
+                                                                (timeElapsedRatio - 0.75f) * 60 / 0.125f);
+        }
         else
-            Hand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
+        {
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
                                                                 Quaternion.Euler(Vector3.forward * 0),
                                                                 (timeElapsedRatio - 0.875f) / 0.125f);
+            HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * -270),
+                                                                Quaternion.Euler(Vector3.forward * 0),
+                                                                (timeElapsedRatio - 0.875f) * 60 / 0.125f);
+        }
+        */
     }
 }
