@@ -74,7 +74,7 @@ public class DialogUI : MonoBehaviour
     {
         //SetDialogSound(sfx);
         //Fix this up later bc it's causing errors atm
-        //Voices.StartVoice(0, dialog);
+        Voices.StartVoice(0, dialog);
 
 
         dialogCompleted = false;
