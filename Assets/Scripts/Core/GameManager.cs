@@ -115,12 +115,13 @@ public class GameManager : MonoBehaviour
         playSound(SoundType.Environment, "Clock");
         yield return new WaitForSeconds(2.0f);
         StartCoroutine(bgm.FadeTowards(1.0f));
-        SceneManager.LoadScene("YourRoom");
+        SceneManager.LoadScene("PlayerBedroom");
+        Player.instance.transform.position = new Vector2(0.95f, 0.75f);
         while (UIController.instance.screenfader.fading)
         {
             yield return new WaitForSeconds(0.1f);
         }
-        Debug.Log("Please actually reset the day");
+        paused = false;
         yield return null;
     }
 

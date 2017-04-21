@@ -10,11 +10,7 @@ public class BedroomSceneSetup : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        if (QuestManager.instance.introCompleted)
-        {
-            if (UIController.instance.screenfader.fadeActive)
-                StartCoroutine(UIController.instance.screenfader.FadeIn());
-        }
+        StartCoroutine(UIController.instance.screenfader.FadeIn());
 
         bool dayStart = true;
         toilet.SetActive(dayStart);

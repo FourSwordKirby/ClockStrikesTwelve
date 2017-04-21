@@ -18,6 +18,7 @@ public class ScreenFader : MonoBehaviour
     public IEnumerator FadeOut(float fadeTime = 1.0f)
     {
         fading = true;
+        GameManager.instance.paused = true;
         float timer = 0.0f;
         this.fadeTime = fadeTime;
         while (timer < fadeTime)
@@ -49,6 +50,7 @@ public class ScreenFader : MonoBehaviour
             }
         }
         fading = false;
+        GameManager.instance.paused = false;
         yield return null;
     }
 

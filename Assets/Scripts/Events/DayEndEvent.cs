@@ -38,7 +38,6 @@ public class DayEndEvent : MonoBehaviour {
             StartCoroutine(GameManager.instance.ResetDay());
             dayEnding = false;
         }
-        if (Input.GetKeyDown(KeyCode.Q)) StartCoroutine(DayEnd());
     }
 
     public IEnumerator DayEnd()
@@ -81,6 +80,7 @@ public class DayEndEvent : MonoBehaviour {
         //Clock chimes 12
 
         //Dim screen
+        GameManager.instance.paused = true;
         yield return StartCoroutine(UIController.instance.screenfader.Dim());
 
         //Rumbling/wierd images?
