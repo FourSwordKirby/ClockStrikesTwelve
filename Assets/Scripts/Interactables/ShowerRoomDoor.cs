@@ -5,67 +5,51 @@ using System.Linq;
 
 public class ShowerRoomDoor : Interactable
 {
-    public TextAsset InitialReponse;
-    public TextAsset FlushedReponse;
+    public List<TextAsset> InitialReponses;
     public TextAsset RequestMaintenance;
+    public TextAsset RequestMaintenance2;
     public TextAsset PostMaintenance;
 
-    private List<string> dialogComponents;
+    public Collider2D lockCollisionBox;
 
-    void Start()
+    private TextAsset currentDialog;
+
+    private void Update()
     {
-        if(QuestManager.instance.toiletsFlushed == 0)
-            dialogComponents = new List<string>(InitialReponse.text.Split('\n'));
-        else if (QuestManager.instance.toiletsFlushed == 4)
-        {
-            dialogComponents = new List<string>(RequestMaintenance.text.Split('\n'));
-        }
-        else
-            dialogComponents = new List<string>(FlushedReponse.text.Split('\n'));
-
-        dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
-        dialogComponents = dialogComponents.Where(x => x != "").ToList();
+        if (!QuestManager.instance.maintenanceCompleted)
+            lockCollisionBox.enabled = false;
     }
 
     public override void Interact()
     {
-        StartCoroutine(DoorResponse());
+        SetCurrentDialog();
+        StartCoroutine(Talk());
     }
 
-    IEnumerator DoorResponse()
+    private void SetCurrentDialog()
     {
-        GameManager.instance.SuspendGame();
-        for (int i = 0; i < dialogComponents.Count; i++)
+        //TODO: this is just placeholder
+        if (QuestManager.instance.maintenancePosted)
         {
-            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
-            string speaker = "";
-            string dialog = "";
-            if (dialogPieces.Count() > 1)
-            {
-                speaker = dialogPieces[0];
-                dialog = dialogPieces[1];
-            }
-            else
-                dialog = dialogPieces[0];
-            UIController.instance.dialog.displayDialog(dialog, speaker);
-
-            yield return new WaitForSeconds(0.1f);
-            while (!UIController.instance.dialog.dialogCompleted)
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
-            while (!Controls.confirmInputHeld())
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
+            currentDialog = PostMaintenance;
         }
-
-        if (QuestManager.instance.toiletsFlushed == 5)
+        else if (QuestManager.instance.maintenanceRequestCalled)
         {
-            QuestManager.instance.maintenanceRequestCalled = true;
+            currentDialog = RequestMaintenance2;
         }
+        else if (QuestManager.instance.toiletsFlushed == 4)
+        {
+            currentDialog = RequestMaintenance;
+        }
+        else
+        {
+            currentDialog = InitialReponses[Random.Range(0, InitialReponses.Count)];
+        }
+    }
 
-        yield return null;
+    IEnumerator Talk()
+    {
+        yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
     }
 }
 
