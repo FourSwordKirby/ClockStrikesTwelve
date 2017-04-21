@@ -78,6 +78,7 @@ public class ButtonScripts : MonoBehaviour {
     {
         gameScene = sc;
         //chnage Scene
+        SceneManager.LoadScene(sc);
     }
 
     public void buttonCall(string button)
@@ -93,7 +94,7 @@ public class ButtonScripts : MonoBehaviour {
             case "Credits":
                 menu.SetActive(false);
                 credits.SetActive(true);
-                focusBack(2);
+                focusBack(1);
                 break;
             case "CreditsBack":
                 credits.SetActive(false);

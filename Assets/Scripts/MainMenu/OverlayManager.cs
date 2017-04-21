@@ -5,22 +5,11 @@ using UnityEngine.UI;
 
 public class OverlayManager : MonoBehaviour {
 
-    public static OverlayManager instance;
-
     public Image fade;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-            gameObject.GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        }
-        else if (this != instance)
-        {
-            Destroy(this.gameObject);
-        }
+        gameObject.GetComponent<Canvas>().worldCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     public void init()
