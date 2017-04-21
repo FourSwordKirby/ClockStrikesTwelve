@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ManagerNPC : Interactable
+public class ManagerNPC : NPC
 {
     public Sprite upSprite;
     public Sprite downSprite;
     public Sprite leftSprite;
     public Sprite rightSprite;
-
-    public SpriteRenderer spriteRenderer;
 
     public TextAsset GenericResponse;
 
