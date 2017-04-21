@@ -8,34 +8,58 @@ public class DayEndEvent : MonoBehaviour {
     public DayEndSpook spookPrefab;
     bool inRoom = false;
     bool dieded = false;
+    bool dayEnding = false;
     public float spawnDistance;
     public float spawnRNG;
     public float minSpawn;
     public float maxSpawn;
 
+    public static DayEndEvent instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if (this != instance)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     private void Update()
     {
-        if (inRoom)
+        if (dayEnding && SceneManager.GetActiveScene().name == "PlayerBedroom")
         {
             StartCoroutine(GameManager.instance.ResetDay());
+            dayEnding = false;
         }
         if (Input.GetKeyDown(KeyCode.Q)) StartCoroutine(DayEnd());
     }
 
     public IEnumerator DayEnd()
     {
-        if(SceneManager.GetActiveScene().name == "PlayerBedroom")
+        if (!dayEnding)
         {
-            inRoom = true;
-            yield return null;
-        }
-        else
-        {
-            yield return StartCoroutine(spoooooooooooook());
-
-            for(int i = 0; i < Random.Range(minSpawn, maxSpawn); i++)
+            dayEnding = true;
+            if (SceneManager.GetActiveScene().name == "PlayerBedroom")
             {
-                spawnSpooks();
+                StartCoroutine(GameManager.instance.ResetDay());
+                dayEnding = false;
+                yield return null;
+            }
+            else
+            {
+                yield return StartCoroutine(spoooooooooooook());
+
+                for (int i = 0; i < Random.Range(minSpawn, maxSpawn); i++)
+                {
+                    spawnSpooks();
+                }
             }
         }
     }
@@ -57,7 +81,7 @@ public class DayEndEvent : MonoBehaviour {
         //Clock chimes 12
 
         //Dim screen
-        //UIController.instance.screenfader.
+        yield return StartCoroutine(UIController.instance.screenfader.Dim());
 
         //Rumbling/wierd images?
 
@@ -72,6 +96,7 @@ public class DayEndEvent : MonoBehaviour {
         {
             dieded = true;
             StartCoroutine(GameManager.instance.ResetDay());
+            dayEnding = false;
         }
     }
 

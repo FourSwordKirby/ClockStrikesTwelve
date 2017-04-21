@@ -52,6 +52,23 @@ public class ScreenFader : MonoBehaviour
         yield return null;
     }
 
+    public IEnumerator Dim()
+    {
+        fading = true;
+        float timer = 0.0f;
+        while (timer < 2)
+        {
+            timer += Time.deltaTime;
+            if (timer < 2)
+            {
+                screen.color = Color.Lerp(Color.black - Color.black, Color.black, timer / 4);
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+        fading = false;
+        yield return null;
+    }
+
     /// <summary>
     /// This is used to force the screenfader to suddenly be set to some specified color
     /// </summary>
