@@ -68,6 +68,7 @@ public class ManagerNPC : NPC
         UIController.instance.dialog.closeDialog();
         GameManager.instance.UnsuspendGame();
 
+        flushed = true;
         yield return null;
     }
 
