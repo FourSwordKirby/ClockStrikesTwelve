@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> environmentSfx;
     public List<AudioClip> itemSfx;
 
+    public DayEndEvent dayEnd;
+
 
     public static GameManager instance;
     void Awake()
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
         if(!paused)
             currentTime += Time.deltaTime;
         if (currentTime > timeLimit)
-            StartCoroutine(ResetDay());
+            StartCoroutine(dayEnd.DayEnd());
     }
 
     /// <summary>
