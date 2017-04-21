@@ -1,9 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Dialog {
-    
+
+    public static List<string> CreateDialogComponents(string text)
+    {
+        List<string> dialogComponents = new List<string>(text.Split('\n'));
+        dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
+        dialogComponents = dialogComponents.Where(x => x != "").ToList();
+        return dialogComponents;
+    }
+
+
 	public static IEnumerator DisplayDialog(List<string> dialogComponents) {
         GameManager.instance.SuspendGame();
         for (int i = 0; i < dialogComponents.Count; i++)
