@@ -56,9 +56,14 @@ public class QuestManager : MonoBehaviour {
         changeInMachine = 5;
     }
 
+    public bool IsRoomFlushed(string roomName)
+    {
+        return toiletRoomsFlushed.Contains(roomName);
+    }
+
     public void FlushToilet(string roomName)
     {
-        if(!toiletRoomsFlushed.Contains(roomName))
+        if(!IsRoomFlushed(roomName))
             toiletRoomsFlushed.Add(roomName);
     }
 

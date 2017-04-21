@@ -12,12 +12,7 @@ public class ManagerNPC : NPC
     public TextAsset BoothIntro2;
 
     private TextAsset currentDialog;
-
-    void Start()
-    {
-        InitializeRenderer();
-    }
-
+    
     public override void Interact()
     {
         base.Interact();
