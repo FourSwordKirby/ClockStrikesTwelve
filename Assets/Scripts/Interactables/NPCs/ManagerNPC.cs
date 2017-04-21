@@ -5,7 +5,14 @@ using System.Linq;
 
 public class ManagerNPC : NPC
 {
-    public TextAsset GenericResponse;
+    public TextAsset LobbyResponseAntiSocial;
+    public TextAsset LobbyHintShower;
+    public TextAsset LobbyHintWriter;
+    public TextAsset LobbyHintMom;
+
+
+    public TextAsset BoothIntro1;
+    public TextAsset BoothIntro2;
 
     private List<string> dialogComponents;
 
@@ -13,7 +20,7 @@ public class ManagerNPC : NPC
     {
         InitializeRenderer();
         if (QuestManager.instance.toiletsFlushed == 0)
-            dialogComponents = new List<string>(GenericResponse.text.Split('\n'));
+            dialogComponents = new List<string>(LobbyResponseAntiSocial.text.Split('\n'));
 
         dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
