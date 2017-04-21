@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Linq;
 
 public class VendingMachine : Interactable {
-    
+
+    public InventoryItem inventoryItem;
     public TextAsset arcadeText;
     private List<string> dialogComponents;
 
@@ -23,5 +24,13 @@ public class VendingMachine : Interactable {
     IEnumerator arcade()
     {
         yield return Dialog.DisplayDialog(dialogComponents);
+
+        Destroy(this.gameObject);
+        GameManager.instance.playSound(SoundType.Item, "ItemGet");
+
+        Player.instance.items.Add(inventoryItem);
+        Player.instance.currentInteractable = null;
+        StartCoroutine(Player.instance.HideSymbol());
+        yield return null;
     }
 }

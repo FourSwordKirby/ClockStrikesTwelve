@@ -9,7 +9,8 @@ public enum Symbol
 
 public enum ItemDesignation
 {
-    WeatherCharm
+    WeatherCharm,
+    Soda
 }
 
 public enum SoundType
