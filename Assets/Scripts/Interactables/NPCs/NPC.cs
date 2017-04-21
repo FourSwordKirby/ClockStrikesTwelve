@@ -6,7 +6,7 @@ using System.Linq;
 //This is a generic NPC who can only say 1 line of dialog
 public abstract class NPC : Interactable
 {
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
 
     public Sprite upSprite;
     public Sprite downSprite;

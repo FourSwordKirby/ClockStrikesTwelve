@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MomNPC : NPC {
-    public TextAsset PlaceholderText;
+    public TextAsset IntroText;
+    public TextAsset CompletedText;
+    public bool QuestCompleted;
 
     private TextAsset currentDialog;
 
@@ -16,10 +18,13 @@ public class MomNPC : NPC {
 
     private void SetCurrentDialog()
     {
-        //TODO: this is just placeholder
-        if (true)
+        if (!QuestCompleted)
         {
-            currentDialog = PlaceholderText;
+            currentDialog = IntroText;
+        }
+        else
+        {
+            currentDialog = CompletedText;
         }
     }
 

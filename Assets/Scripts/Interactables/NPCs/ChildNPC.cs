@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class ChildNPC : NPC
 {
-    public TextAsset PlaceholderText;
+    public TextAsset IntroText;
+    public TextAsset GoAwayText;
+    public TextAsset SendBackText;
+    public TextAsset ReturnedHomeText;
+
+    public bool TalkedOnce;
+    public bool NoQuarters;
+    public bool SentHome;
 
     private TextAsset currentDialog;
 
@@ -13,14 +20,26 @@ public class ChildNPC : NPC
         base.Interact();
         SetCurrentDialog();
         StartCoroutine(Talk());
+        // TODO: move to room if SentHome and in arcade
     }
 
     private void SetCurrentDialog()
     {
-        //TODO: this is just placeholder
-        if (true)
+        if (!TalkedOnce)
         {
-            currentDialog = PlaceholderText;
+            currentDialog = IntroText;
+        }
+        else if (!NoQuarters)
+        {
+            currentDialog = GoAwayText;
+        }
+        else if (!SentHome)
+        {
+            currentDialog = SendBackText;
+        }
+        else
+        {
+            currentDialog = ReturnedHomeText;
         }
     }
 
