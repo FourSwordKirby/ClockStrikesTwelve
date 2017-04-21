@@ -32,16 +32,22 @@ public class SnoopDogNPC : NPC
         {
             currentDialog = YourName;
         }
-        else if (Player.instance.items.Find(x => x.designation == ItemDesignation.Soda) == null)
-        {
-            currentDialog = RepeatedRequest;
-            
-        }
         else
         {
-            satisfied = true;
-            currentDialog = SatisfiedRequest;
+            var ourSoda = Player.instance.items.Find(x => x.designation == ItemDesignation.Soda);
+            if (ourSoda == null)
+            {
+                currentDialog = RepeatedRequest;
+
+            }
+            else
+            {
+                Player.instance.items.Remove(ourSoda);
+                satisfied = true;
+                currentDialog = SatisfiedRequest;
+            }
         }
+
 
     }
 
