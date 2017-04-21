@@ -29,6 +29,7 @@ public class ScreenFader : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
         }
+        screen.color = Color.white;
         fading = false;
         yield return null;
     }

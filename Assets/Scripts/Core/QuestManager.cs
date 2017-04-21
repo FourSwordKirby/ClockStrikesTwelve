@@ -8,6 +8,10 @@ public class QuestManager : MonoBehaviour {
     public string notepadText;
 
     //These are all of the various flags that can be toggled between loops
+    //Used for the introduction on the very first day
+    public bool talkedToManager;
+    public bool talkedToManagerPart2;
+
     //Used for the start of the day event
     public bool introCompleted;
 
