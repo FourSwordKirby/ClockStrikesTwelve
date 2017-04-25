@@ -6,4 +6,4 @@ A few seconds later, the machine spits out a soda into its prize receptacle.
 Smirking at being able to circumvent this stupid fetch quest, you snatch the soda and stash it away in your bag.
 
 
-You found a <color = �fffff�>soda</color=�fffffff�>! It is now in your inventory!
+You found a <color = #ffffff>soda</color>! It is now in your inventory!
