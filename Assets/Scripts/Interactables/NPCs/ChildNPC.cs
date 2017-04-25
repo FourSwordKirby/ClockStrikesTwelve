@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ChildNPC : NPC
 {
-    public TextAsset IntroText;
-    public TextAsset GoAwayText;
-    public TextAsset SendBackText;
+    public TextAsset ArcadeIntroText;
+    public TextAsset ArcadeNoMoneyText;
+    public TextAsset HomeDefault;
+    public TextAsset SentBackText;
     public TextAsset ReturnedHomeText;
 
     public bool TalkedOnce;
@@ -27,19 +28,19 @@ public class ChildNPC : NPC
     {
         if (!TalkedOnce)
         {
-            currentDialog = IntroText;
+            currentDialog = ArcadeIntroText;
         }
         else if (!NoQuarters)
         {
-            currentDialog = GoAwayText;
+            currentDialog = ArcadeNoMoneyText;
         }
-        else if (!SentHome)
+        else if (SentHome)
         {
-            currentDialog = SendBackText;
+            currentDialog = ReturnedHomeText;
         }
         else
         {
-            currentDialog = ReturnedHomeText;
+            currentDialog = HomeDefault;
         }
     }
 

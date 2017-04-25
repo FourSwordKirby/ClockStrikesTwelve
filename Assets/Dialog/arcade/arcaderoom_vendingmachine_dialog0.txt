@@ -4,3 +4,6 @@ Consulting the wisdom of the ancients and tales of yore, you deliver a mighty ro
 You hear an eerie cry as the machine buckles, its internal gears crunching under the force of your assault.
 A few seconds later, the machine spits out a soda into its prize receptacle.
 Smirking at being able to circumvent this stupid fetch quest, you snatch the soda and stash it away in your bag.
+
+
+You found a <color = �fffff�>soda</color=�fffffff�>! It is now in your inventory!

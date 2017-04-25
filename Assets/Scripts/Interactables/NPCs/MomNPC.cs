@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MomNPC : NPC {
     public TextAsset IntroText;
+    public TextAsset InProgressText;
     public TextAsset CompletedText;
+
     public bool QuestCompleted;
 
     private TextAsset currentDialog;
@@ -20,7 +22,10 @@ public class MomNPC : NPC {
     {
         if (!QuestCompleted)
         {
-            currentDialog = IntroText;
+            if(GameManager.instance.currentTime < 20) //Fix this to be the proper time
+                currentDialog = IntroText;
+            else
+                currentDialog = InProgressText;
         }
         else
         {

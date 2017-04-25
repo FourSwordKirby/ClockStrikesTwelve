@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Notepad : Interactable
 {
+    public TextAsset NotepadPrompt;
+
     public override void Interact()
     {
         StartCoroutine(SleepTime());

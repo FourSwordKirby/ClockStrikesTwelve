@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class TV : Interactable
 {
@@ -8,6 +9,11 @@ public class TV : Interactable
     public Sprite offSprite;
     public Sprite onSprite;
 
+    public TextAsset tvOnDialog;
+    public TextAsset tvOffDialog;
+
+    private TextAsset currentDialog;
+
     void Awake()
     {
         spriteRenderer = tv.GetComponent<SpriteRenderer>();
@@ -15,8 +21,21 @@ public class TV : Interactable
 
     public override void Interact()
     {
-        // Put interact code here
-        ToggleOn();
+        SetCurrentDialog();
+        StartCoroutine(Talk());
+    }
+
+    private void SetCurrentDialog()
+    {
+        if (QuestManager.instance.tvOff)
+            currentDialog = tvOffDialog;
+        else
+            currentDialog = tvOnDialog;
+    }
+
+    IEnumerator Talk()
+    {
+        yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
     }
 
     private void ToggleOn()

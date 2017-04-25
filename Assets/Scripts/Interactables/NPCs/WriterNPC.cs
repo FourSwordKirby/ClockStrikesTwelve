@@ -5,11 +5,21 @@ using UnityEngine;
 public class WriterNPC : NPC
 {
     public TextAsset writerIntro;
+    public TextAsset writerIntroRepeat;
+
+    public TextAsset writerPostQuestPrompt;
     public TextAsset writerPrompt1;
-    public TextAsset writerCorrect1;
+
+    public TextAsset writerProtagCorrect1;
     public TextAsset writerWrong1;
 
-    public TextAsset writerPromptFail;
+    public TextAsset writerAntagCorrect2;
+    public TextAsset writerWrong2;
+
+    public TextAsset writerThemeCorrect3;
+    public TextAsset writerWrong3;
+
+    public TextAsset writerSuccess;
 
 
     private TextAsset currentDialog;
@@ -24,7 +34,7 @@ public class WriterNPC : NPC
         else
             StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerPrompt1.text), 
                                     "hi",
-                                    Dialog.CreateDialogComponents(writerCorrect1.text),
+                                    Dialog.CreateDialogComponents(writerProtagCorrect1.text),
                                     Dialog.CreateDialogComponents(writerWrong1.text)));
     }
 

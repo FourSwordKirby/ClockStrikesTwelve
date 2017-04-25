@@ -1,0 +1,17 @@
+Interactables that are unscripted:
+Vending Machine
+Soda Machine
+ShowerRoomDoor & Questline
+Manager
+Child
+Mom (fix timing on quests, should be worried post 8)
+Notepad
+Brochure
+Bed (Confirmation Script)
+Day Start Event
+ShowerRoomTrigger
+ShowerRoomToilet (Do special cutscene stuff)
+SnoopDogTV
+SnoopDog and quests
+Writer everything
+Manager and it's subrooms everything

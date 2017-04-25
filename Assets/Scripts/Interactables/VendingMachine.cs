@@ -6,15 +6,18 @@ using System.Linq;
 public class VendingMachine : Interactable {
 
     public InventoryItem inventoryItem;
-    public TextAsset arcadeText;
-    private List<string> dialogComponents;
+    public TextAsset VendingCorrectText5;
+    public TextAsset VendingCorrectText4;
+    public TextAsset VendingCorrectText3;
+    public TextAsset VendingCorrectText2;
+    public TextAsset VendingCorrectText1;
+    public TextAsset VendingCorrectText0;
+    public TextAsset VendingWrongText;
 
-    private void Awake()
-    {
-        dialogComponents = new List<string>(arcadeText.text.Split('\n'));
-        dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
-        dialogComponents = dialogComponents.Where(x => x != "").ToList();
-    }
+    public bool correctPassword;
+    public int coinsRemaining;
+
+    private List<string> dialogComponents;
 
     public override void Interact()
     {
