@@ -47,6 +47,11 @@ public class WriterNPC : NPC
         }
     }
 
+    void AdvanceStoryProgress()
+    {
+        throw new UnityException("IMPLEMENTME");
+    }
+
     IEnumerator Talk()
     {
         yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
@@ -54,6 +59,6 @@ public class WriterNPC : NPC
 
     IEnumerator Prompt(List<string> promptComponents, string correctAnswer, List<string> correctComponents, List<string> incorrectComponents)
     {
-        yield return Dialog.DisplayPrompt(promptComponents, correctAnswer, correctComponents, incorrectComponents);
+        yield return Dialog.DisplayPrompt(promptComponents, correctAnswer, correctComponents, incorrectComponents, AdvanceStoryProgress);
     }
 }

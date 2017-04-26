@@ -9,27 +9,31 @@ public class SodaMachine : Interactable {
     public TextAsset SodaGetText;
     public TextAsset NoSodaText;
 
-    private List<string> dialogComponents;
+    private TextAsset currentDialog;
 
-    private void Awake()
-    {
-    }
+    public bool hasSoda;
+
+    private List<string> dialogComponents;
 
     public override void Interact()
     {
-        StartCoroutine(arcade());
+        SetCurrentDialog();
+        StartCoroutine(Talk());
     }
 
-    IEnumerator arcade()
+    private void SetCurrentDialog()
     {
-        yield return Dialog.DisplayDialog(dialogComponents);
+        if (hasSoda)
+        {
+            hasSoda = false;
+            currentDialog = SodaGetText;
+        }
+        else
+            currentDialog = NoSodaText;
+    }
 
-        Destroy(this.gameObject);
-        GameManager.instance.playSound(SoundType.Item, "ItemGet");
-
-        Player.instance.items.Add(inventoryItem);
-        Player.instance.currentInteractable = null;
-        StartCoroutine(Player.instance.HideSymbol());
-        yield return null;
+    IEnumerator Talk()
+    {
+        yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
     }
 }

@@ -1,6 +1,4 @@
 Interactables that are unscripted:
-Vending Machine
-Soda Machine
 ShowerRoomDoor & Questline
 Manager
 Child

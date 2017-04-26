@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public delegate void CorrectReponseFunction();
+
 public class Dialog {
 
     public static List<string> CreateDialogComponents(string text)
@@ -44,7 +46,7 @@ public class Dialog {
         GameManager.instance.UnsuspendGame();
     }
 
-    public static IEnumerator DisplayPrompt(List<string> promptComponents, string correctAnswer, List<string> correctComponents, List<string> incorrectComponents)
+    public static IEnumerator DisplayPrompt(List<string> promptComponents, string correctAnswer, List<string> correctComponents, List<string> incorrectComponents, CorrectReponseFunction func)
     {
         GameManager.instance.SuspendGame();
         for (int i = 0; i < promptComponents.Count; i++)
@@ -117,6 +119,9 @@ public class Dialog {
                     yield return new WaitForSeconds(0.1f);
                 }
             }
+
+            //Cleanup if correct
+            func();
         }
         else
         {
@@ -147,7 +152,6 @@ public class Dialog {
             }
         }
         UIController.instance.dialog.closeDialog();
-
 
         GameManager.instance.UnsuspendGame();
     }

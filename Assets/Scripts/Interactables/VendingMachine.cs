@@ -6,6 +6,7 @@ using System.Linq;
 public class VendingMachine : Interactable {
 
     public InventoryItem inventoryItem;
+    public TextAsset VendingPrompt;
     public TextAsset VendingCorrectText5;
     public TextAsset VendingCorrectText4;
     public TextAsset VendingCorrectText3;
@@ -14,26 +15,66 @@ public class VendingMachine : Interactable {
     public TextAsset VendingCorrectText0;
     public TextAsset VendingWrongText;
 
-    public bool correctPassword;
+    private TextAsset currentDialog;
+
     public int coinsRemaining;
 
     private List<string> dialogComponents;
 
     public override void Interact()
     {
-        StartCoroutine(arcade());
+        if (coinsRemaining == 5)
+            StartCoroutine(Prompt(Dialog.CreateDialogComponents(VendingPrompt.text),
+                                    "5125",
+                                    Dialog.CreateDialogComponents(VendingCorrectText5.text),
+                                    Dialog.CreateDialogComponents(VendingWrongText.text)));
+        else
+        {
+            SetCurrentDialog();
+            StartCoroutine(Talk());
+        }
     }
 
-    IEnumerator arcade()
+    private void SetCurrentDialog()
     {
-        yield return Dialog.DisplayDialog(dialogComponents);
+        if (coinsRemaining == 4)
+        {
+            currentDialog = VendingCorrectText4;
+            coinsRemaining--;
+        }
+        else if (coinsRemaining == 3)
+        {
+            currentDialog = VendingCorrectText3;
+            coinsRemaining--;
+        }
+        else if (coinsRemaining == 2)
+        {
+            currentDialog = VendingCorrectText2;
+            coinsRemaining--;
+        }
+        else if (coinsRemaining == 1)
+        {
+            currentDialog = VendingCorrectText1;
+            coinsRemaining--;
+        }
+        else if (coinsRemaining == 0)
+        {
+            currentDialog = VendingCorrectText0;
+        }
+    }
 
-        Destroy(this.gameObject);
+    void decreaseCoins()
+    {
+        coinsRemaining--;
         GameManager.instance.playSound(SoundType.Item, "ItemGet");
+    }
 
-        Player.instance.items.Add(inventoryItem);
-        Player.instance.currentInteractable = null;
-        StartCoroutine(Player.instance.HideSymbol());
-        yield return null;
+    IEnumerator Talk()
+    {
+        yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
+    }
+    IEnumerator Prompt(List<string> promptComponents, string correctAnswer, List<string> correctComponents, List<string> incorrectComponents)
+    {
+        yield return Dialog.DisplayPrompt(promptComponents, correctAnswer, correctComponents, incorrectComponents, decreaseCoins);
     }
 }
