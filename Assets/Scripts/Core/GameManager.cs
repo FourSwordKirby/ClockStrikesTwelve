@@ -74,7 +74,15 @@ public class GameManager : MonoBehaviour
     public void SuspendGame()
     {
         paused = true;
-        Player.instance.FreezePlayer();
+        Player player = Player.instance;
+        player.FreezePlayer();
+        //Cargo cult programming incoming
+        //This is some pretty contrived code you got going on here
+        //SuspendState doesn't work :\
+        StateMachine<Player> ActionFsm = new StateMachine<Player>(player);
+        State<Player> startState = new MovementState(player, player.ActionFsm);
+        ActionFsm.InitialState(startState);
+        startState.Exit();
         //add other stuff as needed.
         //Probably need a player function to initialize it or something
     }

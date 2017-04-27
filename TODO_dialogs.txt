@@ -21,7 +21,8 @@ Manager and it's subrooms everything
 James's observations:
 
 Starting room:
-1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys.
+1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
+		"Fixed". Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
 2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
 3. Can't move after sleeping on the bed. -- Fixed.
 4. Can't make maintenance requests...? 
@@ -59,7 +60,7 @@ Owl room:
 3. Paper leaks through the walls. -- I don't have the authority to decide on a fix.
 
 UI:
-1. After a while the clock's hands desync, making it difficult to tell time.
+1. After a while the clock's hands desync, making it difficult to tell time. The clock also ends at "6:30"; not sure how the clock's supposed to look so left it alone.
 2. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce.
 3. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
-4. Dialogue boxes temporarily give day reset invuln. After gathering all of the blobs it's possible to roam.
+4. Dialogue boxes temporarily give day reset invuln. After gathering all of the blobs it's possible to roam. Not sure how to handle this case.
