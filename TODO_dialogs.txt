@@ -15,3 +15,49 @@ Bed (Choice selection sucks)
 
 
 Manager and it's subrooms everything
+
+
+~~~~~
+James's observations:
+
+Starting room:
+1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys.
+2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
+3. Can't move after sleeping on the bed.
+4. Can't make maintenance requests...?
+
+Shower room:
+1. I assume that it's known that the shower quest line doesn't exactly work
+
+Hallways:
+1. Not sure if it's intended but a big picture of a refrigerator appears in front of the mom & child room and I can't tell what it's supposed to do. 
+The layering's inconsistent: If I'm in the room, the refrigerator's on top of the doormat, but otherwise it's below.
+2. It's difficult to enter the lobby, or any other room.
+
+Mom & Child room
+1. Mom & Child dialogue is broken.
+
+Arcade room:
+1. Null pointer reference on the vending machine.
+2. Basically not implemented.
+
+
+Snoop room:
+1. Toilet isn't accessible
+
+General:
+1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
+
+Lobby:
+1. Tables have no collision
+2. Can't exit the lobby
+
+Owl room:
+1. Toilet's dialogue is broken
+2. Owl's dialogue is broken
+
+UI:
+1. After a while the clock's hands desync, making it difficult to tell time.
+2. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce.
+3. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
+4. Dialogue boxes temporarily give day reset invuln. After gathering all of the blobs it's possible to roam.
