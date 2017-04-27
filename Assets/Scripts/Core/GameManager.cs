@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             //StartCoroutine(dayAfternoon.DayEnd());
         //Change to evening
         if (currentTime > (2*timeLimit)/3)
-            StartCoroutine(dayEvening.DayEnd());
+            //StartCoroutine(dayEvening.DayEnd());
         //Change to dead of night
         if (currentTime > timeLimit)
             StartCoroutine(dayEnd.DayEnd());
@@ -200,16 +200,18 @@ public class GameManager : MonoBehaviour
 
         loadingScene = true;
         SceneManager.LoadScene(sceneName);
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         //try to move to the position of the door to this room
         GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         foreach (GameObject spawnPoint in spawnPoints)
         {
-            if (spawnPoint.GetComponent<SpawnPoint> ().scene == oldSceneName)
+            if (spawnPoint.GetComponent<SpawnPoint>().scene == oldSceneName)
             {
                 Player.instance.transform.position = spawnPoint.transform.position;
                 break;
             }
+            else
+                Player.instance.transform.position = Vector3.zero;
         }
         loadingScene = false;
 
@@ -219,7 +221,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         Player.instance.UnfreezePlayer();
-        print("hi");
     }
     
     public bool canSwitchRooms() {

@@ -30,7 +30,6 @@ public class Dialog {
             }
             else
                 dialog = dialogPieces[0];
-            Debug.Log("ABout to displat");
             UIController.instance.dialog.displayDialog(dialog, speaker);
             while (!UIController.instance.dialog.dialogCompleted)
             {

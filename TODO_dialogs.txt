@@ -24,40 +24,13 @@ Starting room:
 1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
 		"Fixed". Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
 2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
-3. Can't move after sleeping on the bed. -- Fixed.
 4. Can't make maintenance requests...? 
-5. Brochure option box doesn't disappear upon interaction. -- Fixed; it was a byproduct of the previous dialogue.
 
 Shower room:
-1. I assume that it's known that the shower quest line doesn't exactly work
-
-Hallways:
-1. Not sure if it's intended but a big picture of a refrigerator appears in front of the mom & child room and I can't tell what it's supposed to do. 
-The layering's inconsistent: If I'm in the room, the refrigerator's on top of the doormat, but otherwise it's below. -- Says placeholder: Is it a surprise?
-2. It's difficult to enter the lobby, or any other room. -- Made each entrance twice as wide/long.
-
-Mom & Child room
-1. Mom & Child dialogue is broken. -- Fixed
-
-Arcade room:
-1. Null pointer reference on the left vending machine. -- Could not fix; not sure how unity instantiates objects and don't want to add any crutch code.
-2. Basically not implemented. -- I'll assume that this is intended for now.
-
-
-Snoop room:
-1. Toilet isn't accessible -- Is this intended?
+1. I assume that it's known that the shower quest line doesn't exactly work (try now? Essentially flush all toilets and try to get into the player door)
 
 General:
 1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
-
-Lobby:
-1. Tables have no collision -- Fixed. Also let you talk across the table.
-2. Can't exit the lobby -- Can't quite fix this since I don't understand the quest line.
-
-Owl room:
-1. Toilet's dialogue is broken -- Fixed.
-2. Owl's dialogue is broken -- Fixed; lots of \r vs \r\n or \n errors.
-3. Paper leaks through the walls. -- I don't have the authority to decide on a fix.
 
 UI:
 1. After a while the clock's hands desync, making it difficult to tell time. The clock also ends at "6:30"; not sure how the clock's supposed to look so left it alone.

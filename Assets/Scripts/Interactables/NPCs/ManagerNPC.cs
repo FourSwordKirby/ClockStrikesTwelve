@@ -25,6 +25,7 @@ public class ManagerNPC : NPC
         if (!QuestManager.instance.talkedToManager)
         {
             currentDialog = BoothIntro1;
+            QuestManager.instance.talkedToManager = true;
         }
         else if (!QuestManager.instance.talkedToManagerPart2)
         {

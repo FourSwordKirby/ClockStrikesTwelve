@@ -28,12 +28,13 @@ public class LobbyDoorTrigger : MonoBehaviour {
         {
             SetCurrentDialog();
 
-            if (currentDialog == Door2)
-                QuestManager.instance.talkedToManagerPart2 = true;
-
             if (currentDialog == Door3)
+            {
                 StartCoroutine(UIController.instance.screenfader.FadeOut(0.1f));
-            StartCoroutine(Talk());
+                StartCoroutine(TitleFade());
+            }
+            else
+                StartCoroutine(Talk());
         }
     }
     
@@ -41,9 +42,14 @@ public class LobbyDoorTrigger : MonoBehaviour {
     {
         //TODO: this is just placeholder
         if (!QuestManager.instance.talkedToManager)
+        {
             currentDialog = Door1;
+        }
         else if (!QuestManager.instance.talkedToManagerPart2)
+        {
             currentDialog = Door2;
+            QuestManager.instance.talkedToManagerPart2 = true;
+        }
         else
             currentDialog = Door3;
     }
@@ -51,5 +57,38 @@ public class LobbyDoorTrigger : MonoBehaviour {
     IEnumerator Talk()
     {
         yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
+    }
+
+    IEnumerator TitleFade()
+    {
+        List<string> dialogComponents = Dialog.CreateDialogComponents(currentDialog.text);
+        GameManager.instance.SuspendGame();
+        for (int i = 0; i < dialogComponents.Count; i++)
+        {
+            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
+            string speaker = "";
+            string dialog = "";
+            if (dialogPieces.Length > 1)
+            {
+                speaker = dialogPieces[0];
+                dialog = dialogPieces[1];
+            }
+            else
+                dialog = dialogPieces[0];
+            UIController.instance.dialog.displayDialog(dialog, speaker);
+            while (!UIController.instance.dialog.dialogCompleted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            //Replace this with things in the control set
+            while (!Controls.confirmInputHeld())
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
+
+        GameManager.instance.StartSceneTransition("PlayerBedroom");
     }
 }

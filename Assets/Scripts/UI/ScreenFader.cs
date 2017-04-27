@@ -21,12 +21,15 @@ public class ScreenFader : MonoBehaviour
         GameManager.instance.paused = true;
         float timer = 0.0f;
         this.fadeTime = fadeTime;
+
+        Color initialColor = screen.color;
+
         while (timer < fadeTime)
         {
             timer += Time.deltaTime;
             if (timer < fadeTime)
             {
-                screen.color = Color.Lerp(Color.white - Color.black, Color.white, timer / fadeTime);
+                screen.color = Color.Lerp(initialColor, Color.white, timer / fadeTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
@@ -40,12 +43,15 @@ public class ScreenFader : MonoBehaviour
         fading = true;
         float timer = 0.0f;
         this.fadeTime = fadeTime;
+
+        Color initialColor = screen.color;
+
         while (timer < fadeTime)
         {
             timer += Time.deltaTime;
             if (timer < fadeTime)
             {
-                screen.color = Color.Lerp(Color.white, Color.white - Color.black, timer / fadeTime);
+                screen.color = Color.Lerp(initialColor, Color.white - Color.black, timer / fadeTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
