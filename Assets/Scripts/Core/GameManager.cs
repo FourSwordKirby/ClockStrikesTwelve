@@ -26,8 +26,13 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> environmentSfx;
     public List<AudioClip> itemSfx;
 
+    public DayStartEvent dayStart;
+    public DayAfternoonEvent dayAfternoon;
+    public DayEveningEvent dayEvening;
     public DayEndEvent dayEnd;
 
+    public int dayPhase; //Used to differentiate between morning, afternoon, and night (different cutscene for phase transitions)
+                         // 0 = morning, 1 = afternoon, 2 = evening, 3 = dead of night
 
     public static GameManager instance;
     void Awake()
@@ -50,8 +55,17 @@ public class GameManager : MonoBehaviour
     {
         if(!paused)
             currentTime += Time.deltaTime;
+        //Change to the afternoon
+        if (currentTime > timeLimit/3)
+            StartCoroutine(dayAfternoon.DayEnd());
+        //Change to evening
+        if (currentTime > (2*timeLimit)/3)
+            StartCoroutine(dayEvening.DayEnd());
+        //Change to dead of night
         if (currentTime > timeLimit)
             StartCoroutine(dayEnd.DayEnd());
+
+        dayPhase = (int)(3 * currentTime) / 3;
     }
 
     /// <summary>

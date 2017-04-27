@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Notepad : Interactable
 {
+    public TextAsset dayEndNotepadPrompt; //Figure out how to get this to display on day reset when you die
     public TextAsset NotepadPrompt;
 
     public override void Interact()
@@ -11,8 +12,15 @@ public class Notepad : Interactable
         StartCoroutine(SleepTime());
     }
 
+    IEnumerator Talk()
+    {
+        yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(NotepadPrompt.text));
+    }
+
     IEnumerator SleepTime()
     {
+        StartCoroutine(Talk());
+
         GameManager.instance.SuspendGame();
         UIController.instance.notepadPrompt.openNotepad();
         yield return new WaitForSeconds(1.0f);

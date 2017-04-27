@@ -29,12 +29,12 @@ public class WriterNPC : NPC
         base.Interact();
         SetCurrentDialog();
 
-        if (currentDialog != writerPrompt1)
+        if (currentDialog= writerPrompt1)
             StartCoroutine(Talk());
         else
             StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerPrompt1.text), 
-                                    "hi",
-                                    Dialog.CreateDialogComponents(writerProtagCorrect1.text),
+                                    "dog",
+                                    new List<string>(),
                                     Dialog.CreateDialogComponents(writerWrong1.text)));
     }
 
@@ -43,13 +43,35 @@ public class WriterNPC : NPC
         if (QuestManager.instance.tvOff)
         {
             if (QuestManager.instance.ideaCount == 0)
-                currentDialog = writerPrompt1;
+            {
+                if (QuestManager.instance.writerCompleted)
+                    currentDialog = writerPostQuestPrompt;
+                else
+                    currentDialog = writerPrompt1;
+            }
+            if (QuestManager.instance.ideaCount == 3)
+                currentDialog = writerSuccess;
         }
     }
 
     void AdvanceStoryProgress()
     {
-        throw new UnityException("IMPLEMENTME");
+        if (QuestManager.instance.ideaCount == 0)
+            StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerProtagCorrect1.text),
+                                    "politician",
+                                    new List<string>(),
+                                    Dialog.CreateDialogComponents(writerWrong2.text)));
+        if (QuestManager.instance.ideaCount == 1)
+            StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerAntagCorrect2.text),
+                                    "confidence",
+                                    new List<string>(),
+                                    Dialog.CreateDialogComponents(writerWrong3.text)));
+        if (QuestManager.instance.ideaCount == 2)
+        {
+            currentDialog = writerThemeCorrect3;
+            StartCoroutine(Talk());
+        }
+        QuestManager.instance.ideas.Add("idea");
     }
 
     IEnumerator Talk()

@@ -1,15 +1,17 @@
 Interactables that are unscripted:
-ShowerRoomDoor & Questline
-Manager
-Child
-Mom (fix timing on quests, should be worried post 8)
-Notepad
-Brochure
-Bed (Confirmation Script)
-Day Start Event
-ShowerRoomTrigger
+ShowerRoomDoor (Make the steam disappear)
 ShowerRoomToilet (Do special cutscene stuff)
-SnoopDogTV
-SnoopDog and quests
-Writer everything
+Child (make him appear in certain areas)
+
+Item drops for everyone
+UI
+Events for various parts of the day (transition between morning to afternoon etc)
+	Day Start Event
+	Day Afternoon Event
+	Day Evening Event
+	Day End Event (make the notepad show up etc)
+
+Bed (Choice selection sucks)
+
+
 Manager and it's subrooms everything

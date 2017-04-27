@@ -22,10 +22,26 @@ public class ManagerNPC : NPC
 
     private void SetCurrentDialog()
     {
-        //TODO: this is just placeholder
-        if (true)
+        if (!QuestManager.instance.talkedToManager)
         {
             currentDialog = BoothIntro1;
+        }
+        else if (!QuestManager.instance.talkedToManagerPart2)
+        {
+            currentDialog = BoothIntro2;
+        }
+        else
+        {
+            List<TextAsset> potentialDialogs = new List<TextAsset>();
+            potentialDialogs.Add(LobbyResponseAntiSocial);
+            if(QuestManager.instance.showerCompleted)
+                potentialDialogs.Add(LobbyHintShower);
+            else if (QuestManager.instance.writerCompleted)
+                potentialDialogs.Add(LobbyHintWriter);
+            else if (QuestManager.instance.momChildCompleted)
+                potentialDialogs.Add(LobbyHintMom);
+
+            currentDialog = potentialDialogs[Random.Range(0, potentialDialogs.Count)];
         }
     }
 

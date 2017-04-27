@@ -7,7 +7,6 @@ using UnityEngine;
 public class SleepPoint : Interactable {
 
     public TextAsset Instructions;
-    public TextAsset BedConfirm;
     private List<string> dialogComponents;
 
     void Awake()

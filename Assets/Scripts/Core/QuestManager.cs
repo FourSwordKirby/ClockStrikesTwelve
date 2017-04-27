@@ -21,15 +21,18 @@ public class QuestManager : MonoBehaviour {
     public bool maintenanceRequestCalled;
     public bool maintenancePosted;
     public bool maintenanceCompleted; //Once this is true, the shower guy's room is permanently open
+    public bool showerCompleted;
 
     //Used for the writer's quest
     public bool drinkTaken;
     public bool tvOff;
     public int ideaCount{ get { return ideas.Count; } }
     public List<string> ideas;
+    public bool writerCompleted;
 
     //Used for the mother child quest
     public int changeInMachine;
+    public bool momChildCompleted;
 
     public static QuestManager instance;
     void Awake()

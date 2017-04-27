@@ -22,7 +22,6 @@ public class SnoopDogNPC : NPC
 
     private void SetCurrentDialog()
     {
-        //TODO: this is just placeholder
         if (!met)
         {
             currentDialog = InitialRequest;
@@ -45,6 +44,7 @@ public class SnoopDogNPC : NPC
                 Player.instance.items.Remove(ourSoda);
                 satisfied = true;
                 currentDialog = SatisfiedRequest;
+                QuestManager.instance.tvOff = true;
             }
         }
 

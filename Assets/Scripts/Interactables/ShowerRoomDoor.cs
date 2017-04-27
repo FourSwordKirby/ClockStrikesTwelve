@@ -6,8 +6,8 @@ using System.Linq;
 public class ShowerRoomDoor : Interactable
 {
     public List<TextAsset> InitialReponses;
-    public TextAsset RequestMaintenance;
-    public TextAsset RequestMaintenance2;
+    //public TextAsset RequestMaintenance;
+    //public TextAsset RequestMaintenance2;
     public TextAsset PostMaintenance;
 
     public Collider2D lockCollisionBox;
@@ -29,17 +29,21 @@ public class ShowerRoomDoor : Interactable
     private void SetCurrentDialog()
     {
         //TODO: this is just placeholder
-        if (QuestManager.instance.maintenancePosted)
+        //if (QuestManager.instance.maintenancePosted)
+        //{
+        //    currentDialog = PostMaintenance;
+        //}
+        //else if (QuestManager.instance.maintenanceRequestCalled)
+        //{
+        //    currentDialog = RequestMaintenance2;
+        //}
+        //else if (QuestManager.instance.toiletsFlushed == 4)
+        //{
+        //    currentDialog = RequestMaintenance;
+        //}
+        if (QuestManager.instance.toiletsFlushed == 4)
         {
             currentDialog = PostMaintenance;
-        }
-        else if (QuestManager.instance.maintenanceRequestCalled)
-        {
-            currentDialog = RequestMaintenance2;
-        }
-        else if (QuestManager.instance.toiletsFlushed == 4)
-        {
-            currentDialog = RequestMaintenance;
         }
         else
         {
