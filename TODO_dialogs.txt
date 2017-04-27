@@ -22,18 +22,41 @@ James's observations:
 
 Starting room:
 1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
-		"Fixed". Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
+		Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
 2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
+3. Table is misaligned
 4. Can't make maintenance requests...? 
+
+Office: 
+1. The light has a very obvious upper bound
+
+Lobby:
+1. Makes no topological sense unless the entrance to the hotel is through underground stairs or something; shouldn't entry be done through a side door?
+2. When exiting the room, the game always fades to white and puts you back in the player room.
 
 Shower room:
 1. I assume that it's known that the shower quest line doesn't exactly work (try now? Essentially flush all toilets and try to get into the player door)
+2. Room resets every entrance
 
 General:
 1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
+2. If you try to talk to someone and a red blob hits you, you're not allowed to move anymore when you wake up (Only happened once)
+3. Very glitchy behavior upon getting day resetted when entering a room, showerman room in particular.
+4. Dialogue boxes sometimes give day reset invuln. After gathering all of the blobs it's possible to roam. Not sure how to handle this case.
+5. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
+
+Owl room:
+1. The bottom left stack of papers disappear sometimes. Not sure why but it looks kinda glitchy. (Also papers are leaking out through the walls)
+
+Snoop room:
+1. It's easy to get stuck behind the left side of the golden toilet; the collision box should probably be made smaller.
+2. Snoop dialogue resets upon entrance.
+
+Arcade room:
+1. You don't actually get a soda from the machine yet despite what the text tells you, and the state of the machine resets upon room entry.
 
 UI:
 1. After a while the clock's hands desync, making it difficult to tell time. The clock also ends at "6:30"; not sure how the clock's supposed to look so left it alone.
 2. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce.
 3. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
-4. Dialogue boxes temporarily give day reset invuln. After gathering all of the blobs it's possible to roam. Not sure how to handle this case.
+
