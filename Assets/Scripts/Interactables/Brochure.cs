@@ -9,10 +9,10 @@ public class Brochure : Interactable
     //public InventoryItem inventoryItem;
     public TextAsset Instructions;
     private List<string> dialogComponents;
-    bool isBloody = false;
+    //bool isBloody = false;
     private SpriteRenderer spriteRenderer;
     public Sprite originalSprite;
-    public Sprite bloodySprite;
+    //public Sprite bloodySprite;
 
     void Awake()
     {
@@ -63,14 +63,14 @@ public class Brochure : Interactable
         UIController.instance.dialog.closeDialog();
         GameManager.instance.UnsuspendGame();
 
-        if (!(isBloody)){
-            spriteRenderer.sprite = bloodySprite;
+        //if (!(isBloody)){
+            //spriteRenderer.sprite = bloodySprite;
             //Sprite bloodySprite = Resources.Load<Sprite>("Assets/Sprites/Objects/BloodyBrochure");
             ////Sprite originalSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
             ////Sprite bloodyBrochure = Sprite.Create(originalSprite.texture, originalSprite.rect, originalSprite.pivot);
             //gameObject.GetComponent<SpriteRenderer>().sprite = bloodySprite;
-            isBloody = true;
-        }
+            //isBloody = true;
+        //}
 
 
         //We picked up the object, do stuff to it
@@ -78,7 +78,7 @@ public class Brochure : Interactable
         //GameManager.instance.playSound(SoundType.Item, "ItemGet");
 
         //Player.instance.items.Add(inventoryItem);
-        Player.instance.currentInteractable = null;
+        //Player.instance.currentInteractable = null;
         StartCoroutine(Player.instance.HideSymbol());
         yield return null;
     }

@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             currentTime += Time.deltaTime;
         //Change to the afternoon
         if (currentTime > timeLimit/3)
-            StartCoroutine(dayAfternoon.DayEnd());
+            //StartCoroutine(dayAfternoon.DayEnd());
         //Change to evening
         if (currentTime > (2*timeLimit)/3)
             StartCoroutine(dayEvening.DayEnd());

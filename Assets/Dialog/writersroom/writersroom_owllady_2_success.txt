@@ -1,1 +1,9 @@
-OWL LADY : Do you know, I've always been afraid of my own ideas. OWL LADY : It's just this kind of embarrassment, to put yourself out on the line. OWL LADY : Because, you know... and it looks like this is your biggest fear too... OWL LADY : I'm most afraid of <color = #ffffff>rejection</color>...OWL LADY : ...But now I'm going to write!
+OWL LADY : Do you know, I've always been afraid of my own ideas. 
+OWL LADY : It's just this kind of embarrassment, to put yourself out on the line. 
+OWL LADY : Because, you know... and it looks like this is your biggest fear too... 
+OWL LADY : I'm most afraid of <color=#ffffff>rejection</color>...
+OWL LADY : ...But now I'm going to write!
+
+
+
+

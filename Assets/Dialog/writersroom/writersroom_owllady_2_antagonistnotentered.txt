@@ -1,1 +1,6 @@
-OWL LADY : Hm. I don't like that. What if the antagonist... was a <color = #ffffff>politician</color>!OWL LADY : The worst of the... yeah, that's a bad idea... I came up with it, of course...
+OWL LADY : Hm. I don't like that. What if the antagonist... was a <color=#ffffff>politician</color>!
+OWL LADY : The worst of the... yeah, that's a bad idea... I came up with it, of course...
+
+
+
+

@@ -61,12 +61,8 @@ public class SleepPoint : Interactable {
         {
             StartCoroutine(GameManager.instance.ResetDay());
         }
-        else
-        {
-            UIController.instance.dialog.closeDialog();
-            GameManager.instance.UnsuspendGame();
-        }
-
+        UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
         yield return null;
     }
 }

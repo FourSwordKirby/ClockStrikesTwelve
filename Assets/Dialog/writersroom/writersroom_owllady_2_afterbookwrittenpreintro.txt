@@ -2,7 +2,7 @@ OWL LADY : You must be the new person here. I'm a writer.
 OWL LADY : You know, I found this weird manuscript in my bed when I woke up this morning...
 OWL LADY : ...didn't even bother to read it. I don't want to plagarize anybody, you know!
 OWL LADY: So I tore it up! But I have no idea what to write!
-OWL LADY : Do you have any ideas for like...a <color = #ffffff> protagonist </color> maybe?
+OWL LADY : Do you have any ideas for like...a <color=#ffffff> protagonist </color> maybe?
 
 
 
