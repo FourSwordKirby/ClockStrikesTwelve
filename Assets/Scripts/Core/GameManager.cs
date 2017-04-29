@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         float prevTime = currentTime;
 
-        if(!paused)
+        if(!DayEndEvent.instance.isDayEnding() && !paused)
             currentTime += Time.deltaTime;
 
         //Play event in the morning
