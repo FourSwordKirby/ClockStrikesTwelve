@@ -80,7 +80,7 @@ public class DayEndEvent : MonoBehaviour {
         //Clock chimes 12
 
         //Dim screen
-        GameManager.instance.paused = true;
+        GameManager.instance.roomSwitchSet(false);
         yield return StartCoroutine(UIController.instance.screenfader.Dim());
 
         //Rumbling/wierd images?
@@ -95,9 +95,15 @@ public class DayEndEvent : MonoBehaviour {
         if (!dieded)
         {
             dieded = true;
+            Player.instance.FreezePlayer();
             StartCoroutine(GameManager.instance.ResetDay());
             dayEnding = false;
         }
+    }
+
+    public bool isDayEnding()
+    {
+        return dayEnding;
     }
 
     

@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     {
         float prevTime = currentTime;
 
-        if(!paused)
+        if(!paused && !dayEnd.isDayEnding())
             currentTime += Time.deltaTime;
 
         //Play event in the morning
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
-        paused = false;
+        UnsuspendGame();
         yield return null;
     }
 
@@ -232,5 +232,10 @@ public class GameManager : MonoBehaviour
     
     public bool canSwitchRooms() {
         return !loadingScene;
+    }
+
+    public void roomSwitchSet(bool canSwitchRooms)
+    {
+        loadingScene = canSwitchRooms;
     }
 }

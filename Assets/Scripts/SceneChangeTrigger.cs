@@ -10,8 +10,13 @@ public class SceneChangeTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!activated && GameManager.instance.canSwitchRooms())
+        bool isDayEnding = GameManager.instance.dayEnd.isDayEnding();
+        if ((!isDayEnding && !activated && GameManager.instance.canSwitchRooms()) ||
+            (sceneName == "PlayerBedroom"))
         {
+            MonoBehaviour.print(sceneName);
+            MonoBehaviour.print(GameManager.instance.dayEnd.isDayEnding());
+            MonoBehaviour.print(sceneName == "PlayerBedroom");
             GameManager.instance.StartSceneTransition (sceneName);
             activated = true;
         }

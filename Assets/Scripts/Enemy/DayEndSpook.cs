@@ -13,7 +13,10 @@ public class DayEndSpook : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed);
+        if (!GameManager.instance.paused)
+        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed);
+        }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
