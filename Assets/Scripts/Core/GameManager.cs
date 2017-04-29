@@ -53,8 +53,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        float prevTime = currentTime;
+
         if(!paused)
             currentTime += Time.deltaTime;
+
+        //Play event in the morning
+        if (prevTime <= 0 && 0 < currentTime)
+            //StartCoroutine(dayStart.DayStart());
+
         //Change to the afternoon
         if (currentTime > timeLimit/3)
             //StartCoroutine(dayAfternoon.DayEnd());
@@ -65,7 +72,7 @@ public class GameManager : MonoBehaviour
         if (currentTime > timeLimit)
             StartCoroutine(dayEnd.DayEnd());
 
-        dayPhase = (int)(3 * currentTime) / 3;
+        dayPhase = Mathf.Min((int)((3 * currentTime) / timeLimit), 3);
     }
 
     /// <summary>

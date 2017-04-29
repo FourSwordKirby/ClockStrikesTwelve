@@ -54,14 +54,15 @@ public class QuestManager : MonoBehaviour {
 
     public void RestartQuests()
     {
-        introCompleted = false;
         toiletRoomsFlushed = new List<string>();
-        maintenanceRequestCalled = false;
-        maintenancePosted = false;
+        if(maintenanceRequestCalled)
+            maintenancePosted = true;
 
-        drinkTaken = true;
+        if(!tvOff)
+            drinkTaken = true;
 
-        changeInMachine = 5;
+        if(!momChildCompleted)
+            changeInMachine = 5;
     }
 
     public bool IsRoomFlushed(string roomName)
