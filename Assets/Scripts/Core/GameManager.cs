@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float startingTime;
     public float currentTime;
     public float timeLimit;
+    private bool justInstantiated;
 
     private bool loadingScene = false;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> environmentSfx;
     public List<AudioClip> itemSfx;
 
+    public GameStartEvent gameStart;
     public DayStartEvent dayStart;
     public DayAfternoonEvent dayAfternoon;
     public DayEveningEvent dayEvening;
@@ -49,18 +51,27 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        justInstantiated = true;
     }
 
     void Update()
     {
         float prevTime = currentTime;
 
-        if(!paused && !dayEnd.isDayEnding())
+        if(!paused)
             currentTime += Time.deltaTime;
 
         //Play event in the morning
+
         if (prevTime <= 0 && 0 < currentTime)
-            StartCoroutine(dayStart.DayStart());
+        {
+            if (justInstantiated)
+            {
+                StartCoroutine(gameStart.GameStart());
+                justInstantiated = false;
+            }
+            else StartCoroutine(dayStart.DayStart());
+        }
 
         //Change to the afternoon
         if (prevTime <= timeLimit/3 && timeLimit / 3 < currentTime)
@@ -123,6 +134,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator ResetDay()
     {
         //Setting the flags for the things in the chest
+        SuspendGame();
+
         if (GameManager.instance.chestStoredItems.Find(x => x.designation == ItemDesignation.WeatherCharm) != null)
             GameManager.instance.charmTriggered = true;
 
