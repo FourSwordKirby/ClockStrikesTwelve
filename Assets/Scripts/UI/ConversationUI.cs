@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryUI : MonoBehaviour {
+public class ConversationUI : MonoBehaviour {
 
     public List<Button> InventorySlots;
-    public Image itemImage;
     public Text itemDesc;
-    public static InventoryUI instance;
+    public static ConversationUI instance;
 
     private void Start()
     {

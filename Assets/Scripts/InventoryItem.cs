@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour {
 
-    public TextAsset description;
+    public string itemName;
+    public string description;
     public ItemDesignation designation;
     public Sprite itemSprite;
 

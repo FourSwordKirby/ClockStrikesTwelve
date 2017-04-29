@@ -1,21 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseUI : MonoBehaviour {
 
     public InventoryUI inventoryUI;
-    private bool pauseWasPressed = true;
+    public GameObject lastSelect;
+    public EventSystem eventSystem;
+
 
 	// Update is called once per frame
 	void Update () {
-        //Alter this later
 
-        bool pauseNowPressed = Controls.pauseInputDown();
-        if (pauseNowPressed && !pauseWasPressed)
+        if (Controls.pauseInputDown())
         {
-            GameManager.instance.TogglePauseMenu();
+            if (this.gameObject.activeSelf) GameManager.instance.TogglePauseMenu();
         }
-        pauseWasPressed = pauseNowPressed;
-	}
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            if (Controls.getInputDirection() != Parameters.InputDirection.None)
+            {
+                eventSystem.SetSelectedGameObject(null);
+                eventSystem.SetSelectedGameObject(lastSelect, new BaseEventData(eventSystem));
+            }
+        }
+        else
+        {
+            lastSelect = EventSystem.current.currentSelectedGameObject;
+        }
+    }
+
+    private void OnEnable()
+    {
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(lastSelect, new BaseEventData(eventSystem));
+    }
+
+    private void OnDisable()
+    {
+        lastSelect = eventSystem.currentSelectedGameObject;
+    }
+
+    public void quitButton()
+    {
+        Application.Quit();
+    }
 }
