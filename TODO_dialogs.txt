@@ -24,8 +24,10 @@ Starting room:
 1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
 		Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
 2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
-3. Table is misaligned
-4. Can't make maintenance requests...?  (Or is this just a reference to the bathroom quest?)
+3. There's a weird race condition with the bed that sometimes freezes you until the next day event
+
+Writer room:
+Make it so that after every question, the writer comments on your idea and then tells you to come and check back after she's written a bit
 
 Office: 
 1. The light has a very obvious upper bound (Not fixable due to single layer sprites)
@@ -33,21 +35,13 @@ Office:
 
 Shower room:
 
-Writer room:
-Make it so that after every question, the writer comments on your idea and then tells you to come and check back after she's written a bit
-
 Mom & child room:
 1. The child's dialogue should be fixed
 
 General:
 1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
-2. If you try to talk to someone and a red blob hits you, you're not allowed to move anymore when you wake up (Only happened once)
-3. Very glitchy behavior upon getting day resetted when entering a room, showerman room in particular.
-4. Dialogue boxes sometimes give day reset invuln. After gathering all of the blobs it's possible to roam. Not sure how to handle this case.
-5. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
-6. If entering a room at the same time the "The day's over stranger" dialogue appears it's stuck there until more dialogue is triggered
-
-Owl room:
+2. Very glitchy behavior upon getting day resetted when entering a room, showerman room in particular.
+3. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
 
 Snoop room:
 1. Make it so the TV shuts off if you shove a soda on it
@@ -55,25 +49,23 @@ Snoop room:
 3. Soda also does not reset upon sleep
 
 Arcade room:
-1. You don't actually get a soda from the machine yet despite what the text tells you, and the state of the machine resets upon room entry.
-2. Keypad still broken.
-3. The child interaction box is covered heavily by the machine
-4. The machine doesn't have proper dialogue
-
-Lobby:
-1. If you go to sleep the "You'll never want to leave" is replayed after the initial encounter
+1. Getting coins doesn't actually do anything...?
+2. The machine doesn't have proper dialogue
 
 UI:
-1. After a while the clock's hands desync, making it difficult to tell time. The clock also ends at "6:30"; not sure how the clock's supposed to look so left it alone.
-2. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce.
-3. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
+1. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce; likely not a problem anymore.
+2. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
+
+Lobby:
+1. It's possible to wait until midnight and spawn in the room
 
 Playtest results:
-1. Managed to get the soda but blocked by a Snoop error
-2. Managed to flush all of the toilets 
-3. Couldn't get the child to "come back"
-4. Couldn't get the owl any ideas
-5. Couldn't get the keypad to work
-6. Couldn't figure out what to do in the manager's office
-7. Lobby works barring the fact that the "You'll never want to leave" repeats.
+1. Soda works, barring TV graphics
+2. Got to the bathroom properly
+3. Couldn't verify that the child "comes back" (Stole all of the coins in the vending machine but the child was still there, albeit with modified dialogue)
+4. The owl has the same error as the notepad in the sense that you can move around while the prompt appears
+5. Got the keypad in the arcade room to work but nothing happened
+6. Got the manager prompt right (albeit with no context), but nothing happens
+7. Lobby works fine.
+8. Notepad is bugged if you mash hard enough, and the bed has a race condition on it
 
