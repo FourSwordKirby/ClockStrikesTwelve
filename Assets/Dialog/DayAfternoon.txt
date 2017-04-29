@@ -1,0 +1,2 @@
+PA SYSTEM : <i> It's currently 12:00 pm </i>
+PA SYSTEM : <i> Please be sure not to miss any scheduled appointments </i>

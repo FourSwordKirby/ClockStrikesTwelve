@@ -60,16 +60,16 @@ public class GameManager : MonoBehaviour
 
         //Play event in the morning
         if (prevTime <= 0 && 0 < currentTime)
-            //StartCoroutine(dayStart.DayStart());
+            StartCoroutine(dayStart.DayStart());
 
         //Change to the afternoon
-        if (currentTime > timeLimit/3)
-            //StartCoroutine(dayAfternoon.DayEnd());
+        if (prevTime <= timeLimit/3 && timeLimit / 3 < currentTime)
+            StartCoroutine(dayAfternoon.DayAfternoon());
         //Change to evening
-        if (currentTime > (2*timeLimit)/3)
-            //StartCoroutine(dayEvening.DayEnd());
+        if (prevTime <= (2 * timeLimit) / 3 && (2 * timeLimit) / 3 < currentTime)
+            StartCoroutine(dayEvening.DayEvening());
         //Change to dead of night
-        if (currentTime > timeLimit)
+        if (prevTime <= timeLimit && timeLimit < currentTime)
             StartCoroutine(dayEnd.DayEnd());
 
         dayPhase = Mathf.Min((int)((3 * currentTime) / timeLimit), 3);

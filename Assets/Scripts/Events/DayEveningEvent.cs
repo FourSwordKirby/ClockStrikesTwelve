@@ -1,104 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DayEveningEvent : MonoBehaviour {
-    public DayEndSpook spookPrefab;
-    bool inRoom = false;
-    bool dieded = false;
-    bool dayEnding = false;
-    public float spawnDistance;
-    public float spawnRNG;
-    public float minSpawn;
-    public float maxSpawn;
+public class DayEveningEvent : MonoBehaviour
+{
+    public TextAsset dialogFile;
+    private List<string> dialogComponents;
 
-    public static DayEveningEvent instance;
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            if (this != instance)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        dialogComponents = new List<string>(dialogFile.text.Split('\n'));
+        dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
+        dialogComponents = dialogComponents.Where(x => x != "").ToList();
     }
 
-    private void Update()
+    public IEnumerator DayEvening()
     {
-        if (dayEnding && SceneManager.GetActiveScene().name == "PlayerBedroom")
-        {
-            StartCoroutine(GameManager.instance.ResetDay());
-            dayEnding = false;
-        }
-    }
+        StartCoroutine(UIController.instance.screenfader.FadeOut(1.5f));
 
-    public IEnumerator DayEnd()
-    {
-        if (!dayEnding)
+        UIController.instance.dialog.dialogBox.enabled = false;
+        UIController.instance.dialog.speakerBox.enabled = false;
+
+        GameManager.instance.SuspendGame();
+        for (int i = 0; i < dialogComponents.Count; i++)
         {
-            dayEnding = true;
-            if (SceneManager.GetActiveScene().name == "PlayerBedroom")
+            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
+            string speaker = "";
+            string dialog = "";
+            if (dialogPieces.Count() > 1)
             {
-                StartCoroutine(GameManager.instance.ResetDay());
-                dayEnding = false;
-                yield return null;
+                speaker = dialogPieces[0];
+                dialog = dialogPieces[1];
             }
             else
-            {
-                yield return StartCoroutine(spoooooooooooook());
+                dialog = dialogPieces[0];
 
-                for (int i = 0; i < Random.Range(minSpawn, maxSpawn); i++)
-                {
-                    spawnSpooks();
-                }
+            UIController.instance.dialog.displayDialog(dialog, speaker);
+
+            while (!UIController.instance.dialog.dialogCompleted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.25f);
+            //Replace this with things in the control set
+            while (!Controls.confirmInputHeld())
+            {
+                yield return new WaitForSeconds(0.1f);
             }
         }
-    }
+        yield return new WaitForSeconds(0.5f);
 
-    void spawnSpooks()
-    {
-        float x = Random.Range(-spawnRNG, spawnRNG);
-        float y = Random.Range(-spawnRNG, spawnRNG);
-        if (x < 0) x -= spawnDistance;
-        else x += spawnDistance;
-        if (y < 0) y -= spawnDistance;
-        else y += spawnDistance;
-        DayEndSpook instance = Instantiate(spookPrefab);
-        instance.transform.position = new Vector3(x, y);
-    }
+        UIController.instance.dialog.dialogBox.enabled = true;
+        UIController.instance.dialog.speakerBox.enabled = true;
+        UIController.instance.dialog.closeDialog();
+        
+        StartCoroutine(UIController.instance.screenfader.FadeIn(1.5f));
+        GameManager.instance.UnsuspendGame();
 
-    IEnumerator spoooooooooooook()
-    {
-        //Clock chimes 12
-
-        //Dim screen
-        GameManager.instance.paused = true;
-        yield return StartCoroutine(UIController.instance.screenfader.Dim());
-
-        //Rumbling/wierd images?
-
-        //finishes when clock finishes chiming
         yield return null;
     }
-
-    public void playerHit()
-    {
-        //fade to dark
-        if (!dieded)
-        {
-            dieded = true;
-            StartCoroutine(GameManager.instance.ResetDay());
-            dayEnding = false;
-        }
-    }
-
-    
 }

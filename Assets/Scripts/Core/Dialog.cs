@@ -66,6 +66,7 @@ public class Dialog {
             {
                 yield return new WaitForSeconds(0.1f);
             }
+            yield return new WaitForSeconds(0.25f);
             //Replace this with things in the control set
             while (!Controls.confirmInputHeld())
             {

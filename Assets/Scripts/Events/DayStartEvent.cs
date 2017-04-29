@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Linq;
 
 public class DayStartEvent : MonoBehaviour {
-
-    public Vector2 startPosition;
     public TextAsset dialogFile;
     private List<string> dialogComponents;
 
@@ -18,8 +16,11 @@ public class DayStartEvent : MonoBehaviour {
 
     public IEnumerator DayStart()
     {
+        StartCoroutine(UIController.instance.screenfader.FadeOut(1.5f));
+
         UIController.instance.dialog.dialogBox.enabled = false;
         UIController.instance.dialog.speakerBox.enabled = false;
+
         GameManager.instance.SuspendGame();
         for (int i = 0; i < dialogComponents.Count; i++)
         {
@@ -33,19 +34,29 @@ public class DayStartEvent : MonoBehaviour {
             }
             else
                 dialog = dialogPieces[0];
-            
+
             UIController.instance.dialog.displayDialog(dialog, speaker);
+
+            while (!UIController.instance.dialog.dialogCompleted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.25f);
+            //Replace this with things in the control set
+            while (!Controls.confirmInputHeld())
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
         }
         yield return new WaitForSeconds(0.5f);
 
         UIController.instance.dialog.dialogBox.enabled = true;
         UIController.instance.dialog.speakerBox.enabled = true;
         UIController.instance.dialog.closeDialog();
-        QuestManager.instance.introCompleted = true;
-
-        GameObject.FindObjectOfType<Player>().transform.position = startPosition;
-        StartCoroutine(UIController.instance.screenfader.FadeIn(2.0f));
+        
+        StartCoroutine(UIController.instance.screenfader.FadeIn(1.5f));
         GameManager.instance.UnsuspendGame();
+
         yield return null;
     }
 }
