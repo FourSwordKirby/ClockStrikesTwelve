@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour {
+public class QuestManager : MonoBehaviour
+{
 
     //Notepad that people write on between days
     public string notepadText;
@@ -20,7 +21,6 @@ public class QuestManager : MonoBehaviour {
     public int toiletsFlushed { get { return toiletRoomsFlushed.Count; } }
     public List<string> toiletRoomsFlushed = new List<string>();
     public bool maintenanceRequestCalled;
-    public bool maintenancePosted;
     public bool maintenanceCompleted; //Once this is true, the shower guy's room is permanently open
     public bool showerCompleted;
 
@@ -28,8 +28,9 @@ public class QuestManager : MonoBehaviour {
     public bool drinkTaken;
     public bool snoopMet;
     public bool tvOff;
-    public int ideaCount{ get { return ideas.Count; } }
+    public int ideaCount { get { return ideas.Count; } }
     public List<string> ideas;
+    public bool writerLocked;
     public bool writerCompleted;
 
     //Used for the mother child quest
@@ -57,7 +58,7 @@ public class QuestManager : MonoBehaviour {
 
     private void Update()
     {
-        if(GameManager.instance.dayPhase >= 2)
+        if (GameManager.instance.dayPhase >= 2)
         {
             changeLockedOut = changeInMachine > 0;
             changeInMachine = 0;
@@ -67,11 +68,12 @@ public class QuestManager : MonoBehaviour {
     public void RestartQuests()
     {
         toiletRoomsFlushed = new List<string>();
-        if(maintenanceRequestCalled)
-            maintenancePosted = true;
+        if (maintenanceRequestCalled)
+            maintenanceCompleted = true;
 
-        if(!tvOff)
+        if (!tvOff)
             drinkTaken = true;
+        writerLocked = false;
 
         if (!momChildCompleted)
             changeInMachine = 5;
@@ -85,22 +87,7 @@ public class QuestManager : MonoBehaviour {
 
     public void FlushToilet(string roomName)
     {
-        if(!IsRoomFlushed(roomName))
+        if (!IsRoomFlushed(roomName))
             toiletRoomsFlushed.Add(roomName);
-    }
-
-    public void RequestMaintenance()
-    {
-        maintenanceRequestCalled = true;
-    }
-
-    public void PostMaintenance()
-    {
-        maintenancePosted = true;
-    }
-
-    public void CompleteMaintenanace()
-    {
-        maintenanceCompleted = true;
     }
 }

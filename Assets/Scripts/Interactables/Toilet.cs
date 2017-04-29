@@ -33,7 +33,7 @@ public class Toilet : Interactable
     public override void Interact()
     {
         MarkRoomFlushed();
-        if (QuestManager.instance.toiletsFlushed == 4)
+        if (QuestManager.instance.toiletsFlushed >= 4)
         {
             QuestManager.instance.maintenanceRequestCalled = true;
         }

@@ -29,13 +29,16 @@ public class WriterNPC : NPC
         base.Interact();
         SetCurrentDialog();
 
-        if (currentDialog= writerPrompt1)
+        if (currentDialog == writerIntro && !QuestManager.instance.writerLocked)
             StartCoroutine(Talk());
         else
-            StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerPrompt1.text), 
-                                    "dog",
-                                    new List<string>(),
-                                    Dialog.CreateDialogComponents(writerWrong1.text)));
+        {
+                StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerPrompt1.text),
+                                        "dog",
+                                        new List<string>(),
+                                        Dialog.CreateDialogComponents(writerWrong1.text)));
+                QuestManager.instance.writerLocked = true;
+        }
     }
 
     private void SetCurrentDialog()
@@ -51,6 +54,12 @@ public class WriterNPC : NPC
             }
             if (QuestManager.instance.ideaCount == 3)
                 currentDialog = writerSuccess;
+            else if (QuestManager.instance.ideaCount == 2)
+                currentDialog = writerWrong3;
+            else if (QuestManager.instance.ideaCount == 1)
+                currentDialog = writerWrong2;
+            else if (QuestManager.instance.ideaCount == 0)
+                currentDialog = writerWrong1;
         }
     }
 
