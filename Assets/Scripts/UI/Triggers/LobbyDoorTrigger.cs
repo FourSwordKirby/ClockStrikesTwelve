@@ -11,6 +11,7 @@ public class LobbyDoorTrigger : MonoBehaviour {
     private TextAsset currentDialog;
 
     public Collider2D largerTriggerBox;
+    public Collider2D smallerTriggerBox;
 
     private void Update()
     {
@@ -19,8 +20,7 @@ public class LobbyDoorTrigger : MonoBehaviour {
         else
             largerTriggerBox.enabled = false;
     }
-
-    // Use this for initialization
+    
     void OnTriggerEnter2D(Collider2D col)
     {
         Player player = col.gameObject.GetComponent<Player>();
@@ -33,14 +33,19 @@ public class LobbyDoorTrigger : MonoBehaviour {
                 StartCoroutine(UIController.instance.screenfader.FadeOut(0.1f));
                 StartCoroutine(TitleFade());
             }
+            else if (currentDialog == null)
+            {
+                smallerTriggerBox.enabled = false;
+            }
             else
+            {
                 StartCoroutine(Talk());
+            }
         }
     }
     
     private void SetCurrentDialog()
     {
-        //TODO: this is just placeholder
         if (!QuestManager.instance.talkedToManager)
         {
             currentDialog = Door1;
@@ -50,8 +55,15 @@ public class LobbyDoorTrigger : MonoBehaviour {
             currentDialog = Door2;
             QuestManager.instance.talkedToManagerPart2 = true;
         }
-        else
+        else if (!QuestManager.instance.leftLobby)
+        {
             currentDialog = Door3;
+            QuestManager.instance.leftLobby = true;
+        }
+        else
+        {
+            currentDialog = null;
+        }
     }
 
     IEnumerator Talk()
@@ -61,34 +73,10 @@ public class LobbyDoorTrigger : MonoBehaviour {
 
     IEnumerator TitleFade()
     {
-        List<string> dialogComponents = Dialog.CreateDialogComponents(currentDialog.text);
-        GameManager.instance.SuspendGame();
-        for (int i = 0; i < dialogComponents.Count; i++)
+        if (currentDialog != null)
         {
-            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
-            string speaker = "";
-            string dialog = "";
-            if (dialogPieces.Length > 1)
-            {
-                speaker = dialogPieces[0];
-                dialog = dialogPieces[1];
-            }
-            else
-                dialog = dialogPieces[0];
-            UIController.instance.dialog.displayDialog(dialog, speaker);
-            while (!UIController.instance.dialog.dialogCompleted)
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
-            //Replace this with things in the control set
-            while (!Controls.confirmInputHeld())
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
+            yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(currentDialog.text));
         }
-        UIController.instance.dialog.closeDialog();
-        GameManager.instance.UnsuspendGame();
-
         GameManager.instance.StartSceneTransition("PlayerBedroom");
         QuestManager.instance.introCompleted = true;
     }

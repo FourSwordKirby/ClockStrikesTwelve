@@ -11,6 +11,7 @@ public class QuestManager : MonoBehaviour {
     //Used for the introduction on the very first day
     public bool talkedToManager;
     public bool talkedToManagerPart2;
+    public bool leftLobby;
 
     //Used for the start of the day event
     public bool introCompleted;

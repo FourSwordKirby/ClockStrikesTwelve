@@ -76,7 +76,7 @@ public class DialogUI : MonoBehaviour
         //Fix this up later bc it's causing errors atm
         Voices.StartVoice(0, dialog);
 
-        print("Dialog to display: " + dialog);
+        //print("Dialog to display: " + dialog);
 
         dialogCompleted = false;
 

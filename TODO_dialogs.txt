@@ -57,9 +57,6 @@ Arcade room:
 3. The child interaction box is covered heavily by the machine
 4. The machine doesn't have proper dialogue
 
-Lobby:
-1. If you go to sleep the "You'll never want to leave" is replayed after the initial encounter
-
 UI:
 1. After a while the clock's hands desync, making it difficult to tell time. The clock also ends at "6:30"; not sure how the clock's supposed to look so left it alone.
 2. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce.
