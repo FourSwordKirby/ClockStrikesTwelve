@@ -33,6 +33,8 @@ public class QuestManager : MonoBehaviour {
     public bool writerCompleted;
 
     //Used for the mother child quest
+    public bool changeLockedOut;
+    public bool sentHome;
     public int changeInMachine;
     public bool momChildCompleted;
 
@@ -53,6 +55,15 @@ public class QuestManager : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        if(GameManager.instance.dayPhase >= 2)
+        {
+            changeLockedOut = changeInMachine > 0;
+            changeInMachine = 0;
+        }
+    }
+
     public void RestartQuests()
     {
         toiletRoomsFlushed = new List<string>();
@@ -62,8 +73,9 @@ public class QuestManager : MonoBehaviour {
         if(!tvOff)
             drinkTaken = true;
 
-        if(!momChildCompleted)
+        if (!momChildCompleted)
             changeInMachine = 5;
+        QuestManager.instance.sentHome = false;
     }
 
     public bool IsRoomFlushed(string roomName)

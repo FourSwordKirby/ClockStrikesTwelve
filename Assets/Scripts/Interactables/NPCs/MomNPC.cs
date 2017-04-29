@@ -20,9 +20,9 @@ public class MomNPC : NPC {
 
     private void SetCurrentDialog()
     {
-        if (!QuestCompleted)
+        if (!QuestManager.instance.momChildCompleted)
         {
-            if(GameManager.instance.currentTime < 20) //Fix this to be the proper time
+            if(GameManager.instance.dayPhase != 2) //Fix this to be the proper time
                 currentDialog = IntroText;
             else
                 currentDialog = InProgressText;

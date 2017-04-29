@@ -10,31 +10,61 @@ public class ChildNPC : NPC
     public TextAsset SentBackText;
     public TextAsset ReturnedHomeText;
 
+    public bool inArcade;
     public bool TalkedOnce;
     public bool NoQuarters;
     public bool SentHome;
 
     private TextAsset currentDialog;
 
+    private void Awake()
+    {
+        inArcade = GameManager.instance.GetSceneName() == "ArcadeRoom" && !QuestManager.instance.sentHome;
+    }
+
+    public void Update()
+    {
+        if(GameManager.instance.dayPhase >= 2)
+        {
+            if (inArcade)
+                this.gameObject.SetActive(true);
+            else
+                this.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (inArcade)
+                this.gameObject.SetActive(false);
+            else
+                this.gameObject.SetActive(true);
+        }
+
+    }
+
     public override void Interact()
     {
         base.Interact();
         SetCurrentDialog();
         StartCoroutine(Talk());
-        // TODO: move to room if SentHome and in arcade
     }
 
     private void SetCurrentDialog()
     {
-        if (!TalkedOnce)
+        if (inArcade && QuestManager.instance.changeLockedOut)
         {
             currentDialog = ArcadeIntroText;
         }
-        else if (!NoQuarters)
+        else if (inArcade && !QuestManager.instance.changeLockedOut)
         {
             currentDialog = ArcadeNoMoneyText;
+            QuestManager.instance.sentHome = true;
+            QuestManager.instance.momChildCompleted = true;
         }
-        else if (SentHome)
+        else if (QuestManager.instance.sentHome && inArcade)
+        {
+            currentDialog = SentBackText;
+        }
+        else if (QuestManager.instance.sentHome && !inArcade)
         {
             currentDialog = ReturnedHomeText;
         }
