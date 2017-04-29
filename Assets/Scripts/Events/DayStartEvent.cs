@@ -5,7 +5,6 @@ using System.Linq;
 
 public class DayStartEvent : MonoBehaviour {
 
-    public GameObject normalSceneSetup;
     public Vector2 startPosition;
     public TextAsset dialogFile;
     private List<string> dialogComponents;
@@ -17,17 +16,7 @@ public class DayStartEvent : MonoBehaviour {
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
     }
 
-    void Start()
-    {
-        if(!QuestManager.instance.introCompleted)
-        {
-            normalSceneSetup.SetActive(false);
-            UIController.instance.screenfader.CutToColor(Color.white);
-            StartCoroutine(IntroSequence());
-        }
-    }
-
-    IEnumerator IntroSequence()
+    public IEnumerator DayStart()
     {
         UIController.instance.dialog.dialogBox.enabled = false;
         UIController.instance.dialog.speakerBox.enabled = false;
