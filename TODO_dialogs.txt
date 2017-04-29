@@ -40,9 +40,12 @@ General:
 1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
 2. If you try to talk to someone and a red blob hits you, you're not allowed to move anymore when you wake up (Only happened once)
 3. Very glitchy behavior upon getting day resetted when entering a room, showerman room in particular.
-4. Dialogue boxes sometimes give day reset invuln. After gathering all of the blobs it's possible to roam. Not sure how to handle this case.
-5. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
-6. If entering a room at the same time the "The day's over stranger" dialogue appears it's stuck there until more dialogue is triggered
+4. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
+
+Day End mechanics:
+1. If the day ends and you encounter red blobs, you can talk to someone to get blob invuln
+2. If you change rooms after all blobs have spawned, they will not respawn again
+3. Exiting your room while the day resets causes glitchy behavior
 
 Owl room:
 
