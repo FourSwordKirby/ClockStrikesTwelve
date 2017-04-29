@@ -16,7 +16,7 @@ public class ShowerRoomTrigger : MonoBehaviour {
         Player player = col.gameObject.GetComponent<Player>();
         if (player != null)
         {
-            if (firstWalkIn)
+            if (firstWalkIn && !QuestManager.instance.showerCompleted)
             {
                 SetCurrentDialog();
                 StartCoroutine(Talk());

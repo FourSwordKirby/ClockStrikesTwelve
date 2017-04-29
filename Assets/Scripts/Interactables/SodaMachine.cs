@@ -11,8 +11,6 @@ public class SodaMachine : Interactable {
 
     private TextAsset currentDialog;
 
-    public bool hasSoda;
-
     private List<string> dialogComponents;
 
     public override void Interact()
@@ -23,10 +21,13 @@ public class SodaMachine : Interactable {
 
     private void SetCurrentDialog()
     {
-        if (hasSoda)
+        if (!QuestManager.instance.drinkTaken)
         {
-            hasSoda = false;
+            QuestManager.instance.drinkTaken = true;
             currentDialog = SodaGetText;
+
+            GameManager.instance.playSound(SoundType.Item, "ItemGet");
+            Player.instance.items.Add(inventoryItem);
         }
         else
             currentDialog = NoSodaText;

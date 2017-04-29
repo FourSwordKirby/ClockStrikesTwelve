@@ -17,6 +17,11 @@ public class ShowerToilet : Interactable
         UpdateSprite();
     }
 
+    private void Update()
+    {
+        this.flushed = QuestManager.instance.IsRoomFlushed(GameManager.instance.GetSceneName());
+    }
+
     private void UpdateSprite()
     {
         if (!flushed)
@@ -44,6 +49,7 @@ public class ShowerToilet : Interactable
     IEnumerator FlushCutscene()
     {
         string text = flushed ? AlreadyFlushedResponse.text : FlushResponse.text;
+        MarkRoomFlushed();
         yield return Dialog.DisplayDialog(Dialog.CreateDialogComponents(text));
     }
 }

@@ -17,13 +17,11 @@ public class VendingMachine : Interactable {
 
     private TextAsset currentDialog;
 
-    public int coinsRemaining;
-
     private List<string> dialogComponents;
 
     public override void Interact()
     {
-        if (coinsRemaining == 5)
+        if (QuestManager.instance.changeInMachine == 5)
             StartCoroutine(Prompt(Dialog.CreateDialogComponents(VendingPrompt.text),
                                     "5125",
                                     Dialog.CreateDialogComponents(VendingCorrectText5.text),
@@ -37,27 +35,27 @@ public class VendingMachine : Interactable {
 
     private void SetCurrentDialog()
     {
-        if (coinsRemaining == 4)
+        if (QuestManager.instance.changeInMachine == 4)
         {
             currentDialog = VendingCorrectText4;
-            coinsRemaining--;
+            decreaseCoins();
         }
-        else if (coinsRemaining == 3)
+        else if (QuestManager.instance.changeInMachine == 3)
         {
             currentDialog = VendingCorrectText3;
-            coinsRemaining--;
+            decreaseCoins();
         }
-        else if (coinsRemaining == 2)
+        else if (QuestManager.instance.changeInMachine == 2)
         {
             currentDialog = VendingCorrectText2;
-            coinsRemaining--;
+            decreaseCoins();
         }
-        else if (coinsRemaining == 1)
+        else if (QuestManager.instance.changeInMachine == 1)
         {
             currentDialog = VendingCorrectText1;
-            coinsRemaining--;
+            decreaseCoins();
         }
-        else if (coinsRemaining == 0)
+        else if (QuestManager.instance.changeInMachine == 0)
         {
             currentDialog = VendingCorrectText0;
         }
@@ -65,8 +63,9 @@ public class VendingMachine : Interactable {
 
     void decreaseCoins()
     {
-        coinsRemaining--;
+        QuestManager.instance.changeInMachine--;
         GameManager.instance.playSound(SoundType.Item, "ItemGet");
+        Player.instance.items.Add(inventoryItem);
     }
 
     IEnumerator Talk()

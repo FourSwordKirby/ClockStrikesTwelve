@@ -90,5 +90,6 @@ public class LobbyDoorTrigger : MonoBehaviour {
         GameManager.instance.UnsuspendGame();
 
         GameManager.instance.StartSceneTransition("PlayerBedroom");
+        QuestManager.instance.introCompleted = true;
     }
 }

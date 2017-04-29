@@ -28,15 +28,9 @@ Starting room:
 4. Can't make maintenance requests...? 
 
 Office: 
-1. The light has a very obvious upper bound
-
-Lobby:
-1. Makes no topological sense unless the entrance to the hotel is through underground stairs or something; shouldn't entry be done through a side door?
-2. When exiting the room, the game always fades to white and puts you back in the player room.
+1. The light has a very obvious upper bound (Not fixable due to single layer sprites)
 
 Shower room:
-1. I assume that it's known that the shower quest line doesn't exactly work (try now? Essentially flush all toilets and try to get into the player door)
-2. Room resets every entrance
 
 General:
 1. After playing a while, there's a null reference in dayAfternoon.DayEnd() (Line 60 & 63 of gameManager)
@@ -46,11 +40,9 @@ General:
 5. When walking diagonally and entering a room, it's necessary to let go of the keys before walking diagonally again; usually you're constrained to walk vertically.
 
 Owl room:
-1. The bottom left stack of papers disappear sometimes. Not sure why but it looks kinda glitchy. (Also papers are leaking out through the walls)
 
 Snoop room:
-1. It's easy to get stuck behind the left side of the golden toilet; the collision box should probably be made smaller.
-2. Snoop dialogue resets upon entrance.
+1. Make it so the TV shuts off if you shove a soda on it
 
 Arcade room:
 1. You don't actually get a soda from the machine yet despite what the text tells you, and the state of the machine resets upon room entry.

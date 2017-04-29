@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SnoopDogNPC : NPC
 {
-    public bool met = false;
-    public bool satisfied = false;
     public TextAsset InitialRequest; //False false
     public TextAsset RepeatedRequest; //True false (nothing in inventory)
     public TextAsset SatisfiedRequest; //True false (soda in inventory)
@@ -22,12 +20,12 @@ public class SnoopDogNPC : NPC
 
     private void SetCurrentDialog()
     {
-        if (!met)
+        if (!QuestManager.instance.snoopMet)
         {
             currentDialog = InitialRequest;
-            met = true;
+            QuestManager.instance.snoopMet = true;
         }
-        else if (satisfied)
+        else if (QuestManager.instance.tvOff)
         {
             currentDialog = YourName;
         }
@@ -42,7 +40,6 @@ public class SnoopDogNPC : NPC
             else
             {
                 Player.instance.items.Remove(ourSoda);
-                satisfied = true;
                 currentDialog = SatisfiedRequest;
                 QuestManager.instance.tvOff = true;
             }

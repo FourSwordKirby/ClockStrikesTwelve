@@ -10,6 +10,7 @@ public class ShowerRoomDoor : Interactable
     //public TextAsset RequestMaintenance2;
     public TextAsset PostMaintenance;
 
+    public Collider2D doorEntranceBox;
     public Collider2D lockCollisionBox;
 
     private TextAsset currentDialog;
@@ -17,7 +18,15 @@ public class ShowerRoomDoor : Interactable
     private void Update()
     {
         if (!QuestManager.instance.maintenanceCompleted)
+        {
+            doorEntranceBox.enabled = false;
+            lockCollisionBox.enabled = true;
+        }
+        else
+        {
+            doorEntranceBox.enabled = true;
             lockCollisionBox.enabled = false;
+        }
     }
 
     public override void Interact()

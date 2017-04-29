@@ -17,6 +17,11 @@ public class Toilet : Interactable
         UpdateSprite();
     }
 
+    void Update()
+    {
+        this.flushed = QuestManager.instance.IsRoomFlushed(GameManager.instance.GetSceneName());
+    }
+
     private void UpdateSprite()
     {
         if (!flushed)
