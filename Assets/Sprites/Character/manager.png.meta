@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: 0ba337a8feba30d4e8ca9a44d0b1f47f
-timeCreated: 1493327622
+timeCreated: 1493502449
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: manager_0
+    21300002: manager_1
+    21300004: manager_2
+    21300006: manager_3
+    21300008: manager_4
+    21300010: manager_5
+    21300012: manager_6
+    21300014: manager_7
+    21300016: manager_8
+    21300018: manager_9
+    21300020: manager_12
+    21300022: manager_13
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +70,173 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: manager_0
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1511
+        width: 238
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_1
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 1520
+        width: 252
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_2
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1527
+        width: 241
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_3
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 1520
+        width: 244
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1012
+        width: 237
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_5
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1024
+        width: 248
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_6
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 1028
+        width: 244
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_7
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 1020
+        width: 240
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_8
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 516
+        width: 327
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_9
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 524
+        width: 400
+        height: 460
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_12
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 524
+        width: 328
+        height: 462
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: manager_13
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 531
+        width: 399
+        height: 459
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
