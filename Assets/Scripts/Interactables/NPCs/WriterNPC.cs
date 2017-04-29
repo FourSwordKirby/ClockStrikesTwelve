@@ -29,7 +29,7 @@ public class WriterNPC : NPC
         base.Interact();
         SetCurrentDialog();
 
-        if (currentDialog == writerIntro && !QuestManager.instance.writerLocked)
+        if (currentDialog == writerIntro || QuestManager.instance.writerLocked)
             StartCoroutine(Talk());
         else
         {
@@ -68,7 +68,7 @@ public class WriterNPC : NPC
         if (QuestManager.instance.ideaCount == 0)
             StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerProtagCorrect1.text),
                                     "politician",
-                                    new List<string>(),
+                                    new List<string>() { "That idea is pretty good"},
                                     Dialog.CreateDialogComponents(writerWrong2.text)));
         if (QuestManager.instance.ideaCount == 1)
             StartCoroutine(Prompt(Dialog.CreateDialogComponents(writerAntagCorrect2.text),
