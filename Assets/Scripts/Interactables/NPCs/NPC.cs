@@ -13,7 +13,7 @@ public abstract class NPC : Interactable
     public Sprite leftSprite;
     public Sprite rightSprite;
 
-    void Start()
+    public void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }

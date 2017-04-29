@@ -17,8 +17,9 @@ public class ChildNPC : NPC
 
     private TextAsset currentDialog;
 
-    private void Start()
+    void Start()
     {
+        base.Start();
         inArcade = GameManager.instance.GetSceneName() == "ArcadeRoom" && !QuestManager.instance.sentHome;
     }
 
