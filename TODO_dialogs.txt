@@ -51,6 +51,7 @@ Snoop room:
 Arcade room:
 1. Getting coins doesn't actually do anything...?
 2. The machine doesn't have proper dialogue
+3. The vending machine technically doesn't have proper dialogue either.
 
 UI:
 1. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce; likely not a problem anymore.
