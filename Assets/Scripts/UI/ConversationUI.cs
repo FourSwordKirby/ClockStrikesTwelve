@@ -32,7 +32,7 @@ public class ConversationUI : MonoBehaviour {
             InventorySlots[i].gameObject.SetActive(false);
         }
         int idx = 0;
-        foreach (InventoryItem item in Player.instance.items)
+        foreach (ConversationItem item in Player.instance.conversations)
         {
             InventorySlots[idx].gameObject.SetActive(true);
             InventorySlots[idx].GetComponentInChildren<Text>().text = item.itemName;
