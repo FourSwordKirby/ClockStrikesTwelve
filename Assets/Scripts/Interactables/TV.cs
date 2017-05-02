@@ -19,6 +19,14 @@ public class TV : Interactable
         spriteRenderer = tv.GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        if(QuestManager.instance.tvOff)
+            spriteRenderer.sprite = offSprite;
+        else
+            spriteRenderer.sprite = onSprite;
+    }
+
     public override void Interact()
     {
         SetCurrentDialog();

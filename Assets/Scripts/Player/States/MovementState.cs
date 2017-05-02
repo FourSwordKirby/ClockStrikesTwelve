@@ -23,15 +23,19 @@ public class MovementState : State<Player> {
     override public void Execute()
     {
         Vector2 movementVector = Controls.getDirection();
-        player.direction = Parameters.vectorToDirection(movementVector);
-
-        player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
-        player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
 
         Parameters.InputDirection input_direction = Controls.getInputDirection();
         if (input_direction == Parameters.InputDirection.None)
         {
             player.ActionFsm.ChangeState(new IdleState(player, player.ActionFsm));
+        }
+        else
+        {
+            player.direction = Parameters.vectorToDirection(movementVector);
+
+            player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
+            player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
+
         }
     }
 

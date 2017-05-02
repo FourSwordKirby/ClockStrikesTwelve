@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public Parameters.InputDirection direction { get; set; }
 
     public List<InventoryItem> items;
-    public List<ConversationItem> conversations;
+    public List<ConversationItem> conversations = new List<ConversationItem>();
 
     public const int DEFAULT_MAX_HEALTH = 12;
     public const float DEFAULT_SPEED = 3.0f;

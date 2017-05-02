@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ public class MomNPC : NPC {
         else
         {
             currentDialog = CompletedText;
+            if(Player.instance.conversations.Find(x => x.itemName == "time") == null)
+                Player.instance.conversations.Add(new ConversationItem("time", "I wish we had more of it"));
         }
     }
 

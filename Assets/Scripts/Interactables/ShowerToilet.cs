@@ -36,6 +36,9 @@ public class ShowerToilet : Interactable
 
     public override void Interact()
     {
+        if(!QuestManager.instance.showerCompleted)
+            Player.instance.conversations.Add(new ConversationItem("mac", "Supposedly your name"));
+
         QuestManager.instance.showerCompleted = true;
         StartCoroutine(FlushCutscene());
         //Add an item to the list of the player's known words
