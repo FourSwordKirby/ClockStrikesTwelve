@@ -19,11 +19,18 @@ Glitches during yes and no
 Audio Cuts off when walking (may not even be necessary)
 Add sink interaction
 Sound: 
-    Shower SFX
-    Light Click
-    Can we drop footsteps?
-    Doors Opening Revamp
-    Arcade Machine SFX
+    Shower SFX --Done
+    Light Click --Kinda done
+    Can we drop footsteps? --Placed a list of alternate footstep suggestions, not heavily curated
+    Doors Opening Revamp --Placed a list of door sounds. door1_a_left sounds the most appropriate of the bunch though I think.
+    Arcade Machine SFX --Done
+
+~~~~~
+URGENT (Gameplay only):
+1. EXTREMELY URGENT: It is possible to clip through the doors at midnight due to a lack of collision boxes on the doors but a lack of ability to open the doors
+2. Initiating dialogue seems to render the blobs impotent.
+3. Mashing A near the notepad then moving away carries the notepad screen; makes it impossible to enter in codes.
+4. Holding right and mashing A next to the bed may freeze the player until the next clock donging.
 
 ~~~~~
 James's observations:
@@ -31,18 +38,13 @@ James's observations:
 Starting room:
 1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
 		Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
-2. Player movability when opening the notebook and mashing ctrl several times is inconsistent. Also wrecks things if multiple conversations are started.
-3. There's a weird race condition with the bed that sometimes freezes you until the next day event
 
 Mom & child room:
 1. The child's dialogue should be fixed
 
 General:
-2. Very glitchy behavior upon getting day resetted when entering a room, showerman room in particular.
 
 Snoop room:
-2. Soda is bugged when delivering
-3. Soda also does not reset upon sleep
 
 Arcade room:
 1. Getting coins doesn't actually do anything...?
@@ -61,5 +63,4 @@ Playtest results:
 4. The owl has the same error as the notepad in the sense that you can move around while the prompt appears
 5. Got the keypad in the arcade room to work but nothing happened
 6. Got the manager prompt right (albeit with no context), but nothing happens
-8. Notepad is bugged if you mash hard enough, and the bed has a race condition on it
 
