@@ -5,6 +5,7 @@ using UnityEngine;
 public class ManagerNPC : NPC
 {
     public TextAsset LobbyResponseAntiSocial;
+    public TextAsset LobbyHintSleep;
     public TextAsset LobbyHintShower;
     public TextAsset LobbyHintWriter;
     public TextAsset LobbyHintMom;
@@ -59,6 +60,7 @@ public class ManagerNPC : NPC
         else
         {
             List<TextAsset> potentialDialogs = new List<TextAsset>();
+            potentialDialogs.Add(LobbyHintSleep);
             potentialDialogs.Add(LobbyResponseAntiSocial);
             if(QuestManager.instance.showerCompleted)
                 potentialDialogs.Add(LobbyHintShower);

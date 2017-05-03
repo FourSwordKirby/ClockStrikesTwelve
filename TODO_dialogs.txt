@@ -1,65 +1,22 @@
 Interactables that are unscripted:
 
 Implement alysa's custom snoop dog
+   Maybe put dancing james sprite and have alysas stuff as decor?
 Implement dripping mushroom people
 Make Quit and return to menu do things
 Events for various parts of the day (transition between morning to afternoon etc)
 	Day End Event (make the notepad show up etc)
 
-Bed (Choice selection sucks)
 
-Need a mechanism for skipping forward in time/letting the player kill time
+MUSSSIIIIC AND SOOOUUNNND
+Flush Sound
 
 ~~~~~
 Manager and it's subrooms everything
 
 The notebook doesn’t always work
-Glitches during yes and no 
-Audio Cuts off when walking (may not even be necessary)
 Add sink interaction
-Sound: 
-    Shower SFX --Done
-    Light Click --Kinda done
-    Can we drop footsteps? --Placed a list of alternate footstep suggestions, not heavily curated
-    Doors Opening Revamp --Placed a list of door sounds. door1_a_left sounds the most appropriate of the bunch though I think.
-    Arcade Machine SFX --Done
 
 ~~~~~
-URGENT (Gameplay only):
-1. EXTREMELY URGENT: It is possible to clip through the doors at midnight due to a lack of collision boxes on the doors but a lack of ability to open the doors
-2. Initiating dialogue seems to render the blobs impotent.
-3. Mashing A near the notepad then moving away carries the notepad screen; makes it impossible to enter in codes.
-4. Holding right and mashing A next to the bed may freeze the player until the next clock donging.
-
-~~~~~
-James's observations:
-
-Starting room:
-1. Footstep noises don't disappear upon walking to an interactable and interacting without letting go of the keys. -- 
-		Currently bugged in the sense that if you hold down keys during dialogue, you get silent footsteps.
-
-Mom & child room:
-1. The child's dialogue should be fixed
-
-General:
-
-Snoop room:
-
-Arcade room:
-1. Getting coins doesn't actually do anything...?
-2. The machine doesn't have proper dialogue
-3. The vending machine technically doesn't have proper dialogue either.
-
-UI:
-1. Rare: It's possible to not have the day reset under certain circumstances. Couldn't reproduce; likely not a problem anymore.
-2. Minor issue: Audio clipping occurs if running back and forth. Recommended to scale the audio down.
-
-Lobby:
-1. It's possible to wait until midnight and spawn in the room
-
-Playtest results:
-3. Couldn't verify that the child "comes back" (Stole all of the coins in the vending machine but the child was still there, albeit with modified dialogue)
-4. The owl has the same error as the notepad in the sense that you can move around while the prompt appears
-5. Got the keypad in the arcade room to work but nothing happened
-6. Got the manager prompt right (albeit with no context), but nothing happens
+James's observations
 

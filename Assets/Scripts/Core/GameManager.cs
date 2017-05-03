@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float startingTime;
     public float currentTime;
     public float timeLimit;
-    private bool justInstantiated;
+    private bool justInstantiated = false;
 
     private bool loadingScene = false;
 
@@ -51,26 +51,39 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        justInstantiated = true;
     }
 
     void Update()
     {
-        float prevTime = currentTime;
+        //EMERGENCY RESET COMBINATION
+        if (Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.B))
+        {
+            SceneManager.LoadScene("Menu");
+            SuspendGame();
+            return;
+        }
 
-        if(!DayEndEvent.instance.isDayEnding() && !paused)
-            currentTime += Time.deltaTime;
-
-        //Play event in the morning
-
-        if (prevTime <= 0 && 0 < currentTime)
+        //If we haven't done the tutorial, don't process anything
+        if (!QuestManager.instance.introCompleted)
         {
             if (justInstantiated)
             {
                 StartCoroutine(gameStart.GameStart());
                 justInstantiated = false;
             }
-            else StartCoroutine(dayStart.DayStart());
+            return;
+        }
+
+        float prevTime = currentTime;
+        print(prevTime);
+
+        if(!DayEndEvent.instance.isDayEnding() && !paused)
+            currentTime += Time.deltaTime;
+
+        //Play event in the morning
+        if (prevTime <= 0 && 0 < currentTime)
+        {
+            StartCoroutine(dayStart.DayStart());
         }
 
         //Change to the afternoon
@@ -158,7 +171,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         StartCoroutine(bgm.FadeTowards(1.0f));
         SceneManager.LoadScene("PlayerBedroom");
-        Player.instance.transform.position = new Vector2(0.95f, 0.75f);
+        Player.instance.transform.position = new Vector2(0.799f, 0.35f);
         while (UIController.instance.screenfader.fading)
         {
             yield return new WaitForSeconds(0.1f);

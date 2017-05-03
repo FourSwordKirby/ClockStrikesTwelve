@@ -50,18 +50,54 @@ public class SleepPoint : Interactable {
             }
         }
 
-        UIController.instance.choiceScreen.OpenChoices(new List<string>() { "Yes", "No" });
+        UIController.instance.choiceScreen.OpenChoices();
         while(!UIController.instance.choiceScreen.choiceMade)
         {
             yield return new WaitForSeconds(0.1f);
         }
 
         UIController.instance.choiceScreen.CloseChoices();
+
+        float markedTime = GameManager.instance.currentTime;
         if (UIController.instance.choiceScreen.currentChoice == 0)
+        {
+            if(GameManager.instance.dayPhase < 1)
+            {
+                while (GameManager.instance.currentTime < GameManager.instance.timeLimit/3)
+                {
+                    GameManager.instance.currentTime += 4*Time.deltaTime * ((GameManager.instance.timeLimit / 3) - markedTime);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                GameManager.instance.currentTime = (GameManager.instance.timeLimit / 3) - 0.5f;
+            }
+            else
+            {
+                yield return Dialog.DisplayDialog(new List<string>() { "Sleeping that late into the next day is irresponsible" });
+            }
+        }
+        if (UIController.instance.choiceScreen.currentChoice == 1)
+        {
+            if (GameManager.instance.dayPhase < 2)
+            {
+                while(GameManager.instance.currentTime < 2*GameManager.instance.timeLimit/3)
+                {
+                    GameManager.instance.currentTime += 4*Time.deltaTime * (2 * GameManager.instance.timeLimit / 3 - markedTime);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                GameManager.instance.currentTime = (2 * GameManager.instance.timeLimit / 3)-0.5f;
+            }
+            else
+            {
+                yield return Dialog.DisplayDialog(new List<string>() { "Sleeping that late into the next day is irresponsible" });
+            }
+        }
+        if (UIController.instance.choiceScreen.currentChoice == 2)
         {
             StartCoroutine(GameManager.instance.ResetDay());
         }
+
         UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
         yield return null;
     }
 }

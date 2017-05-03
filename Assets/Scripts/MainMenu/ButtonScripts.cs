@@ -76,6 +76,12 @@ public class ButtonScripts : MonoBehaviour {
 
     public void loadGame(string sc)
     {
+        StartCoroutine(gameTransition(sc));
+    }
+
+    IEnumerator gameTransition(string sc)
+    {
+        yield return StartCoroutine(overlay.fadeIn());
         gameScene = sc;
         //chnage Scene
         SceneManager.LoadScene(sc);

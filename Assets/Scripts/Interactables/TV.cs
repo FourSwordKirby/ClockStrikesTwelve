@@ -8,6 +8,7 @@ public class TV : Interactable
     private SpriteRenderer spriteRenderer;
     public Sprite offSprite;
     public Sprite onSprite;
+    public GameObject weedMusic;
 
     public TextAsset tvOnDialog;
     public TextAsset tvOffDialog;
@@ -22,9 +23,15 @@ public class TV : Interactable
     private void Update()
     {
         if(QuestManager.instance.tvOff)
+        {
             spriteRenderer.sprite = offSprite;
+            weedMusic.SetActive(false);
+        }
         else
+        {
             spriteRenderer.sprite = onSprite;
+            weedMusic.SetActive(true);
+        }
     }
 
     public override void Interact()

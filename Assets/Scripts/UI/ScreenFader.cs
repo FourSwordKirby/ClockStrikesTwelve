@@ -29,11 +29,11 @@ public class ScreenFader : MonoBehaviour
             timer += Time.deltaTime;
             if (timer < fadeTime)
             {
-                screen.color = Color.Lerp(initialColor, Color.white, timer / fadeTime);
+                screen.color = Color.Lerp(initialColor, Color.black, timer / fadeTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }
-        screen.color = Color.white;
+        screen.color = Color.black;
         fading = false;
         yield return null;
     }
@@ -51,7 +51,7 @@ public class ScreenFader : MonoBehaviour
             timer += Time.deltaTime;
             if (timer < fadeTime)
             {
-                screen.color = Color.Lerp(initialColor, Color.white - Color.black, timer / fadeTime);
+                screen.color = Color.Lerp(initialColor, Color.black - Color.black, timer / fadeTime);
                 yield return new WaitForSeconds(0.01f);
             }
         }

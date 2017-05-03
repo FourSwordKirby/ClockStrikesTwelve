@@ -12,9 +12,16 @@ public class WeatherCharm : Interactable
 
     void Awake()
     {
+
         dialogComponents = new List<string>(Instructions.text.Split('\n'));
         dialogComponents = dialogComponents.Select(x => x.Trim()).ToList();
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
+    }
+
+    void Start()
+    {
+        if (Player.instance.items.Find(x => x.itemName == inventoryItem.itemName))
+            Destroy(this.gameObject);
     }
 
     public override void Interact()

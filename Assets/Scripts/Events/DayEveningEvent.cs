@@ -24,6 +24,11 @@ public class DayEveningEvent : MonoBehaviour
         UIController.instance.dialog.dialogBox.enabled = false;
         UIController.instance.dialog.speakerBox.enabled = false;
 
+        while (UIController.instance.screenfader.fading)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
         GameManager.instance.SuspendGame();
         for (int i = 0; i < dialogComponents.Count; i++)
         {

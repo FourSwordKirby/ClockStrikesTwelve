@@ -21,6 +21,7 @@ public class LampTable : Interactable
 
     private void ToggleOn()
     {
+        GameManager.instance.playSound(SoundType.Environment, "Click");
         if (isOn)
         {
             spriteRenderer.sprite = offSprite;

@@ -33,8 +33,15 @@ public class MovementState : State<Player> {
         {
             player.direction = Parameters.vectorToDirection(movementVector);
 
-            player.anim.SetFloat("DirX", Mathf.Ceil(movementVector.x));
-            player.anim.SetFloat("DirY", Mathf.Ceil(movementVector.y));
+            if(movementVector.x != 0)
+                player.anim.SetFloat("DirX", Mathf.Sign(movementVector.x));
+            else
+                player.anim.SetFloat("DirX", 0);
+
+            if (movementVector.y != 0)
+                player.anim.SetFloat("DirY", Mathf.Sign(movementVector.y));
+            else
+                player.anim.SetFloat("DirY", 0);
 
         }
     }

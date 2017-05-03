@@ -19,12 +19,18 @@ public class DayAfternoonEvent : MonoBehaviour
 
     public IEnumerator DayAfternoon()
     {
+        GameManager.instance.SuspendGame();
+
         StartCoroutine(UIController.instance.screenfader.FadeOut(1.5f));
 
         UIController.instance.dialog.dialogBox.enabled = false;
         UIController.instance.dialog.speakerBox.enabled = false;
 
-        GameManager.instance.SuspendGame();
+        while (UIController.instance.screenfader.fading)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);

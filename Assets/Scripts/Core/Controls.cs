@@ -25,13 +25,13 @@ public class Controls {
         return Parameters.vectorToDirection(getDirection());
     }
 
-    static float cooldown = 0.1f;
+    static float cooldown = 0.075f;
     public static bool DirectionDown(Parameters.InputDirection dir)
     {
         //Hacky, probably should fix to be correct later
         if (cooldown < 0)
         {
-            cooldown = 0.2f;
+            cooldown = 0.075f;
             Parameters.InputDirection currentInput = getInputDirection();
             return currentInput == dir;
         }

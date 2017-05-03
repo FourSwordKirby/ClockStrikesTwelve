@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class DayStartEvent : MonoBehaviour {
+public class GameEndEvent : MonoBehaviour {
     public TextAsset dialogFile;
     private List<string> dialogComponents;
 
@@ -14,7 +14,7 @@ public class DayStartEvent : MonoBehaviour {
         dialogComponents = dialogComponents.Where(x => x != "").ToList();
     }
 
-    public IEnumerator DayStart()
+    public IEnumerator GameEnd()
     {
         StartCoroutine(UIController.instance.screenfader.FadeOut(1.5f));
 
@@ -58,7 +58,7 @@ public class DayStartEvent : MonoBehaviour {
         UIController.instance.dialog.dialogBox.enabled = true;
         UIController.instance.dialog.speakerBox.enabled = true;
         UIController.instance.dialog.closeDialog();
-        
+
         StartCoroutine(UIController.instance.screenfader.FadeIn(1.5f));
         GameManager.instance.UnsuspendGame();
 
