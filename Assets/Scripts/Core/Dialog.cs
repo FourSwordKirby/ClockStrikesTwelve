@@ -60,13 +60,13 @@ public class Dialog {
             }
             else
                 dialog = dialogPieces[0];
-            Debug.Log("ABout to displat");
             UIController.instance.dialog.displayDialog(dialog, speaker);
             while (!UIController.instance.dialog.dialogCompleted)
             {
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(0.25f);
+
             //Replace this with things in the control set
             while (!Controls.confirmInputHeld())
             {
@@ -119,9 +119,6 @@ public class Dialog {
                     yield return new WaitForSeconds(0.1f);
                 }
             }
-
-            //Cleanup if correct
-            func();
         }
         else
         {
@@ -154,5 +151,9 @@ public class Dialog {
         UIController.instance.dialog.closeDialog();
 
         GameManager.instance.UnsuspendGame();
+
+        //Cleanup if correct
+        if (enteredAnswer == correctAnswer)
+            func();
     }
 }

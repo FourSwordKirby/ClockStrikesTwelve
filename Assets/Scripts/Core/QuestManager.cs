@@ -27,6 +27,7 @@ public class QuestManager : MonoBehaviour
     //Used for the writer's quest
     public bool drinkTaken;
     public bool snoopMet;
+    public bool writerTalkedTo;
     public bool tvOff;
     public int ideaCount { get { return ideas.Count; } }
     public List<string> ideas;
@@ -73,6 +74,7 @@ public class QuestManager : MonoBehaviour
 
         if (!tvOff)
             drinkTaken = true;
+        writerTalkedTo = false;
         writerLocked = false;
 
         if (!momChildCompleted)

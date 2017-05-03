@@ -2,7 +2,6 @@ Interactables that are unscripted:
 
 Implement alysa's custom snoop dog
 Implement dripping mushroom people
-Fix the writer again
 Make Quit and return to menu do things
 Events for various parts of the day (transition between morning to afternoon etc)
 	Day End Event (make the notepad show up etc)

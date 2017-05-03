@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d2b476f1ba575374e84b9ee6564121f3
+timeCreated: 1493764801
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DIN Condensed
+  fontNames:
+  - DIN Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8dce8dbf583b08344b7c514ed7474c3e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
