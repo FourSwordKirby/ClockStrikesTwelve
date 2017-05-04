@@ -47,7 +47,7 @@ public class Toilet : Interactable
     private void MarkRoomFlushed()
     {
         string currentRoom = GameManager.instance.GetSceneName();
-        GameManager.instance.playSound(SoundType.Item, "toilet");
+        GameManager.instance.playSound(SoundType.Environment, "toilet");
         QuestManager.instance.FlushToilet(currentRoom);
     }
 
