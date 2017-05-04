@@ -70,7 +70,9 @@ public class QuestManager : MonoBehaviour
     {
         if (GameManager.instance.dayPhase >= 2)
         {
-            changeLockedOut = changeInMachine > 0;
+            if(!changeLockedOut)
+                changeLockedOut = changeInMachine > 0;
+            changeInMachine = 0;
         }
     }
 
@@ -85,6 +87,7 @@ public class QuestManager : MonoBehaviour
         writerTalkedTo = false;
         writerLocked = false;
 
+        changeLockedOut = false;
         if (!momChildCompleted)
             changeInMachine = 5;
         sentHome = true;

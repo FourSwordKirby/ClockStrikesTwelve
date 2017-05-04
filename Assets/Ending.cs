@@ -46,6 +46,8 @@ public class Ending : MonoBehaviour {
             {
                 yield return new WaitForSeconds(0.1f);
             }
+
+            yield return new WaitForSeconds(0.2f);
             //Replace this with things in the control set
             while (!Controls.confirmInputHeld())
             {

@@ -8,11 +8,12 @@ public class BGMController : MonoBehaviour {
 
 	// Update is called once per frame
 	public IEnumerator FadeTowards (float targetVolume, float duration=1.0f) {
-        float timer = 0;
+        float timer = 0.0f;
 
         float startingVolume = audioSrc.volume;
         while(timer < duration)
         {
+            timer += Time.deltaTime;
             audioSrc.volume = Mathf.Lerp(startingVolume, targetVolume, timer / duration);
             yield return new WaitForSeconds(0.05f);
         }

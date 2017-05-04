@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public BGMController bgm;
+    public AudioClip normalOst;
+    public AudioClip arcadeOst;
+    public AudioClip forestOst;
+
 
     public bool paused;
     public float startingTime;
@@ -187,7 +191,7 @@ public class GameManager : MonoBehaviour
         }
         UIController.instance.notepadPrompt.closeNotepad();
 
-        StartCoroutine(bgm.FadeTowards(1.0f));
+        StartCoroutine(bgm.FadeTowards(0.8f));
         SceneManager.LoadScene("PlayerBedroom");
         Player.instance.transform.position = new Vector2(0.799f, 0.35f);
         while (UIController.instance.screenfader.fading)
@@ -240,6 +244,7 @@ public class GameManager : MonoBehaviour
     {
         //Pretransition things
         Player.instance.FreezePlayer();
+        StartCoroutine(bgm.FadeTowards(0.25f));
 
         string oldSceneName = GetSceneName();
         GameManager.instance.playSound(SoundType.Environment, "RoomExit");
@@ -248,6 +253,51 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
+
+        if (sceneName == "ArcadeRoom")
+        {
+            bgm.audioSrc.clip = arcadeOst;
+            bgm.audioSrc.Play();
+        }
+        else if (sceneName == "MomChildRoom")
+        {
+            bgm.audioSrc.clip = forestOst;
+            bgm.audioSrc.Play();
+        }
+        else if (oldSceneName == "ArcadeRoom" || oldSceneName == "MomChildRoom")
+        {
+            bgm.audioSrc.clip = normalOst;
+            bgm.audioSrc.Play();
+        }
+        StartCoroutine(bgm.FadeTowards(0.80f));
+        //Small time passing flavor text
+        List<string> dialogComponents = new List<string> { "<i>Time passes</i>" };
+        for (int i = 0; i < dialogComponents.Count; i++)
+        {
+            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
+            string speaker = "";
+            string dialog = "";
+            if (dialogPieces.Length > 1)
+            {
+                speaker = dialogPieces[0];
+                dialog = dialogPieces[1];
+            }
+            else
+                dialog = dialogPieces[0];
+            UIController.instance.dialog.displayDialog(dialog, speaker);
+            while (!UIController.instance.dialog.dialogCompleted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.2f);
+
+            //Replace this with things in the control set
+            while (!Controls.confirmInputHeld())
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        UIController.instance.dialog.closeDialog();
 
         loadingScene = true;
         SceneManager.LoadScene(sceneName);
@@ -271,7 +321,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
-        currentTime += timeLimit / 36.0f;
+        currentTime += timeLimit / 54.0f;
         Player.instance.UnfreezePlayer();
     }
     
