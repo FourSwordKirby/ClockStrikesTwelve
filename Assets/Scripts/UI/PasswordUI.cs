@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PasswordUI : MonoBehaviour {
-    public Text passwordText;
+    public InputField passwordText;
 
     public void openPassword()
     {

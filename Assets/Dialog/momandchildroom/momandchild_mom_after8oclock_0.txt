@@ -2,6 +2,9 @@ MOTHER : Hey! Have you seen my child!
 MOTHER : He's gone! Vanished! What am I going to do?! 
 MOTHER : Please, you need to find him... by 11! If you don't...
 MOTHER : I tend to get emotional! Really emotional!
+MOTHER : Huh? Where might he be?
+MOTHER : He's probably engrossed in some game!
+MOTHER : Please find him. I can't move without legs!
 
 
 

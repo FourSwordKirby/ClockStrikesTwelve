@@ -61,12 +61,14 @@ public class ManagerNPC : NPC
         {
             List<TextAsset> potentialDialogs = new List<TextAsset>();
             potentialDialogs.Add(LobbyHintSleep);
-            potentialDialogs.Add(LobbyResponseAntiSocial);
-            if(QuestManager.instance.showerCompleted)
+            if (!QuestManager.instance.showerCompleted)
+            {
+                potentialDialogs.Add(LobbyResponseAntiSocial);
                 potentialDialogs.Add(LobbyHintShower);
-            else if (QuestManager.instance.writerCompleted)
+            }
+            else if (!QuestManager.instance.writerCompleted)
                 potentialDialogs.Add(LobbyHintWriter);
-            else if (QuestManager.instance.momChildCompleted)
+            else if (!QuestManager.instance.momChildCompleted)
                 potentialDialogs.Add(LobbyHintMom);
 
             currentDialog = potentialDialogs[Random.Range(0, potentialDialogs.Count)];

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public List<ConversationItem> conversations = new List<ConversationItem>();
 
     public const int DEFAULT_MAX_HEALTH = 12;
-    public const float DEFAULT_SPEED = 2.0f;
+    public const float DEFAULT_SPEED = 1.5f;
 
     public StateMachine<Player> ActionFsm { get; private set; }
 
@@ -101,14 +101,14 @@ public class Player : MonoBehaviour
     public IEnumerator ShowSymbol(Symbol interested)
     {
         //Make an animated motion tween or something
-        emotionSymbol.enabled = true;
+        emotionSymbol.gameObject.SetActive(true);
         yield return null;
     }
 
     public IEnumerator HideSymbol()
     {
         //Make an animated motion tween or something
-        emotionSymbol.enabled = false;
+        emotionSymbol.gameObject.SetActive(false);
         yield return null;
     }
 }

@@ -17,6 +17,9 @@ Manager and it's subrooms everything
 The notebook doesn’t always work
 Add sink interaction
 
+2. You can exit the room when you start sleeping
+4. The mom-child quest seems kinda unintuitive
+
 ~~~~~
 James's observations
 

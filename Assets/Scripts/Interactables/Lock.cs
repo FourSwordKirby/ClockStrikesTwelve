@@ -5,6 +5,8 @@ using System.Linq;
 
 public class Lock : Interactable {
 
+    public int designation;
+
     public string correctPassword;
 
     public TextAsset Instructions;
@@ -28,6 +30,16 @@ public class Lock : Interactable {
         failureDialogComponents = new List<string>(FailText.text.Split('\n'));
         failureDialogComponents = failureDialogComponents.Select(x => x.Trim()).ToList();
         failureDialogComponents = failureDialogComponents.Where(x => x != "").ToList();
+    }
+
+    void Update()
+    {
+        if (this.designation == 0)
+            this.gameObject.SetActive(!QuestManager.instance.lockClear0);
+        else if (this.designation == 1)
+            this.gameObject.SetActive(!QuestManager.instance.lockClear1);
+        else if (this.designation == 2)
+            this.gameObject.SetActive(!QuestManager.instance.lockClear2);
     }
 
     public override void Interact()
@@ -80,10 +92,11 @@ public class Lock : Interactable {
             }
             yield return new WaitForSeconds(0.1f);
         }
-        print(UIController.instance.passwordPrompt.getAnswer().Length);
         UIController.instance.passwordPrompt.closePassword();
 
-        string enteredPassword = UIController.instance.passwordPrompt.getAnswer();
+        string enteredPassword = UIController.instance.passwordPrompt.getAnswer().ToLower().Trim();
+        print(enteredPassword);
+        print(correctPassword);
         if(enteredPassword == correctPassword)
         {
             for (int i = 0; i < successDialogComponents.Count; i++)
@@ -111,6 +124,14 @@ public class Lock : Interactable {
                     yield return new WaitForSeconds(0.1f);
                 }
             }
+
+            //Clearing the lock
+            if (this.designation == 0)
+                QuestManager.instance.lockClear0 = true;
+            else if (this.designation == 1)
+                QuestManager.instance.lockClear1 = true;
+            else if (this.designation == 2)
+                QuestManager.instance.lockClear2 = true;
         }
         else
         {

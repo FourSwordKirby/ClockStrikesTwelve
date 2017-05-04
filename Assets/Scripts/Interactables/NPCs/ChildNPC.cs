@@ -54,6 +54,7 @@ public class ChildNPC : NPC
         if (inArcade && QuestManager.instance.changeLockedOut)
         {
             currentDialog = ArcadeIntroText;
+            QuestManager.instance.childTalked = true;
         }
         else if (inArcade && !QuestManager.instance.changeLockedOut)
         {

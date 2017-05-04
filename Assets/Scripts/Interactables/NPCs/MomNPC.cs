@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class MomNPC : NPC {
     public TextAsset IntroText;
+
     public TextAsset InProgressText;
+    public TextAsset InProgressText1;
+    public TextAsset InProgressText2;
+
     public TextAsset CompletedText;
 
     public bool QuestCompleted;
@@ -26,7 +30,17 @@ public class MomNPC : NPC {
             if(GameManager.instance.dayPhase != 2) //Fix this to be the proper time
                 currentDialog = IntroText;
             else
-                currentDialog = InProgressText;
+            {
+                if(QuestManager.instance.childTalked && QuestManager.instance.momTalked)
+                    currentDialog = InProgressText2;
+                else if (QuestManager.instance.childTalked)
+                {
+                    currentDialog = InProgressText1;
+                    QuestManager.instance.momTalked = true;
+                }
+                else
+                    currentDialog = InProgressText;
+            }
         }
         else
         {

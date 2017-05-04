@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    float prevTime;
     void Update()
     {
         //EMERGENCY RESET COMBINATION
@@ -74,9 +75,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        float prevTime = currentTime;
-        print(prevTime);
-
         if(!DayEndEvent.instance.isDayEnding() && !paused)
             currentTime += Time.deltaTime;
 
@@ -97,6 +95,8 @@ public class GameManager : MonoBehaviour
             StartCoroutine(dayEnd.DayEnd());
 
         dayPhase = Mathf.Min((int)((3 * currentTime) / timeLimit), 3);
+
+        prevTime = currentTime;
     }
 
     /// <summary>
@@ -169,6 +169,22 @@ public class GameManager : MonoBehaviour
 
         playSound(SoundType.Environment, "Clock");
         yield return new WaitForSeconds(2.0f);
+
+        //Notepad parts
+        StartCoroutine(Dialog.DisplayDialog(new List<string>() { "Record what you've thought of the day's experiences" }));
+
+        UIController.instance.notepadPrompt.openNotepad();
+        yield return new WaitForSeconds(1.0f);
+        while (true)
+        {
+            if (Controls.cancelInputHeld() || Controls.confirmInputHeld())
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+        UIController.instance.notepadPrompt.closeNotepad();
+
         StartCoroutine(bgm.FadeTowards(1.0f));
         SceneManager.LoadScene("PlayerBedroom");
         Player.instance.transform.position = new Vector2(0.799f, 0.35f);
@@ -253,6 +269,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
+        currentTime += timeLimit / 36.0f;
         Player.instance.UnfreezePlayer();
     }
     

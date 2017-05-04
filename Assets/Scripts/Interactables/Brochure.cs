@@ -11,7 +11,6 @@ public class Brochure : Interactable
     private List<string> dialogComponents;
     //bool isBloody = false;
     private SpriteRenderer spriteRenderer;
-    public Sprite originalSprite;
     //public Sprite bloodySprite;
 
     void Awake()

@@ -91,7 +91,7 @@ public class Dialog {
         }
         UIController.instance.passwordPrompt.closePassword();
 
-        string enteredAnswer = UIController.instance.passwordPrompt.getAnswer();
+        string enteredAnswer = UIController.instance.passwordPrompt.getAnswer().ToLower().Trim();
         if (enteredAnswer == correctAnswer)
         {
             for (int i = 0; i < correctComponents.Count; i++)

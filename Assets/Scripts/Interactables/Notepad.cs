@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Notepad : Interactable
 {
-    public TextAsset dayEndNotepadPrompt; //Figure out how to get this to display on day reset when you die
     public TextAsset NotepadPrompt;
 
     public override void Interact()

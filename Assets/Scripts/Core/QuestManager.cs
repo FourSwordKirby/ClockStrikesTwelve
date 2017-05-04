@@ -38,7 +38,16 @@ public class QuestManager : MonoBehaviour
     public bool changeLockedOut;
     public bool sentHome;
     public int changeInMachine;
+
+    public bool childTalked;
+    public bool momTalked;
+
     public bool momChildCompleted;
+
+    //Used to control locks
+    public bool lockClear0;
+    public bool lockClear1;
+    public bool lockClear2;
 
     public static QuestManager instance;
     void Awake()
@@ -74,11 +83,14 @@ public class QuestManager : MonoBehaviour
 
         if (!tvOff)
             drinkTaken = true;
+        ideas = new List<string>();
         writerTalkedTo = false;
         writerLocked = false;
 
         if (!momChildCompleted)
             changeInMachine = 5;
+        childTalked = false;
+        momTalked = false;
         QuestManager.instance.sentHome = false;
     }
 

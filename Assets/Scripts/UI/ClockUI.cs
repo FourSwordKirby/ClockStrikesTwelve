@@ -9,6 +9,8 @@ public class ClockUI : MonoBehaviour
     public GameObject HourHand;
     public GameObject MinuteHand;
 
+    public Image ClockBase;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +27,12 @@ public class ClockUI : MonoBehaviour
                                                                 Quaternion.Euler(Vector3.forward * ((float)(currentMinuteAngle * (-360) - 0.25))),
                                                                 0.01f);
 
+        if (GameManager.instance.dayPhase > 3)
+            ClockBase.color = Color.red;
+        else if (GameManager.instance.dayPhase == 2)
+            ClockBase.color = Color.grey;
+        else
+            ClockBase.color = Color.white;
         /*
         HourHand.gameObject.transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.forward * 0),
                                                                 Quaternion.Euler(Vector3.forward * -90),
