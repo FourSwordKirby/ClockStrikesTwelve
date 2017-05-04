@@ -21,11 +21,10 @@ public class SodaMachine : Interactable {
 
     private void SetCurrentDialog()
     {
-        if (!QuestManager.instance.drinkTaken)
+        if (!QuestManager.instance.drinkTaken && Player.instance.items.Find(x => x.designation == ItemDesignation.Soda) == null)
         {
             QuestManager.instance.drinkTaken = true;
             currentDialog = SodaGetText;
-
             GameManager.instance.playSound(SoundType.Item, "ItemGet");
             Player.instance.items.Add(inventoryItem);
         }

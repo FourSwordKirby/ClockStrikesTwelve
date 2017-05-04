@@ -7,6 +7,7 @@ public class SnoopDogNPC : NPC
     public TextAsset InitialRequest; //False false
     public TextAsset RepeatedRequest; //True false (nothing in inventory)
     public TextAsset SatisfiedRequest; //True false (soda in inventory)
+    public TextAsset Rapper; //huehue //True true
     public TextAsset YourName; //huehue //True true
 
     private TextAsset currentDialog;
@@ -27,19 +28,21 @@ public class SnoopDogNPC : NPC
         }
         else if (QuestManager.instance.tvOff)
         {
-            currentDialog = YourName;
+            if (!QuestManager.instance.showerCompleted)
+                currentDialog = YourName;
+            else
+                currentDialog = Rapper;
         }
         else
         {
-            var ourSoda = Player.instance.items.Find(x => x.designation == ItemDesignation.Soda);
+            var ourSoda = Player.instance.items.Find(x => x.itemName == "Mao 10 Dude Soda");
             if (ourSoda == null)
             {
                 currentDialog = RepeatedRequest;
-
             }
             else
             {
-                Player.instance.items.Remove(ourSoda);
+                ourSoda.itemName = "Empty Mao 10 Dude Soda";
                 currentDialog = SatisfiedRequest;
                 QuestManager.instance.tvOff = true;
             }

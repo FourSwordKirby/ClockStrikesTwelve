@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public float startingTime;
     public float currentTime;
     public float timeLimit;
-    private bool justInstantiated = false;
+    private bool justInstantiated = true;
 
     private bool loadingScene = false;
 
@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(gameStart.GameStart());
                 justInstantiated = false;
+                currentTime += Time.deltaTime;
+                prevTime = currentTime;
             }
             return;
         }

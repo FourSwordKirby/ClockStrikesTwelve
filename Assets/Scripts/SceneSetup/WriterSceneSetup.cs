@@ -8,6 +8,11 @@ public class WriterSceneSetup : MonoBehaviour {
 
     void Start()
     {
+        if (UIController.instance.screenfader.fadeActive)
+        {
+            StartCoroutine(UIController.instance.screenfader.FadeIn());
+        }
+
         if (QuestManager.instance.tvOff)
         {
             weedMusic.SetActive(false);

@@ -6,6 +6,6 @@ MANAGER : PAYMENT? NO CASH, NO CREDIT, NO NOTHING! ALL I NEED IS A SECURITY DEPO
 
 MANAGER : GIVE ME YOUR MOST PRECIOUS <color=#00ffffff><b>OBJECT</b></color>. 
 
-<i> You hand the something over </i>
+<i> Without realizing it, you feel like you're missing something</i>
 
 MANAGER : OK, THANKS FOR THAT! THE DOOR'S UNLOCKED. YOU CAN HEAD UP TO YOUR ROOM NOW. 

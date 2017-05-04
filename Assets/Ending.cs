@@ -19,6 +19,7 @@ public class Ending : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Player.instance.GetComponent<SpriteRenderer>().enabled = false;
+        UIController.instance.screenfader.FadeIn(1.0f);
         StartCoroutine(End());
     }
 	

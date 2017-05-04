@@ -79,9 +79,8 @@ public class QuestManager : MonoBehaviour
         toiletRoomsFlushed = new List<string>();
         if (maintenanceRequestCalled)
             maintenanceCompleted = true;
-
-        if (!tvOff)
-            drinkTaken = true;
+        
+        drinkTaken = false;
         ideas = new List<string>();
         writerTalkedTo = false;
         writerLocked = false;
