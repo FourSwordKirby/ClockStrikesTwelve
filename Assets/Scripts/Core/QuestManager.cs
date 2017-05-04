@@ -87,6 +87,7 @@ public class QuestManager : MonoBehaviour
 
         if (!momChildCompleted)
             changeInMachine = 5;
+        sentHome = true;
         childTalked = false;
         momTalked = false;
         QuestManager.instance.sentHome = false;
