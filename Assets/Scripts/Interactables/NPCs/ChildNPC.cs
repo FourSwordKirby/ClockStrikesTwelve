@@ -30,7 +30,12 @@ public class ChildNPC : NPC
             if (inArcade)
                 this.gameObject.SetActive(true);
             else
-                this.gameObject.SetActive(false);
+            {
+                if (QuestManager.instance.sentHome)
+                    this.gameObject.SetActive(true);
+                else
+                    this.gameObject.SetActive(false);
+            }
         }
         else
         {
