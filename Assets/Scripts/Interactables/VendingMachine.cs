@@ -55,7 +55,7 @@ public class VendingMachine : Interactable {
             currentDialog = VendingCorrectText1;
             decreaseCoins();
         }
-        else if (QuestManager.instance.changeInMachine == 0)
+        else if (QuestManager.instance.changeInMachine == 0 || QuestManager.instance.changeLockedOut)
         {
             currentDialog = VendingCorrectText0;
         }

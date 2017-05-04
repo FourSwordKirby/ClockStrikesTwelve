@@ -71,7 +71,6 @@ public class QuestManager : MonoBehaviour
         if (GameManager.instance.dayPhase >= 2)
         {
             changeLockedOut = changeInMachine > 0;
-            changeInMachine = 0;
         }
     }
 
