@@ -17,10 +17,13 @@ public class ChildNPC : NPC
 
     private TextAsset currentDialog;
 
+    private bool atHome;
+
     void Start()
     {
         base.Start();
         inArcade = GameManager.instance.GetSceneName() == "ArcadeRoom" && !QuestManager.instance.sentHome;
+        atHome = QuestManager.instance.sentHome;
     }
 
     public void Update()
@@ -28,7 +31,12 @@ public class ChildNPC : NPC
         if(GameManager.instance.dayPhase >= 2)
         {
             if (inArcade)
-                this.gameObject.SetActive(true);
+            {
+                if(atHome)
+                    this.gameObject.SetActive(false);
+                else
+                    this.gameObject.SetActive(true);
+            }
             else
             {
                 if (QuestManager.instance.sentHome)
@@ -59,13 +67,12 @@ public class ChildNPC : NPC
         if (inArcade && QuestManager.instance.changeLockedOut)
         {
             currentDialog = ArcadeIntroText;
-            QuestManager.instance.childTalked = true;
+            QuestManager.instance.childFailed = true;
         }
         else if (inArcade && !QuestManager.instance.changeLockedOut)
         {
             currentDialog = ArcadeNoMoneyText;
             QuestManager.instance.sentHome = true;
-            QuestManager.instance.momChildCompleted = true;
         }
         else if (QuestManager.instance.sentHome && inArcade)
         {

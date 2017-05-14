@@ -25,18 +25,18 @@ public class MomNPC : NPC {
 
     private void SetCurrentDialog()
     {
-        if (!QuestManager.instance.momChildCompleted)
+        if (!QuestManager.instance.sentHome)
         {
             if(GameManager.instance.dayPhase != 2) //Fix this to be the proper time
                 currentDialog = IntroText;
             else
             {
-                if(QuestManager.instance.childTalked && QuestManager.instance.momTalked)
+                if(QuestManager.instance.childFailed && QuestManager.instance.momFailed)
                     currentDialog = InProgressText2;
-                else if (QuestManager.instance.childTalked)
+                else if (QuestManager.instance.childFailed)
                 {
                     currentDialog = InProgressText1;
-                    QuestManager.instance.momTalked = true;
+                    QuestManager.instance.momFailed = true;
                 }
                 else
                     currentDialog = InProgressText;
@@ -47,6 +47,7 @@ public class MomNPC : NPC {
             currentDialog = CompletedText;
             if(Player.instance.conversations.Find(x => x.itemName == "time") == null)
                 Player.instance.conversations.Add(new ConversationItem("time", "I wish we had more of it"));
+            QuestManager.instance.momChildCompleted = true;
         }
     }
 

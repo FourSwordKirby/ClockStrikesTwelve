@@ -70,12 +70,14 @@ public class Player : MonoBehaviour
 
         if(this.currentInteractable != null)
         {
-            if(Controls.confirmInputDown())
+            if (Controls.confirmInputDown())
             {
                 currentInteractable.Interact();
             }
         }
-        
+        else
+            emotionSymbol.gameObject.SetActive(false);
+
         if (Controls.pauseInputDown())
         {
             GameManager.instance.TogglePauseMenu();

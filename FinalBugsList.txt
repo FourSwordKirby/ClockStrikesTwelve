@@ -1,20 +1,16 @@
 Game breaking bugs:
 1. The notepad screen might not disappear if mashing Z fast enough. Example of game breaking: Make the notepad screen appear, exit the room in a way such that the notepad stays on-screen (somewhat difficult and unreliable), go to the manager's office, and talk to the safe.
 2. It is also possible to freeze on the notepad screen by going to sleep but mashing on the bed several times to sleep until the next day. To replicate this bug, mash sleep until the next day roughly 3 times (6 presses) before the day fades away, while holding left away from the bed. (In rare scenarios, it's possible to get trapped on the "When do you want to go to sleep" prompt except pressing next doesn't do anything). It's recommended to freeze all player movement until the next day. Note that voluntarily going into the room also has the possibilty of being able to move on the notepad screen.
-3. Initiating dialogue BEFORE the blobs spawn results in the blobs being ineffectual.
 4. Pressing escape while holding a direction causes the player to slide in that direction. This can be used to bump into the blobs to get rid of their hitboxes, granting invuln. Similarly, it's possible to slide into the door to move while the overlay's active (though this doesn't make the game unplayable)
 5. Initiating dialogue right after the time switches may result in the text box staying there but the clock moving. It would then be possible to move around with a textbox; the most consistent way of doing this is to wait until the next time event. (It may also provide immunity to blobs, though I haven't bothered testing this yet)
 
+Windowed mode causes really long fades and really fast dialogue
+
+Fix dialogue overlapping
+Noon dialogue will play when going from morning -> evening
+[Pending]Make black ooze not show up if you fix mom-child quest
+
 QOL bugs:
-1. Snoop heads are behind the monitor...?
-2. The player cannot move if holding arrow keys during a scene transition, and needs to let go of the buttons
-3. Footsteps break if holding button after dialogue; both the sounds and animation loop
-4. Reducing the brochure length/"hitbox" is recommended (or having a way to prematurely cut dialogue, though this is risky)
-5. Mom & child justifications are kind of weird; 
-6. All rooms are locked after dark except for yours; I thought this was desirable because blobs don't respawn upon switching rooms. (It also gave the feeling of trapped in a public place after it's been locked up. Was also going for a https://streamable.com/wwo63 feeling)
-7. Mom child room is rather loud
-8. "Time" should be bolded, not "More Time"
-9. Child stays in the arcade room with the next-to-mom dialogue if going back and forth from the arcade room -> mom & child room -> arcade room (exists in 2 places). So much for spending more time with her
-10. Similarly, on subsequent days the child ditches the mom but the mom still thanks the player. (I also managed to move during the mom's dialogue; not sure how that happened but there are already lots of bugs)
-11. Question marks stay on head if going through a room with a question mark over the head. They disappear on contact with an actual question mark though so I guess that's ok
-12. Seems that the last lock is still slightly too small.
+3. Initiating dialogue BEFORE the blobs spawn results in the blobs being ineffectual.
+[Pending] 9. Child stays in the arcade room with the next-to-mom dialogue if going back and forth from the arcade room -> mom & child room -> arcade room (exists in 2 places). So much for spending more time with her
+[Pending] 10. Similarly, on subsequent days the child ditches the mom but the mom still thanks the player. (I also managed to move during the mom's dialogue; not sure how that happened but there are already lots of bugs)

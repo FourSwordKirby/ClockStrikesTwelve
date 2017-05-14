@@ -12,8 +12,11 @@ public class MomChildDoor : Interactable
 
     private void Update()
     {
-        if (QuestManager.instance.momTalked || GameManager.instance.currentTime > GameManager.instance.timeLimit - 2*GameManager.instance.timeLimit/18)
+        if (QuestManager.instance.momFailed || 
+            (GameManager.instance.currentTime > GameManager.instance.timeLimit - 2*GameManager.instance.timeLimit/18
+            && QuestManager.instance.changeLockedOut))
         {
+            
             ooze.SetActive(true);
             lockCollisionBox.enabled = true;
         }

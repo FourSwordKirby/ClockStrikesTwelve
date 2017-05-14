@@ -48,4 +48,14 @@ public class PauseUI : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void mainMenuButton()
+    {
+        Destroy(GameManager.instance.gameObject);
+        Destroy(QuestManager.instance.gameObject);
+        Destroy(CameraControls.instance.gameObject);
+        Destroy(Player.instance.gameObject);
+        Destroy(UIController.instance.gameObject);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+    }
 }

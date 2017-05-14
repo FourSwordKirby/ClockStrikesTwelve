@@ -39,8 +39,8 @@ public class QuestManager : MonoBehaviour
     public bool sentHome;
     public int changeInMachine;
 
-    public bool childTalked;
-    public bool momTalked;
+    public bool childFailed;
+    public bool momFailed;
 
     public bool momChildCompleted;
 
@@ -88,12 +88,11 @@ public class QuestManager : MonoBehaviour
         writerLocked = false;
 
         changeLockedOut = false;
-        if (!momChildCompleted)
+        if (!sentHome)
             changeInMachine = 5;
-        sentHome = true;
-        childTalked = false;
-        momTalked = false;
-        QuestManager.instance.sentHome = false;
+        sentHome = false;
+        childFailed = false;
+        momFailed = false;
     }
 
     public bool IsRoomFlushed(string roomName)
