@@ -1,14 +1,15 @@
 Game breaking bugs:
 Windowed mode causes really long fades and really fast dialogue
 
-[This happens everywhere and it benign idk what to do lol] Fix dialogue overlapping
-[Most issues resolved pending] The bed is really glitchy if you hold right -> mash A. (Best way to resolve this is to lock the game until the PSA occurs.)
+If you leave the bedroom door as the time hits midnight it's possible for weird things to happen; you get to the next day but there's a long delay before you teleport back to your bedroom for sleeping + the notepad pops up
+If you leave a room while a PSA is occurring, it should be possible to get overlapping dialogue. Unsure if this could result in game locking; not the most consistent of bugs and generally has to be forced
+The clock moves while checking in; autism-tier players/players going to the bathroom/players getting interrupted by ___  can wait for the clock to advance to the afternoon PSA to cause overlapping dialogue.
 
 QOL bugs:
 [Fixed paused footsteps]
-[Should be resolved] Trying to sleep -> touch the door before the time is set causes some weird teleporting
-[SHould be fixed but not too important] May be a good idea to not allow the clock to advance past 12
-[Fixed?] Music doesn't reset to default if red-blobbing in the arcade room/presumably other rooms
+Music completely dies if red-blobbing in the arcade room/presumably other rooms until going into the mom/child/arcade rooms
+Footsteps are locked in one direction/no directions if entering a room without letting go of keys; to duplicate, hold a direction while entering a room.
+It's possible to get too many coins -> can't see inventory. Same with conversations I suppose
 
 Flipping mom-child bugs
 [Pending]Make black ooze not show up if you fix mom-child quest
