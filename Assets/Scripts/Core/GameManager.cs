@@ -138,13 +138,13 @@ public class GameManager : MonoBehaviour
         if(!paused)
         {
             GameManager.instance.playSound(SoundType.Menu, "MenuOpen");
-            Player.instance.enabled = false;
+            Player.instance.FreezePlayer();
             UIController.instance.pauseScreen.gameObject.SetActive(true);
         }
         else
         {
             GameManager.instance.playSound(SoundType.Menu, "MenuOpen");
-            Player.instance.enabled = true;
+            Player.instance.UnfreezePlayer();
             UIController.instance.pauseScreen.gameObject.SetActive(false);
         }
         paused = !paused;

@@ -44,6 +44,7 @@ public class DayEndEvent : MonoBehaviour {
     {
         if (!dayEnding)
         {
+            dieded = false;
             dayEnding = true;
             if (SceneManager.GetActiveScene().name == "PlayerBedroom")
             {
