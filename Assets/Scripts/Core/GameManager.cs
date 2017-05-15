@@ -342,7 +342,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
         }
-        currentTime += timeLimit / 54.0f;
+        currentTime += timeLimit / 72.0f;
         Player.instance.UnfreezePlayer();
     }
     
