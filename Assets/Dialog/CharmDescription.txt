@@ -3,3 +3,5 @@ It's a Teru Teru Bozu
 This talisman is supposed to have magical powers to bring good weather.
 
 <i>You picked up the spooky little ghost</i>
+
+<i>It now haunts your pause screen inventory</i>
