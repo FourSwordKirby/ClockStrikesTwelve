@@ -91,13 +91,14 @@ public class SleepPoint : Interactable {
                 yield return Dialog.DisplayDialog(new List<string>() { "Sleeping that late into the next day is irresponsible" });
             }
         }
+
+        UIController.instance.dialog.closeDialog();
+        GameManager.instance.UnsuspendGame();
+
         if (UIController.instance.choiceScreen.currentChoice == 2)
         {
             StartCoroutine(GameManager.instance.ResetDay());
         }
-
-        UIController.instance.dialog.closeDialog();
-        GameManager.instance.UnsuspendGame();
         yield return null;
     }
 }

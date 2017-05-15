@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NotepadUI : MonoBehaviour {
     public InputField notepadText;
 
-    public List<string> hints = new List<string>() { "The night life in the arcade is a 5 star experience~",
+    private List<string> hints = new List<string>() { "The night life in the arcade is a 5 star experience~",
                                                     "The night life in the arcade is a 5 star experience~",
                                                      "I hear parrots are good pets for writers",
                                                      "I hear parrots are good pets for writers",
@@ -21,11 +21,12 @@ public class NotepadUI : MonoBehaviour {
     public void openNotepad()
     {
         this.gameObject.SetActive(true);
-        notepadText.text = QuestManager.instance.notepadText;
 
+        Random.seed = System.DateTime.Now.Millisecond;
         if (GameManager.instance.currentTime <= 1.0f)
-            notepadText.text += "\n" + hints[Random.Range(0, hints.Count)];
+            QuestManager.instance.notepadText += "\n" + hints[Random.Range(0, hints.Count)];
 
+        notepadText.text = QuestManager.instance.notepadText;
     }
 
     public void closeNotepad()
