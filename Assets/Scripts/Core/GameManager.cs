@@ -211,6 +211,7 @@ public class GameManager : MonoBehaviour
         UIController.instance.notepadPrompt.closeNotepad();
 
         bgm.audioSrc.clip = normalOst;
+        bgm.audioSrc.Play();
         StartCoroutine(bgm.FadeTowards(0.8f));
         SceneManager.LoadScene("PlayerBedroom");
         Player.instance.transform.position = new Vector2(0.0f, 0.0f);

@@ -91,8 +91,8 @@ public class QuestManager : MonoBehaviour
 
         momChildStarted = false;
         changeLockedOut = false;
-        if (!sentHome)
-            changeInMachine = 5;
+
+        changeInMachine = 5;
         sentHome = false;
         childFailed = false;
         momFailed = false;
