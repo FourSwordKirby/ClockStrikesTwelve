@@ -91,8 +91,9 @@ public class Player : MonoBehaviour
 
     public void FreezePlayer()
     {
-        instance.enabled = false;
-        instance.selfBody.velocity = Vector2.zero;
+        this.ActionFsm.ChangeState(new IdleState(this, this.ActionFsm));
+        this.enabled = false;
+        this.selfBody.velocity = Vector2.zero;
     }
 
     public void UnfreezePlayer()

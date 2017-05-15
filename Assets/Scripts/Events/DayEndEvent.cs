@@ -54,6 +54,7 @@ public class DayEndEvent : MonoBehaviour {
             }
             else
             {
+                GameManager.instance.playSound(SoundType.Environment, "Spook");
                 yield return StartCoroutine(spoooooooooooook());
 
                 for (int i = 0; i < Random.Range(minSpawn, maxSpawn); i++)

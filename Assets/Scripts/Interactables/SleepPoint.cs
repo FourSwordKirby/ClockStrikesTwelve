@@ -68,7 +68,8 @@ public class SleepPoint : Interactable {
                     GameManager.instance.currentTime += 4*Time.deltaTime * ((GameManager.instance.timeLimit / 3) - markedTime);
                     yield return new WaitForSeconds(0.1f);
                 }
-                GameManager.instance.currentTime = (GameManager.instance.timeLimit / 3) - 0.5f;
+                GameManager.instance.currentTime = (GameManager.instance.timeLimit / 3)+0.001f;
+                StartCoroutine(GameManager.instance.dayAfternoon.DayAfternoon());
             }
             else
             {
@@ -84,7 +85,8 @@ public class SleepPoint : Interactable {
                     GameManager.instance.currentTime += 4*Time.deltaTime * (2 * GameManager.instance.timeLimit / 3 - markedTime);
                     yield return new WaitForSeconds(0.1f);
                 }
-                GameManager.instance.currentTime = (2 * GameManager.instance.timeLimit / 3)-0.5f;
+                GameManager.instance.currentTime = (2 * GameManager.instance.timeLimit / 3) + 0.001f;
+                StartCoroutine(GameManager.instance.dayEvening.DayEvening());
             }
             else
             {
@@ -93,11 +95,15 @@ public class SleepPoint : Interactable {
         }
 
         UIController.instance.dialog.closeDialog();
-        GameManager.instance.UnsuspendGame();
 
         if (UIController.instance.choiceScreen.currentChoice == 2)
         {
             StartCoroutine(GameManager.instance.ResetDay());
+        }
+
+        if (UIController.instance.choiceScreen.currentChoice == 3)
+        {
+            GameManager.instance.UnsuspendGame();
         }
         yield return null;
     }

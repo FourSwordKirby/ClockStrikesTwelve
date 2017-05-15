@@ -40,6 +40,9 @@ public class Toilet : Interactable
 
         StartCoroutine(FlushCutscene());
 
+        if(!flushed)
+            GameManager.instance.playSound(SoundType.Environment, "toilet");
+
         flushed = true;
         UpdateSprite();
     }
@@ -47,7 +50,6 @@ public class Toilet : Interactable
     private void MarkRoomFlushed()
     {
         string currentRoom = GameManager.instance.GetSceneName();
-        GameManager.instance.playSound(SoundType.Environment, "toilet");
         QuestManager.instance.FlushToilet(currentRoom);
     }
 

@@ -113,13 +113,6 @@ public class GameManager : MonoBehaviour
         paused = true;
         Player player = Player.instance;
         player.FreezePlayer();
-        //Cargo cult programming incoming
-        //This is some pretty contrived code you got going on here
-        //SuspendState doesn't work :\
-        StateMachine<Player> ActionFsm = new StateMachine<Player>(player);
-        State<Player> startState = new MovementState(player, player.ActionFsm);
-        ActionFsm.InitialState(startState);
-        startState.Exit();
         //add other stuff as needed.
         //Probably need a player function to initialize it or something
     }
@@ -163,7 +156,7 @@ public class GameManager : MonoBehaviour
         //Do a bunch of other state resets
 
         //Reset the time
-        currentTime = startingTime;
+        currentTime = startingTime+0.001f;
 
 
         StartCoroutine(UIController.instance.screenfader.FadeOut());
@@ -177,7 +170,33 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         //Notepad parts
-        StartCoroutine(Dialog.DisplayDialog(new List<string>() { "Record what you've thought of the day's experiences" }));
+        List<string> dialogComponents = new List<string>() { "Record what you've thought of the day's experiences" };
+        for (int i = 0; i < dialogComponents.Count; i++)
+        {
+            string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
+            string speaker = "";
+            string dialog = "";
+            if (dialogPieces.Length > 1)
+            {
+                speaker = dialogPieces[0];
+                dialog = dialogPieces[1];
+            }
+            else
+                dialog = dialogPieces[0];
+            UIController.instance.dialog.displayDialog(dialog, speaker);
+            while (!UIController.instance.dialog.dialogCompleted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.2f);
+
+            //Replace this with things in the control set
+            while (!Controls.confirmInputHeld())
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        UIController.instance.dialog.closeDialog();
 
         UIController.instance.notepadPrompt.openNotepad();
         yield return new WaitForSeconds(1.0f);
@@ -191,14 +210,15 @@ public class GameManager : MonoBehaviour
         }
         UIController.instance.notepadPrompt.closeNotepad();
 
+        bgm.audioSrc.clip = normalOst;
         StartCoroutine(bgm.FadeTowards(0.8f));
         SceneManager.LoadScene("PlayerBedroom");
-        Player.instance.transform.position = new Vector2(0.799f, 0.35f);
+        Player.instance.transform.position = new Vector2(0.0f, 0.0f);
         while (UIController.instance.screenfader.fading)
         {
             yield return new WaitForSeconds(0.1f);
         }
-        UnsuspendGame();
+        StartCoroutine(dayStart.DayStart());
         yield return null;
     }
 

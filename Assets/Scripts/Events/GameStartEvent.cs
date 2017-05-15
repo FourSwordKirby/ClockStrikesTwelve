@@ -16,6 +16,7 @@ public class GameStartEvent : MonoBehaviour {
 
     public IEnumerator GameStart()
     {
+        GameManager.instance.SuspendGame();
         StartCoroutine(UIController.instance.screenfader.FadeOut(0.0f));
 
         UIController.instance.dialog.dialogBox.enabled = false;
@@ -26,7 +27,6 @@ public class GameStartEvent : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
 
-        GameManager.instance.SuspendGame();
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string[] dialogPieces = dialogComponents[i].Split(new string[] { " : " }, System.StringSplitOptions.None);
