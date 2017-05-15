@@ -13,5 +13,3 @@ It's possible to get too many coins -> can't see inventory. Same with conversati
 
 Flipping mom-child bugs
 [Pending]Make black ooze not show up if you fix mom-child quest
-[Pending] 9. Not yet fixed: Child stays in the arcade room with the next-to-mom dialogue if going back and forth from the arcade room -> mom & child room -> arcade room (exists in 2 places). So much for spending more time with her
-[Pending] 10. Similarly, on subsequent days the child ditches the mom but the mom still thanks the player. (I also managed to move during the mom's dialogue; not sure how that happened but there are already lots of bugs)

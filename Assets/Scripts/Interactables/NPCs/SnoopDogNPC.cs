@@ -7,7 +7,7 @@ public class SnoopDogNPC : NPC
     public TextAsset InitialRequest; //False false
     public TextAsset RepeatedRequest; //True false (nothing in inventory)
     public TextAsset SatisfiedRequest; //True false (soda in inventory)
-    public TextAsset Rapper; //huehue //True true
+    public TextAsset Rapper; //True true
     public TextAsset YourName; //huehue //True true
 
     private TextAsset currentDialog;

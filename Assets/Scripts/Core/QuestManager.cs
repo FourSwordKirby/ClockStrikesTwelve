@@ -35,6 +35,8 @@ public class QuestManager : MonoBehaviour
     public bool writerCompleted;
 
     //Used for the mother child quest
+    public bool momChildStarted;
+
     public bool changeLockedOut;
     public bool sentHome;
     public int changeInMachine;
@@ -87,6 +89,7 @@ public class QuestManager : MonoBehaviour
         writerTalkedTo = false;
         writerLocked = false;
 
+        momChildStarted = false;
         changeLockedOut = false;
         if (!sentHome)
             changeInMachine = 5;

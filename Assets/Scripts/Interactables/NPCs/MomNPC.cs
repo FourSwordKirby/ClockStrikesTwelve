@@ -31,7 +31,7 @@ public class MomNPC : NPC {
                 currentDialog = IntroText;
             else
             {
-                if(QuestManager.instance.childFailed && QuestManager.instance.momFailed)
+                if (QuestManager.instance.childFailed && QuestManager.instance.momFailed)
                     currentDialog = InProgressText2;
                 else if (QuestManager.instance.childFailed)
                 {
@@ -39,7 +39,10 @@ public class MomNPC : NPC {
                     QuestManager.instance.momFailed = true;
                 }
                 else
+                {
+                    QuestManager.instance.momChildStarted = true;
                     currentDialog = InProgressText;
+                }
             }
         }
         else

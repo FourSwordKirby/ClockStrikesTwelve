@@ -9,6 +9,7 @@ public class ChildNPC : NPC
     public TextAsset HomeDefault;
     public TextAsset SentBackText;
     public TextAsset ReturnedHomeText;
+    public TextAsset UnresponsiveText;
 
     public bool inArcade;
     public bool TalkedOnce;
@@ -22,37 +23,20 @@ public class ChildNPC : NPC
     void Start()
     {
         base.Start();
-        inArcade = GameManager.instance.GetSceneName() == "ArcadeRoom" && !QuestManager.instance.sentHome;
+        inArcade = GameManager.instance.GetSceneName() == "ArcadeRoom";
         atHome = QuestManager.instance.sentHome;
     }
 
     public void Update()
     {
-        if(GameManager.instance.dayPhase >= 2)
+        if (GameManager.instance.dayPhase >= 2)
         {
-            if (inArcade)
-            {
-                if(atHome)
-                    this.gameObject.SetActive(false);
-                else
-                    this.gameObject.SetActive(true);
-            }
-            else
-            {
-                if (QuestManager.instance.sentHome)
-                    this.gameObject.SetActive(true);
-                else
-                    this.gameObject.SetActive(false);
-            }
+            this.gameObject.SetActive(inArcade ^ atHome);
         }
         else
         {
-            if (inArcade)
-                this.gameObject.SetActive(false);
-            else
-                this.gameObject.SetActive(true);
+            this.gameObject.SetActive(!inArcade);
         }
-
     }
 
     public override void Interact()
@@ -64,27 +48,37 @@ public class ChildNPC : NPC
 
     private void SetCurrentDialog()
     {
-        if (inArcade && QuestManager.instance.changeLockedOut)
+        if (inArcade)
         {
-            currentDialog = ArcadeIntroText;
-            QuestManager.instance.childFailed = true;
-        }
-        else if (inArcade && !QuestManager.instance.changeLockedOut)
-        {
-            currentDialog = ArcadeNoMoneyText;
-            QuestManager.instance.sentHome = true;
-        }
-        else if (QuestManager.instance.sentHome && inArcade)
-        {
-            currentDialog = SentBackText;
-        }
-        else if (QuestManager.instance.sentHome && !inArcade)
-        {
-            currentDialog = ReturnedHomeText;
-        }
+            if (!QuestManager.instance.momChildStarted)
+            {
+                currentDialog = UnresponsiveText;
+            }
+            else if (QuestManager.instance.sentHome)
+            {
+                currentDialog = SentBackText;
+            }
+            else if (QuestManager.instance.changeLockedOut)
+            {
+                currentDialog = ArcadeIntroText;
+                QuestManager.instance.childFailed = true;
+            }
+            else if (!QuestManager.instance.changeLockedOut)
+            {
+                currentDialog = ArcadeNoMoneyText;
+                QuestManager.instance.sentHome = true;
+            }
+        } 
         else
         {
-            currentDialog = HomeDefault;
+            if (QuestManager.instance.sentHome)
+            {
+                currentDialog = ReturnedHomeText;
+            }
+            else
+            {
+                currentDialog = HomeDefault;
+            }
         }
     }
 

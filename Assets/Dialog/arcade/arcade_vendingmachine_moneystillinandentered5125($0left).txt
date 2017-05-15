@@ -1,0 +1,4 @@
+The machine spat out $1! ($0 left)
+
+
+

@@ -8,6 +8,7 @@ public class SodaMachine : Interactable {
     public InventoryItem inventoryItem;
     public TextAsset SodaGetText;
     public TextAsset NoSodaText;
+    public TextAsset NoSnoopText;
 
     private TextAsset currentDialog;
 
@@ -21,7 +22,11 @@ public class SodaMachine : Interactable {
 
     private void SetCurrentDialog()
     {
-        if (!QuestManager.instance.drinkTaken && Player.instance.items.Find(x => x.designation == ItemDesignation.Soda) == null)
+        if (!QuestManager.instance.snoopMet)
+        {
+            currentDialog = NoSnoopText;
+        }
+        else if (!QuestManager.instance.drinkTaken && Player.instance.items.Find(x => x.designation == ItemDesignation.Soda) == null)
         {
             QuestManager.instance.drinkTaken = true;
             currentDialog = SodaGetText;
