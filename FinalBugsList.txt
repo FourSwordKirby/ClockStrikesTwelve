@@ -2,8 +2,15 @@ Game breaking bugs:
 Windowed mode causes really long fades and really fast dialogue
 
 Fix dialogue overlapping
+The bed is really glitchy if you hold right -> mash A. (Best way to resolve this is to lock the game until the PSA occurs.)
 [Pending]Make black ooze not show up if you fix mom-child quest
 
 QOL bugs:
-[Pending] 9. Child stays in the arcade room with the next-to-mom dialogue if going back and forth from the arcade room -> mom & child room -> arcade room (exists in 2 places). So much for spending more time with her
+[Pending] 9. Not yet fixed: Child stays in the arcade room with the next-to-mom dialogue if going back and forth from the arcade room -> mom & child room -> arcade room (exists in 2 places). So much for spending more time with her
 [Pending] 10. Similarly, on subsequent days the child ditches the mom but the mom still thanks the player. (I also managed to move during the mom's dialogue; not sure how that happened but there are already lots of bugs)
+1. Footsteps are unfixed: walking while 
+2. Toilet flush sound still plays when the toilet is closed
+3. Trying to sleep -> touch the door before the time is set causes some weird teleporting
+4. Talking to the writer spawns more conversations
+5. May be a good idea to not allow the clock to advance past 12
+6. Music doesn't reset to default if red-blobbing in the arcade room/presumably other rooms
